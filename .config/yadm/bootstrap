@@ -61,7 +61,7 @@ else
     curl -L git.io/antigen > $HOME/.antigen/antigen.zsh
 fi
 
-sudo pacman -S broot exa --noconfirm --needed
+sudo pacman -S terminator broot exa --noconfirm --needed
 
 echo "=============="
 echo "==== DONE ===="

@@ -91,7 +91,9 @@ fnm use default
 echo "=============="
 echo "==== DONE ===="
 echo "=============="
+
 echo "$ chsh -s /bin/zsh"
+echo "~/.config/Code/User/extensions.sh"
 echo "$ startx"
 echo "$ feh --bg-fill ~/.config/desktop/gruvbox.png"
 

@@ -82,11 +82,15 @@ echo -e "\n[sublime-text]\nServer = https://download.sublimetext.com/arch/stable
 sudo pacman -Syu terminator broot exa thefuck fzf lxappearance sublime-text --noconfirm --needed
 
 # Last configurations
+source $HOME/.zshrc
+
 fnm install 12.18.3
 fnm install 14.8.0
 fnm alias 14.8.0 default
 fnm alias 12.18.3 LTS
 fnm use default
+
+sh ~/.config/Code/User/extensions.sh
 
 echo "=============="
 echo "==== DONE ===="

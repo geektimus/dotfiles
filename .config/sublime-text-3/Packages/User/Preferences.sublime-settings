@@ -1,0 +1,27 @@
+{
+	"color_scheme": "Packages/gruvbox/gruvbox (Dark) (Soft).sublime-color-scheme",
+	"font_face": "Iosevka",
+	"font_options":
+	[
+		"bold"
+	],
+	"font_size": 11,
+	"gruvbox_accent_aqua": true,
+	"gruvbox_animate_icons": true,
+	"gruvbox_autocomplete_border": true,
+	"gruvbox_autocomplete_border_thick": true,
+	"gruvbox_iconset_midstroke": true,
+	"gruvbox_panel_xxs": true,
+	"gruvbox_sidebar_compact": true,
+	"gruvbox_sidebar_font_size_12": true,
+	"gruvbox_statusbar_xs": true,
+	"gruvbox_tabs_font_size_12": true,
+	"gruvbox_tabs_xxs": true,
+	"gruvbox_underline_active_tab_thick": true,
+	"ignored_packages":
+	[
+		"ColorSchemeSelector",
+		"Vintage"
+	],
+	"theme": "gruvbox.sublime-theme"
+}

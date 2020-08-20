@@ -70,8 +70,8 @@ if [ -z "$SSH_AUTH_SOCK" ] ; then
     ssh-add
 fi
 
-source $HOME/.dotfiles/zsh_aliases.sh
-source $HOME/.dotfiles/zsh_functions.sh
+source $HOME/.zsh_aliases
+source $HOME/.zsh_functions
 
 source $HOME/.config/broot/launcher/bash/br
 

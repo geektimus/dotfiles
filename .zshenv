@@ -1,0 +1,1 @@
+/home/geektimus/Projects/personal/linux-configs/dotfiles/zshenv.sh

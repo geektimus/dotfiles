@@ -1,0 +1,75 @@
+{
+    "window.menuBarVisibility": "toggle",
+    "editor.fontFamily": "Iosevka Term",
+    "editor.lineNumbers": "relative",
+    "keyboard.dispatch": "keyCode",
+    "window.zoomLevel": 1,
+    "editor.rulers": [
+        80,
+        120
+    ],
+    "explorer.confirmDelete": false,
+    "terminal.integrated.fontFamily": "Iosevka Term",
+
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    },
+    "editor.minimap.enabled": false,
+    "workbench.statusBar.visible": true,
+    "editor.suggestSelection": "first",
+    "workbench.iconTheme": "material-icon-theme",
+    "emmet.syntaxProfiles": {
+        "javascript": "jsx",
+        "xml": {
+            "attr_quotes": "single"
+        }
+    },
+    "[javascript]": {
+        "editor.tabSize": 2
+    },
+    "[css]": {
+        "editor.tabSize": 2
+    },
+    "extensions.autoUpdate": false,
+    "editor.acceptSuggestionOnCommitCharacter": false,
+    "workbench.colorTheme": "Gruvbox Material Dark",
+    "editor.fontSize": 12,
+    "customizeUI.font.regular": "Iosevka Term",
+    "customizeUI.font.monospace": "Iosevka Term",
+    "customizeUI.fontSizeMap": {
+        "13px": "11px",
+        "12px": "11px",
+        "window-title": "10px", // Window title font when using custom titlebar
+        "tab-title": "10px",    // Used for editor tab titles
+        "monospace": "10.5px",  // Used for monospace fonts in user interface
+        "menu": "13px",         // Used for menu items (windows only)
+    },
+    "customizeUI.listRowHeight": 18,
+    "workbench.startupEditor": "newUntitledFile",
+    "vs-kubernetes": {
+        "vs-kubernetes.draft-path.linux": "/home/geektimus/.vs-kubernetes/tools/draft/linux-amd64/draft",
+        "vs-kubernetes.helm-path.linux": "/home/geektimus/.vs-kubernetes/tools/helm/linux-amd64/helm",
+        "vs-kubernetes.minikube-path.linux": "/home/geektimus/.vs-kubernetes/tools/minikube/linux-amd64/minikube"
+    },
+    "customizeUI.titleBar": "inline",
+    "[yaml]": {
+    
+    },
+    "terminal.integrated.fontSize": 12,
+    "gitlens.views.repositories.location": "gitlens",
+    "gitlens.views.fileHistory.location": "gitlens",
+    "gitlens.views.lineHistory.location": "gitlens",
+    "gitlens.views.compare.location": "gitlens",
+    "gitlens.views.search.location": "gitlens",
+    "customizeUI.activityBar": "regular",
+    "editor.renderWhitespace": "all",
+    "editor.cursorStyle": "block",
+    "files.watcherExclude": {
+        "**/.bloop": true,
+        "**/.metals": true,
+        "**/.ammonite": true
+    }
+}

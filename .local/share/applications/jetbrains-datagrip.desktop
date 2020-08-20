@@ -1,0 +1,10 @@
+[Desktop Entry]
+Categories=Development;IDE;
+Comment=Many databases, one tool
+Exec="/home/geektimus/.local/share/JetBrains/Toolbox/apps/datagrip/ch-0/202.6397.93/bin/datagrip.sh" %f
+Icon=datagrip
+Name=DataGrip
+StartupWMClass=jetbrains-datagrip
+Terminal=false
+Type=Application
+Version=1.0

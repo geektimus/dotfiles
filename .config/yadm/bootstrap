@@ -10,7 +10,7 @@ if [ "$choice" = "y" ]; then
     sudo pacman -S xf86-video-vmware virtualbox-guest-utils virtualbox-guest-modules-arch --noconfirm --needed
 fi
 
-sudo pacman -S curl xorg xorg-xinit feh rofi ranger bspwm sxhkd dunst vim neofetch python3 zsh noto-fonts noto-fonts-emoji ttf-font-awesome otf-font-awesome pulseaudio pulseaudio-alsa pamixer unzip picom wget make --noconfirm --needed
+sudo pacman -S curl xorg xorg-xinit feh rofi neovim ranger bspwm sxhkd dunst neofetch python3 zsh noto-fonts noto-fonts-emoji ttf-font-awesome otf-font-awesome pulseaudio pulseaudio-alsa pamixer unzip picom wget make --noconfirm --needed
 
 if pacman -Qs yay > /dev/null ; then
     echo "Yay is already installed, moving on..."
@@ -65,6 +65,13 @@ if [ -d "$HOME/.fnm" ]; then
     echo "Fast Node Manager is already installed, moving on..."
 else
     curl -fsSL https://github.com/Schniz/fnm/raw/master/.ci/install.sh | bash -s -- --skip-shell
+fi
+
+if [ -d "/opt/vscode" ]; then
+    echo "VSCode is already installed, moving on..."
+else
+    wget -t0 https://go.microsoft.com/fwlink/\?LinkID\=620884 -O code-stable.tar.gz 
+    tar -xvf code-stable.tar.gz && mv VSCode-linux-x64 vscode && sudo rm -rf /opt/vscode && sudo mv vscode /opt && rm code-stable.tar.gz
 fi
 
 sudo pacman -S terminator broot exa thefuck fzf --noconfirm --needed

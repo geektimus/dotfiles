@@ -1,0 +1,10 @@
+[Desktop Entry]
+Categories=Development;IDE;
+Comment=Microsoft Text Editor
+Exec="/opt/vscode/code" %f
+Icon=code
+Name=Visual Studio Code
+StartupWMClass=visual-studio-code
+Terminal=false
+Type=Application
+Version=1.0

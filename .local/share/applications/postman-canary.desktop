@@ -1,0 +1,10 @@
+[Desktop Entry]
+Categories=Development;IDE;
+Comment=API Testing Friend
+Exec="/opt/PostmanCanary/PostmanCanary"
+Icon=postman
+Name=Postman Canary
+StartupWMClass=postman
+Terminal=false
+Type=Application
+Version=1.0

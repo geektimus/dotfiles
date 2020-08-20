@@ -33,6 +33,8 @@ export PATH="$PATH:$HOME/.local/share/coursier/bin"
 export CONSCRIPT_HOME=$HOME/.conscript
 export PATH=$PATH:$CONSCRIPT_HOME/bin
 
+export PATH=$HOME/.fnm:$PATH
+
 # Config location for bspwm
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"

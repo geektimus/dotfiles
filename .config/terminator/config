@@ -1,0 +1,38 @@
+[global_config]
+  enabled_plugins = TerminatorThemes, LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
+[keybindings]
+[profiles]
+  [[default]]
+    background_color = "#1e1e1e"
+    background_darkness = 0.8
+    background_type = transparent
+    cursor_color = "#bbbbbb"
+    font = Iosevka 11
+    foreground_color = "#e6d4a3"
+    scrollback_infinite = True
+    palette = "#161819:#f73028:#aab01e:#f7b125:#719586:#c77089:#7db669:#faefbb:#7f7061:#be0f17:#868715:#cc881a:#377375:#a04b73:#578e57:#e6d4a3"
+    word_chars = "-,./?%&#:_~"
+    login_shell = True
+    use_system_font = False
+  [[Cool]]
+    allow_bold = False
+    background_color = "#272822"
+    background_darkness = 0.8
+    background_type = transparent
+    cursor_color = "#ffffff"
+    font = Iosevka Term 11
+    foreground_color = "#f8f8f2"
+    scrollback_infinite = True
+    palette = "#75715e:#f92672:#a6e22e:#f4bf75:#66d9ef:#ae81ff:#2aa198:#f9f8f5:#272822:#f92672:#a6e22e:#f4bf75:#66d9ef:#ae81ff:#2aa198:#f9f8f5"
+    word_chars = "-,./?%&#:_~"
+    login_shell = True
+    use_system_font = False
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      type = Window
+[plugins]

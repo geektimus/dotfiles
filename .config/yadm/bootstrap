@@ -7,7 +7,7 @@
 read -p 'Install virtualbox additions? (y/N): ' choice
 
 if [ "$choice" = "y" ]; then
-    sudo pacman -S xf86-video-vmware virtualbox-guest-utils virtualbox-guest-modules-arch --noconfirm --needed
+    sudo pacman -S xf86-video-vmware virtualbox-guest-utils --noconfirm --needed
 fi
 
 sudo pacman -S curl xorg xorg-xinit feh rofi neovim ranger bspwm sxhkd dunst neofetch python3 zsh noto-fonts noto-fonts-emoji ttf-font-awesome otf-font-awesome pulseaudio pulseaudio-alsa pamixer unzip picom wget make --noconfirm --needed

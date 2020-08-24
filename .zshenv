@@ -1,3 +1,8 @@
+if [ -n "$DESKTOP_SESSION" ];then
+    eval $(gnome-keyring-daemon --start)
+    export SSH_AUTH_SOCK
+fi
+
 # TODO: Move the custom scripts to $HOME/.local/bin
 export USERBIN=$HOME/.bin:$HOME/.local/bin
 export PATH=$PATH:$USERBIN

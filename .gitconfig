@@ -105,3 +105,5 @@
 [filesystem "Oracle Corporation|1.8.0_261|/dev/mapper/encrypted_data"]
 	timestampResolution = 1001 milliseconds
 	minRacyThreshold = 0 nanoseconds
+[credential]
+	helper = /usr/lib/git-core/git-credential-libsecret

@@ -10,7 +10,7 @@ if [ "$choice" = "y" ]; then
     sudo pacman -S xf86-video-vmware virtualbox-guest-utils --noconfirm --needed
 fi
 
-sudo pacman -S curl xorg xorg-xinit feh rofi neovim ranger bspwm sxhkd dunst neofetch python3 zsh noto-fonts noto-fonts-emoji ttf-font-awesome otf-font-awesome pulseaudio pulseaudio-alsa pamixer unzip picom wget make --noconfirm --needed
+sudo pacman -S ccache hub curl xorg xorg-xinit feh rofi neovim ranger bspwm sxhkd dunst neofetch python3 zsh noto-fonts noto-fonts-emoji ttf-font-awesome otf-font-awesome pulseaudio pulseaudio-alsa pamixer unzip picom wget make --noconfirm --needed
 
 if pacman -Qs yay > /dev/null ; then
     echo "Yay is already installed, moving on..."
@@ -26,7 +26,7 @@ fi
 gpg --keyserver pool.sks-keyservers.net --recv-keys 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90
 gpg --keyserver pool.sks-keyservers.net --recv-keys 2EBF997C15BDA244B6EBF5D84773BD5E130D1D45
 
-yay -S polybar rxvt-unicode-256xresources spicetify-cli nerd-fonts-iosevka python-ueberzug spotify betterlockscreen --needed --removemake --nocleanmenu --nodiffmenu --noeditmenu --noconfirm
+yay -S polybar rxvt-unicode-256xresources spicetify-cli nerd-fonts-iosevka python-ueberzug spotify betterlockscreen google-chrome --needed --removemake --nocleanmenu --nodiffmenu --noeditmenu --noconfirm
 
 # ====================================
 # Polybar font
@@ -72,6 +72,8 @@ if [ -d "/opt/vscode" ]; then
 else
     wget -t0 https://go.microsoft.com/fwlink/\?LinkID\=620884 -O code-stable.tar.gz 
     tar -xvf code-stable.tar.gz && mv VSCode-linux-x64 vscode && sudo rm -rf /opt/vscode && sudo mv vscode /opt && rm code-stable.tar.gz
+    sudo ln -sf /opt/vscode/bin/code /usr/bin/code
+    sh ~/.config/Code/User/extensions.sh
 fi
 
 # Sublime 

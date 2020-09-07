@@ -40,6 +40,9 @@ export PATH=$PATH:$CONSCRIPT_HOME/bin
 
 export PATH=$HOME/.fnm:$PATH
 
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+
 # Config location for bspwm
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"

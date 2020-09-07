@@ -23,5 +23,8 @@
 		"ColorSchemeSelector",
 		"Vintage"
 	],
-	"theme": "gruvbox.sublime-theme"
+	"theme": "gruvbox.sublime-theme",
+	"translate_tabs_to_spaces": true,
+	"tab_size": 4,
+	"draw_white_space": "all",
 }

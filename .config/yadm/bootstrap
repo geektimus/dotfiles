@@ -11,6 +11,7 @@ if [ "$choice" = "y" ]; then
 fi
 
 # TODO: Check if the gnome-keyring package is necesary on non gnome systems
+# TODO: In artix before the yadm bootstrap process we need to remove xorg-mkfontscale
 sudo pacman -S ccache hub curl xorg xorg-xinit feh rofi neovim ranger bspwm sxhkd dunst neofetch python3 zsh noto-fonts noto-fonts-emoji ttf-font-awesome otf-font-awesome pulseaudio pulseaudio-alsa pamixer unzip picom wget make gnome-keyring libsecret xsel --noconfirm --needed
 
 if pacman -Qs yay > /dev/null ; then
@@ -77,7 +78,9 @@ fi
 if [ -f "$HOME/.local/bin/kubectl" ]; then
     echo "Kubectl is already installed, moving on"
 else
-    curl --output /home/geektimus/.local/bin/kubectl -L "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"
+    mkdir -p $HOME/.local/bin
+    curl --output $HOME/.local/bin/kubectl -L "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"
+    chmod +x $HOME/.local/bin/kubectl
 fi
 
 if [ -d "/opt/vscode" ]; then
@@ -102,6 +105,8 @@ echo "=============="
 
 echo "$ chsh -s /bin/zsh"
 echo "~/.config/Code/User/extensions.sh"
+echo "initialize node"
+echo "initialize python"
 echo "$ startx"
 echo "$ feh --bg-fill ~/.config/desktop/gruvbox.png"
 

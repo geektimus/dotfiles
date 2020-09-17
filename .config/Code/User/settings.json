@@ -71,5 +71,6 @@
         "**/.bloop": true,
         "**/.metals": true,
         "**/.ammonite": true
-    }
+    },
+    "org.addLeftZero": true
 }

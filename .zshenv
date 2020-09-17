@@ -35,8 +35,9 @@ export PATH="$PATH:$HOME/.rvm/bin"
 
 export PATH="$PATH:$HOME/.local/share/coursier/bin"
 
-export CONSCRIPT_HOME=$HOME/.conscript
-export PATH=$PATH:$CONSCRIPT_HOME/bin
+export CONSCRIPT_HOME="$HOME/.config/conscript"
+export CONSCRIPT_OPTS="-XX:MaxPermSize=512M -Dfile.encoding=UTF-8"
+export PATH=$CONSCRIPT_HOME/bin:$PATH
 
 export PATH=$HOME/.fnm:$PATH
 
@@ -46,3 +47,6 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 # Config location for bspwm
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
+
+# Weechat override default config location
+export WEECHAT_HOME=$XDG_CONFIG_HOME/weechat

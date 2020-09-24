@@ -15,6 +15,10 @@ antigen bundle git
 antigen bundle fzf
 antigen bundle thefuck
 antigen bundle archlinux
+antigen bundle kubectl
+antigen bundle pyenv
+antigen bundle systemd
+
 # antigen bundle lein
 antigen bundle command-not-found
 

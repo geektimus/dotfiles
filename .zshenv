@@ -1,3 +1,7 @@
+# General config location
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+
 if [ -n "$DESKTOP_SESSION" ];then
     eval $(gnome-keyring-daemon --start)
     export SSH_AUTH_SOCK
@@ -44,9 +48,7 @@ export PATH=$HOME/.fnm:$PATH
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 
-# Config location for bspwm
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_CACHE_HOME="$HOME/.cache"
+export PATH=$PATH:$HOME/.emacs.d/bin
 
 # Weechat override default config location
 export WEECHAT_HOME=$XDG_CONFIG_HOME/weechat

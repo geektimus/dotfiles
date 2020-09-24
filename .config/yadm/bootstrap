@@ -1,5 +1,7 @@
 #!/bin/sh
 
+release=$(lsb_release -i | awk -F: '{$1=""; print $2}' | tr -d '[:space:]')
+
 # ====================================
 # Install packages
 # ====================================
@@ -10,10 +12,33 @@ if [ "$choice" = "y" ]; then
     sudo pacman -S xf86-video-vmware virtualbox-guest-utils --noconfirm --needed
 fi
 
-# TODO: Check if the gnome-keyring package is necesary on non gnome systems
-# TODO: In artix before the yadm bootstrap process we need to remove xorg-mkfontscale
-sudo pacman -S ccache hub curl httpie xorg xorg-xinit feh rofi neovim ranger bspwm sxhkd dunst neofetch python3 zsh noto-fonts noto-fonts-emoji ttf-font-awesome otf-font-awesome pulseaudio pulseaudio-alsa pamixer unzip picom wget make gnome-keyring libsecret xsel --noconfirm --needed
+# Fonts
+sudo pacman -S noto-fonts noto-fonts-emoji ttf-font-awesome otf-font-awesome --noconfirm --needed
 
+# Utils
+sudo pacman -S lsb-release unzip zsh wget curl make ccache libsecret xsel --noconfirm --needed
+
+# TODO: Check if the gnome-keyring package is necesary on non gnome systems
+
+if [ "$release" == "Artix" ]; then
+  # In artix before the yadm bootstrap process starts we need to remove xorg-mkfontscale
+  sudo pacman -Rcsu xorg-mkfontscale --noconfirm
+elif [ "$release" == "Arch" ]; then
+  echo "No changes required, continue"
+else 
+  echo "Warn: Please have in mind that by the time of this update this bootstrap was validated on Arch and Artix"
+fi
+
+# Desktop environment bases, bspwm packages and utils
+sudo pacman -S redshift xorg xorg-xinit feh rofi ranger bspwm sxhkd dunst pulseaudio pulseaudio-alsa pamixer picom gnome-keyring --noconfirm --needed
+
+# Develop dependecies / packages
+sudo pacman -S hub github-cli httpie python3 --noconfirm --needed
+
+# Editors and dependencies
+sudo pacman -S neovim emacs-nox ripgrep fd ctags --noconfirm --needed
+
+# AUR Helper
 if pacman -Qs yay > /dev/null ; then
     echo "Yay is already installed, moving on..."
 else
@@ -24,7 +49,6 @@ else
 fi
 
 # Import Keys to Install Spotify
-
 gpg --keyserver pool.sks-keyservers.net --recv-keys 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90
 gpg --keyserver pool.sks-keyservers.net --recv-keys 2EBF997C15BDA244B6EBF5D84773BD5E130D1D45
 
@@ -55,7 +79,6 @@ sudo sed -i 's/#Color/Color/g' /etc/pacman.conf
 # =========================================
 # Install antigen and zsh-autosuggestions
 # =========================================
-
 if [ -d "$HOME/.antigen" ]; then
     echo "Antigen is already installed, moving on..."
 else
@@ -92,6 +115,12 @@ else
     sh ~/.config/Code/User/extensions.sh
 fi
 
+if [ -d "$HOME/.emacs.d/bin" ]; then
+    echo "Doom emacs is already installed, moving on..."
+else
+   git clone --depth 1 https://github.com/hlissner/doom-emacs $HOME/.emacs.d
+fi
+
 # Sublime 
 # TODO: Check if subl command is installed
 curl -O https://download.sublimetext.com/sublimehq-pub.gpg && sudo pacman-key --add sublimehq-pub.gpg && sudo pacman-key --lsign-key 8A8F901A && rm sublimehq-pub.gpg
@@ -105,6 +134,7 @@ echo "=============="
 
 echo "$ chsh -s /bin/zsh"
 echo "~/.config/Code/User/extensions.sh"
+echo "doom install"
 echo "initialize node"
 echo "initialize python"
 echo "$ startx"
@@ -112,4 +142,3 @@ echo "$ feh --bg-fill ~/.config/desktop/gruvbox.png"
 
 # Change to zsh
 zsh
-

@@ -66,11 +66,20 @@
     "gitlens.views.search.location": "gitlens",
     "customizeUI.activityBar": "regular",
     "editor.renderWhitespace": "all",
-    "editor.cursorStyle": "block",
     "files.watcherExclude": {
         "**/.bloop": true,
         "**/.metals": true,
         "**/.ammonite": true
     },
-    "org.addLeftZero": true
+    "org.addLeftZero": true,
+    "editor.cursorBlinking": "phase",  // Control the cursor animation style.
+    "editor.cursorSmoothCaretAnimation": true, // Controls whether the smooth caret animation should be enabled.
+    "editor.cursorStyle": "block", // Controls the cursor style.
+    "terminal.integrated.cursorBlinking": true, // Controls whether the terminal cursor blinks.
+    "terminal.integrated.cursorStyle": "block",
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.formatOnSaveMode": "modifications", // Controls the style of terminal cursor.
 }

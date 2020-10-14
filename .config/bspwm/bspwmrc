@@ -1,5 +1,7 @@
 #! /bin/sh
 
+killall -q variaty &
+
 sxhkd &
 
 bspc monitor HDMI-1 -d 1 2 3 4 5
@@ -10,9 +12,9 @@ wmname LG3D
 xrandr --output HDMI-1 --mode 1920x1080 --rotate normal --primary \
        --output eDP-1  --mode 1366x768  --rotate normal --right-of HDMI-1
 
-
 ## Rules
 bspc rule -a URxvt:scratchy sticky=on state=floating rectangle=widthxheight+Xoffset+Yoffset
+bspc rule -a Screenkey manage=off
 
 bspc config border_width         4
 bspc config border_radius        12
@@ -46,6 +48,7 @@ dunst &
 # Network manager applet
 nm-applet &
 
+# Wallpaper Rotation
 variety &
 
 # ------- Mouse/Touchpad fixes ------

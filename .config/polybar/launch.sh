@@ -16,7 +16,7 @@ while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 if type "xrandr"; then
   SCREENS=$(xrandr --query | grep " connected" | wc -l)
-  if [[ $SCREENS != "1" ]]; then
+  if [[ "$SCREENS" == "2" ]]; then
     for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
       if [[ "$m" == "HDMI-1" ]]; then
     	  MONITOR=$m polybar -c ~/.config/polybar/config.ini main &

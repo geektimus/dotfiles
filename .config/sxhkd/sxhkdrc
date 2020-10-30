@@ -24,6 +24,29 @@ super F1
     terminator -be "nvim /home/geektimus/.config/sxhkd/sxhkdrc"
 	#urxvt -e nvim /home/geektimus/.config/sxhkd/sxhkdrc
 
+
+# === function keys ===
+
+# rotate windows
+F3
+    bspc node @/ -R 90
+
+# circulate windows
+F4
+    bspc node @/ -C forward
+
+# flip windows horizontal
+F5
+    bspc node @/ -F horizontal
+
+# flip windows vertical
+F6
+    bspc node @/ -F vertical
+
+# balance windows
+F7
+    bspc node @/ -B
+
 #
 # bspwm hotkeys
 #
@@ -147,7 +170,11 @@ super + alt + shift + {h,j,k,l}
 # ===================================
 
 super + w
-	google-chrome-stable
+	brave
+	#google-chrome-stable
+
+super + shift + f
+	nautilus
 
 super + r
 	urxvt -e ranger
@@ -170,6 +197,15 @@ super + k
 super + c
     code
 
+super + shift + d
+    variety -t
+
+super + shift + n
+    variety -n
+
+super + shift + p
+    variety -p
+
 super + shift + i
     imgur-screenshot
 
@@ -187,9 +223,6 @@ super + y
 # swap the current node and the biggest node
 super + g
     bspc node -s biggest
-
-super + u
-    ~/Scripts/scratchpad.sh dropdown
 
 # Screen brightness control
 XF86MonBrightnessDown

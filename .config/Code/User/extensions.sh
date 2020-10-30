@@ -1,17 +1,25 @@
-#!/bin/env sh
+code --install-extension asciidoctor.asciidoctor-vscode
 code --install-extension DavidAnson.vscode-markdownlint
 code --install-extension dbaeumer.vscode-eslint
+code --install-extension dqisme.sync-scroll
 code --install-extension eamodio.gitlens
 code --install-extension EditorConfig.EditorConfig
 code --install-extension emmanuelbeziat.vscode-great-icons
 code --install-extension esbenp.prettier-vscode
 code --install-extension GitHub.vscode-pull-request-github
+code --install-extension imjacobclark.vscode-lisp-formatter
 code --install-extension iocave.customize-ui
 code --install-extension iocave.monkey-patch
 code --install-extension janisdd.vscode-edit-csv
 code --install-extension mechatroner.rainbow-csv
+code --install-extension mindaro-dev.file-downloader
+code --install-extension mindaro.mindaro
 code --install-extension mosbasik.sxhkdrc-syntax
+code --install-extension ms-azuretools.vscode-docker
+code --install-extension ms-kubernetes-tools.vscode-aks-tools
 code --install-extension ms-kubernetes-tools.vscode-kubernetes-tools
+code --install-extension ms-vscode.azure-account
+code --install-extension ms-vscode.hexeditor
 code --install-extension msjsdiag.debugger-for-chrome
 code --install-extension PKief.material-icon-theme
 code --install-extension pnp.polacode
@@ -19,6 +27,5 @@ code --install-extension redhat.vscode-yaml
 code --install-extension sainnhe.gruvbox-material
 code --install-extension scala-lang.scala
 code --install-extension scalameta.metals
-code --install-extension tootone.org-mode
-code --install-extension vscodevim.vim
 code --install-extension webrender.synthwave-x-fluoromachine
+code --install-extension XadillaX.viml

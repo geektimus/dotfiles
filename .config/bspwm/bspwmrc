@@ -28,7 +28,7 @@ bspc config gapless_monocle      true
 # ------- Non-BSPWM related ------
 # --------------------------------
 # Set wallpaper
-feh --bg-fill ~/.config/desktop/wallpapers/gruvbox.png
+feh --bg-fill ~/.config/desktop/wallpapers/wallhaven-eydedl.jpg
 # Reload .Xresources
 xrdb -load ~/.Xresources
 # Launch polybar

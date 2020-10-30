@@ -1,4 +1,4 @@
-# Arch Linux Base Installation
+# Arch Based Linux Distros (Base Installation)
 
 ## Set keymap to Spanish
 
@@ -53,9 +53,11 @@ cryptsetup open /dev/sda3 cr_root
 
 ```bash
 mkfs.fat -F32 /dev/sda1 # EFI Partition
-mkfs.ext4 /dev/sda2     # Boot Partition
-mkfs.ext4 /dev/mapper/cr_root # Encrypted Partition*
+mkfs.ext4 -L BOOT /dev/sda2     # Boot Partition
+mkfs.ext4 -L ROOT /dev/mapper/cr_root # Encrypted Partition*
 ```
+
+Note: The -L switch assigns labels to the partitions, which helps referring to them later through `/dev/disk/by-label` without having to remember their numbers
 
 ## Mount the partitions
 
@@ -71,11 +73,15 @@ mkdir /mnt/boot/EFI && mount /dev/sda1 /mnt/boot/EFI
 pacstrap /mnt base base-devel linux linux-firmware emacs-nox neovim terminus-font
 ```
 
+Note: On Artix the command is `basestrap` and we need to install the `openrc` package as an extra in the previous command.
+
 ## Generate fstab
 
 ```bash
 genfstab -U /mnt >> /mnt/etc/fstab
 ```
+
+Note: On Artix the command is `fstabgen` 
 
 ## Switch to root in the newly installed partition
 
@@ -83,10 +89,12 @@ genfstab -U /mnt >> /mnt/etc/fstab
 arch-chroot /mnt
 ```
 
+Note: On Artix the command is `artools-chroot`
+
 ## Generate the swap file
 
 ```bash
-fallocate -l 4GB /swapfile
+dd if=/dev/zero of=/swapfile bs=1M count=4096 status=progress
 chmod 600 /swapfile
 mkswap /swapfile
 swapon /swapfile
@@ -96,14 +104,7 @@ swapon /swapfile
 
 #### The swap file has holes
 
-```bash
-rm /swapfile #deletes old swapfile
-# 4GB swapfile in MiB
-dd if=/dev/zero of=/swapfile bs=1M count=4096 status=progress
-chmod 600 /swapfile
-mkswap /swapfile
-swapon /swapfile # enables the swapfile right now
-```
+Delete the previous swap file and rerun the previous steps
 
 ## Add swap file to the fstab
 
@@ -167,6 +168,8 @@ HOOKS=(base udev autodetect modconf block encrypt filesystems keyboard fsck)
 ```
 
 Regenerate the configuration with `mkinitcpio -p linux` command
+
+Note: On Artix you need to install manually the packages `cryptsetup` and `cryptsetup-openrc`
 
 ## Install bootloader
 
@@ -240,13 +243,51 @@ cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
 reflector -c "US" -f 12 -l 10 -n 12 --save /etc/pacman.d/mirrorlist
 ```
 
+## Extra Steps on Artix
+
+### Network Configuration
+
+Install the packages for DHCP resolution
+
+```bash
+pacman -S dhcpcd
+```
+
+Install the connection manager
+
+```
+pacman -S connman-openrc [connman-gtk]
+```
+
+Configure Network Interface
+
+```bash
+ ip -s link                <- Get the exact name of your interface
+ nano /etc/conf.d/net        <- Add config_<interface>="dhcp"
+```
+
+Now the parent script `/etc/init.d/net.lo` should be symlinked to create additional scripts for each network interface and then loaded into an openrc runlevel.
+
+```bash
+ ln -s /etc/init.d/net.lo /etc/init.d/net.<interface>
+ rc-update add net.<interface> default
+```
+
 ## Restart the System
 
 At this point the base clean install of arch is ready and can be used to customize additional features
 
+Now, you can reboot and enter into your new installation:
+
+```bash
+ exit                           <- exit chroot environment
+ umount -R /mnt
+ reboot
+```
+
 ## Post Install Steps
 
-### Activate Network
+### Activate Network (Only applies to pure arch, not Artix openrc)
 
 ```bash
 sudo systemctl start NetworkManager
@@ -275,14 +316,6 @@ Prerequisite: X environment installation
 
 ```bash
 pacman -S mcpp xorg xorg-server xorg-xinit
-```
-
-### Install BSPWM
-
-- Configure `xinit` for the first usage:
-
-```bash
-cp /etc/X11/xinit/xinitrc ~/.xinitrc
 ```
 
 ## Install YADM (new way to automate box initialization)
@@ -321,4 +354,34 @@ Create the configuration folders and copy the sample files
 mkdir -p ~/.config/{bspwm,sxhkdrc}
 cp /usr/share/doc/bspwm/examples/bspwmrc ~/.config/bspwm
 cp /usr/share/doc/bspwm/examples/sxhkdrc ~/.config/sxhkdrc
+```
+
+## Extra configuration for spotifyd
+
+Configure the keyring with the spotify credentials
+
+```bash
+secret-tool store --label='Spotify Daemon' application rust-keyring service spotifyd username Geektimus
+```
+
+Configure the service
+```bash
+emacs ~/.config/systemd/user/spotifyd.service
+emacs ~/.config/spotifyd/spotifyd.conf
+systemctl --user start spotifyd.service
+systemctl --user enable spotifyd.service
+```
+
+Check that the configuration works
+
+```bash
+spotifyd --no-daemon
+```
+
+## Useful commands
+
+Generate the file of the vscode extensions
+
+```bash
+code --list-extensions | xargs -I {} echo "code --install-extension {}" > .config/Code/User/extensions.sh
 ```

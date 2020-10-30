@@ -90,20 +90,10 @@
 [url "git@scm.starbucks.com:scpprd"]
 	insteadOf = git@github.com:scpprd
 	insteadOf = https://github.com/scpprd
-[filesystem "Oracle Corporation|1.8.0_242|/dev/mapper/encrypted_data"]
-	timestampResolution = 1001 microseconds
-	minRacyThreshold = 5523 microseconds
-[filesystem "Oracle Corporation|1.8.0_252|tmpfs"]
-	timestampResolution = 1001 microseconds
-	minRacyThreshold = 4401 microseconds
 [pull]
 	rebase = false
 	ff = only
-[filesystem "Oracle Corporation|1.8.0_252|/dev/mapper/encrypted_data"]
-	timestampResolution = 3001 microseconds
-	minRacyThreshold = 0 nanoseconds
-[filesystem "Oracle Corporation|1.8.0_261|/dev/mapper/encrypted_data"]
-	timestampResolution = 1001 milliseconds
-	minRacyThreshold = 0 nanoseconds
 [credential]
 	helper = /usr/lib/git-core/git-credential-libsecret
+[help]
+	autocorrect = 1

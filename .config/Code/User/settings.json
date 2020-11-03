@@ -35,7 +35,7 @@
     },
     "extensions.autoUpdate": false,
     "editor.acceptSuggestionOnCommitCharacter": false,
-    "workbench.colorTheme": "Gruvbox Material Dark",
+    "workbench.colorTheme": "Horizon Bold",
     "editor.fontSize": 12,
     "customizeUI.font.regular": "Iosevka Term",
     "customizeUI.font.monospace": "Iosevka Term",

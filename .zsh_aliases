@@ -20,3 +20,10 @@ alias llfu='exa -bghHliS --git'
 alias cat='lolcat'
 
 alias vim=nvim
+alias v=nvim
+
+# Partitions used space
+alias used='df --total --block-size=G | egrep "(dev/sd|/mapper)" --color=never'
+
+# Find man pages through rofi
+alias findman="man -k . | rofi -dmenu | awk '{print $1}' | xargs -r man -Tpdf | zathura -"

@@ -1,6 +1,6 @@
 #! /bin/sh
 
-killall -q variaty &
+killall -q variety &
 
 sxhkd &
 

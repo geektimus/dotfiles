@@ -1,0 +1,10 @@
+[Desktop Entry]
+Categories=Discord;
+Comment=Discord Voice Server
+Exec="/opt/discord/Discord"
+Icon=discord
+Name=Discord
+StartupWMClass=discord
+Terminal=false
+Type=Application
+Version=1.0

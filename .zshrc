@@ -85,7 +85,7 @@ source $HOME/.config/broot/launcher/bash/br
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # fnm
-eval "`fnm env --multi`"
+eval "`fnm env`"
 
 # PyEnv
 if command -v pyenv 1>/dev/null 2>&1; then
@@ -94,3 +94,4 @@ fi
 
 # Stern (Kubernetes Log Tool)
 source <(stern --completion=zsh)
+

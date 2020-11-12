@@ -14,7 +14,7 @@ while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 # Launch a bar for each monitor
 
-if type "xrandr"; then
+if command -v "xrandr" &> /dev/null; then
   SCREENS=$(xrandr --query | grep " connected" | wc -l)
   if [[ "$SCREENS" == "2" ]]; then
     for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do

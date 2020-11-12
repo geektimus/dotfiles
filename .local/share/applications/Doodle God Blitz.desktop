@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Doodle God Blitz
+Comment=Play this game on Steam
+Exec=steam steam://rungameid/625430
+Icon=steam_icon_625430
+Terminal=false
+Type=Application
+Categories=Game;

@@ -1,4 +1,6 @@
 code --install-extension asciidoctor.asciidoctor-vscode
+code --install-extension bierner.color-info
+code --install-extension christian-kohler.npm-intellisense
 code --install-extension DavidAnson.vscode-markdownlint
 code --install-extension dbaeumer.vscode-eslint
 code --install-extension dqisme.sync-scroll
@@ -11,6 +13,7 @@ code --install-extension imjacobclark.vscode-lisp-formatter
 code --install-extension iocave.customize-ui
 code --install-extension iocave.monkey-patch
 code --install-extension janisdd.vscode-edit-csv
+code --install-extension jolaleye.horizon-theme-vscode
 code --install-extension mechatroner.rainbow-csv
 code --install-extension mindaro-dev.file-downloader
 code --install-extension mindaro.mindaro
@@ -20,6 +23,7 @@ code --install-extension ms-kubernetes-tools.vscode-aks-tools
 code --install-extension ms-kubernetes-tools.vscode-kubernetes-tools
 code --install-extension ms-vscode.azure-account
 code --install-extension ms-vscode.hexeditor
+code --install-extension ms-vscode.sublime-keybindings
 code --install-extension msjsdiag.debugger-for-chrome
 code --install-extension PKief.material-icon-theme
 code --install-extension pnp.polacode

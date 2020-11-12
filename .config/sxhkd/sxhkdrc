@@ -5,25 +5,24 @@
 # terminal emulator
 super + Return
     terminator
-	#urxvt
+    #urxvt
 
 # terminal emulator in same window as currently focused
 super + shift + Return
-	urxvt -cd "`xcwd`"
+    urxvt -cd "`xcwd`"
 
 # program launcher
 super + d
-	rofi -modi run,drun -show drun -columns 1 -width 24 -lines 8 -padding 45 -hide-scrollbar -show-icons -drun-icon-theme "Papirus"
+    rofi -modi run,drun -show drun -columns 1 -width 24 -lines 8 -padding 45 -hide-scrollbar -show-icons -drun-icon-theme "Papirus"
 
 # make sxhkd reload its configuration files:
-super + Escape
-	pkill -USR1 -x sxhkd
+# super + Escape
+#    pkill -USR1 -x sxhkd
 
 # Open sxhkdrc config file
 super F1
     terminator -be "nvim /home/geektimus/.config/sxhkd/sxhkdrc"
-	#urxvt -e nvim /home/geektimus/.config/sxhkd/sxhkdrc
-
+    #urxvt -e nvim /home/geektimus/.config/sxhkd/sxhkdrc
 
 # === function keys ===
 
@@ -53,7 +52,7 @@ F7
 
 # restart bspwm
 super F2
-	bspc wm -r
+    bspc wm -r
 
 # quit bspwm
 super + shift + e
@@ -61,7 +60,7 @@ super + shift + e
 
 # close and kill
 super + shift + q
-	bspc node -c
+    bspc node -c
 
 #
 # state/flags
@@ -69,11 +68,11 @@ super + shift + q
 
 # set the window state
 super + {t,shift + t,shift + space,f}
-	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+    bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
 # set the node flags
 #super + ctrl + {m,x,y,z}
-#	bspc node -g {marked,locked,sticky,private}
+#    bspc node -g {marked,locked,sticky,private}
 
 #
 # focus/swap
@@ -81,13 +80,13 @@ super + {t,shift + t,shift + space,f}
 
 # focus the node in the given direction
 #super + {_,shift + }{h,j,k,l}
-#	bspc node -{f,s} {west,south,north,east}
+#   bspc node -{f,s} {west,south,north,east}
 super + {_,shift + }{Left,Down,Up,Right}
-	bspc node -{f,s} {west,south,north,east}
+    bspc node -{f,s} {west,south,north,east}
 
 # focus the next/previous node in the current desktop
 super + {_,shift + }Tab
-	bspc node -f {next,prev}.local
+    bspc node -f {next,prev}.local
 
 super + 1
     bspc desktop -f 1
@@ -134,7 +133,7 @@ super + shift + 0
 
 # focus or send to the given desktop
 super + {_,shift + }{1-9,0}
-	bspc {desktop -f,node -d} '^{1-9,10}'
+    bspc {desktop -f,node -d} '^{1-9,10}'
 
 
 #
@@ -143,15 +142,15 @@ super + {_,shift + }{1-9,0}
 
 # preselect the direction
 super + ctrl + {h,j,k,l}
-	bspc node -p {west,south,north,east}
+    bspc node -p {west,south,north,east}
 
 # preselect the ratio
 super + ctrl + {1-9}
-	bspc node -o 0.{1-9}
+    bspc node -o 0.{1-9}
 
 # cancel the preselection for the focused node
 super + ctrl + space
-	bspc node -p cancel
+    bspc node -p cancel
 
 #
 # move/resize
@@ -159,28 +158,28 @@ super + ctrl + space
 
 # expand a window by moving one of its side outward
 super + alt + {h,j,k,l}
-	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+    bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
 
 # contract a window by moving one of its side inward
 super + alt + shift + {h,j,k,l}
-	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+    bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 
 # ===================================
 # ========== User-specific ==========
 # ===================================
 
 super + w
-	brave
-	#google-chrome-stable
+    brave
+    #google-chrome-stable
 
 super + shift + f
-	nautilus
+    nautilus
 
 super + r
-	urxvt -e ranger
+    urxvt -e ranger
 
 super + shift + r
-	urxvt -e sudo ranger
+    urxvt -e sudo ranger
 
 super + x
     betterlockscreen -l

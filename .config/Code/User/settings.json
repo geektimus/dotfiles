@@ -81,5 +81,13 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "diffEditor.ignoreTrimWhitespace": false,
-    "editor.formatOnSaveMode": "modifications", // Controls the style of terminal cursor.
+    "editor.fontLigatures": true,
+    "prettier.requireConfig": true,
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.scrollBeyondLastLine": false,
+    "editor.tabSize": 4,
+    "editor.formatOnPaste": true,
+    "editor.multiCursorModifier": "ctrlCmd",
+    "editor.snippetSuggestions": "top", // Controls the style of terminal cursor.
 }

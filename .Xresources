@@ -1,8 +1,16 @@
-URxvt.perl-ext-common: default,xresources-256
-URxvt*scrollBar: 	false
-URxvt*font:		    xft:Iosevka Term:style=regular:size=10
-URxvt*iso14755:		false
-URxvt*iso14755_52:	false
+Xft.dpi: 96
+Xft.antialias: true
+Xft.hinting: true
+Xft.rgba: rgb
+Xft.autohint: false
+Xft.hintstyle: hintfull
+Xft.lcdfilter: lcddefault
+
+!URxvt.perl-ext-common: default,xresources-256
+!URxvt*scrollBar: 	false
+!URxvt*font:		    xft:Iosevka Term:style=regular:size=10
+!URxvt*iso14755:		false
+!URxvt*iso14755_52:	false
 
 !!! Gruvbox theme
 ! hard contrast: *background: #1d2021

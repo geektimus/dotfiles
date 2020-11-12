@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Pilgrims
+Comment=Play this game on Steam
+Exec=steam steam://rungameid/1049280
+Icon=steam_icon_1049280
+Terminal=false
+Type=Application
+Categories=Game;

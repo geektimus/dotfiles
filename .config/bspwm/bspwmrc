@@ -31,7 +31,7 @@ wmname LG3D
 ## Rules
 
 #bspc rule -a Org.gnome.Nautilus state=floating
-bspc rule -a Terminator sticky=on state=floating rectangle=widthxheight+Xoffset+Yoffset
+bspc rule -a Terminator:scratchy sticky=on state=floating rectangle=widthxheight+Xoffset+Yoffset
 bspc rule -a Screenkey manage=off
 
 ## Config

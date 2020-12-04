@@ -1,0 +1,18 @@
+#!/usr/bin/env sh
+
+if command -v "xrandr" &> /dev/null; then
+  SCREENS=$(xrandr --query | grep " connected" | wc -l)
+  if [[ "$SCREENS" == "2" ]]; then
+    for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
+      if [[ "$m" == "HDMI-1" ]]; then
+    	  EXTERNAL_MONITOR=$m
+      elif [[ "$m" == "eDP-1" ]]; then
+    	  NORMAL_MONITOR=$m
+      fi
+    done
+  else
+    NORMAL_MONITOR="eDP-1"
+  fi
+else
+  NORMAL_MONITOR="eDP-1"
+fi

@@ -7,11 +7,26 @@
   [[default]]
     visible_bell = True
     icon_bell = False
+    background_color = "#0f111a"
+    background_darkness = 0.9
+    background_type = transparent
+    cursor_color = "#ffcc00"
+    cursor_color_fg = False
+    font = Iosevka Term Light 11
+    foreground_color = "#8f93a2"
+    scrollback_infinite = True
+    palette = "#2e3436:#ff5370:#c3e88d:#ffcb6b:#82aaff:#c792ea:#89ddff:#d3d7cf:#555753:#f07178:#c3e88d:#f78c6c:#729fcf:#bb80b3:#89ddff:#eeeeec"
+    word_chars = "-,./?%&#:_~"
+    login_shell = True
+    use_system_font = False
+  [[Horizon]]
+    visible_bell = True
+    icon_bell = False
     background_color = "#1c1e26"
-    background_darkness = 0.8
+    background_darkness = 0.9
     background_type = transparent
     cursor_color = "#e95379"
-    font = Iosevka 11
+    font = Iosevka Term Light 11
     foreground_color = "#bbbbbb"
     scrollback_infinite = True
     palette = "#e9436f:#f9cbbe:#ffaf87:#27d796:#6c6f93:#fdf0ed:#fadad1:#b877db:#e95379:#fadad1:#fac29a:#09f7a0:#6c6f8a:#ffffff:#eddad1:#b88adb"
@@ -26,7 +41,7 @@
     background_darkness = 0.8
     background_type = transparent
     cursor_color = "#ffffff"
-    font = Iosevka Term 11
+    font = JetBrains Mono Light 10
     foreground_color = "#f8f8f2"
     scrollback_infinite = True
     palette = "#75715e:#f92672:#a6e22e:#f4bf75:#66d9ef:#ae81ff:#2aa198:#f9f8f5:#272822:#f92672:#a6e22e:#f4bf75:#66d9ef:#ae81ff:#2aa198:#f9f8f5"
@@ -34,13 +49,14 @@
     login_shell = True
     use_system_font = False
   [[Gruvbox]]
+    allow_bold = False
     visible_bell = True
     icon_bell = False
     background_color = "#1e1e1e"
     background_darkness = 0.8
     background_type = transparent
     cursor_color = "#bbbbbb"
-    font = Iosevka 11
+    font = JetBrains Mono Light 10
     foreground_color = "#e6d4a3"
     scrollback_infinite = True
     palette = "#161819:#f73028:#aab01e:#f7b125:#719586:#c77089:#7db669:#faefbb:#7f7061:#be0f17:#868715:#cc881a:#377375:#a04b73:#578e57:#e6d4a3"

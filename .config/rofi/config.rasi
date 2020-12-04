@@ -3,7 +3,7 @@ configuration {
 /*	width: 50;*/
 /*	lines: 15;*/
 /*	columns: 1;*/
-	font: "Iosevka Term 12";
+	font: "San Francisco Display 11";
 /*	bw: 1;*/
 /*	location: 0;*/
 /*	padding: 5;*/
@@ -42,7 +42,7 @@ configuration {
 /*	line-padding: 1;*/
 /*	filter: ;*/
 /*	separator-style: "dash";*/
-/*	hide-scrollbar: false;*/
+	hide-scrollbar: true;
 /*	fullscreen: false;*/
 /*	fake-transparency: false;*/
 /*	dpi: -1;*/
@@ -53,7 +53,7 @@ configuration {
 /*	window-format: "{w}    {c}   {t}";*/
 /*	click-to-exit: true;*/
 /*	show-match: true;*/
-	theme: "~/.config/rofi/themes/minimal-gruvbox";
+	theme: "~/.config/rofi/themes/material-ocean";
 /*	color-normal: ;*/
 /*	color-urgent: ;*/
 /*	color-active: ;*/
@@ -105,7 +105,7 @@ configuration {
 /*	kb-ellipsize: "Alt+period";*/
 /*	kb-toggle-case-sensitivity: "grave,dead_grave";*/
 /*	kb-toggle-sort: "Alt+grave";*/
-/*	kb-cancel: "Escape,Control+g,Control+bracketleft";*/
+	kb-cancel: "Escape,Control+g,Control+bracketleft";
 /*	kb-custom-1: "Alt+1";*/
 /*	kb-custom-2: "Alt+2";*/
 /*	kb-custom-3: "Alt+3";*/

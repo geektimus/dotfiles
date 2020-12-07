@@ -2,8 +2,8 @@
 
 function node() {
   echo "Configuring Node using fnm"
-  fnm install v14.10.1
-  fnm alias v14.10.1 default
+  fnm install v14.15.1
+  fnm alias v14.15.1 default
   fnm use default
 }
 
@@ -12,8 +12,8 @@ function python_setup() {
   echo "Configuring Python using pyenv"
   pyenv install python
   pyenv install --list
-  pyenv install 3.8.5
-  pyenv local 3.8.5
+  pyenv install 3.9.0
+  pyenv local 3.9.0
   pip install --upgrade pip
   pip install --user pynvim
 }
@@ -26,7 +26,7 @@ fi
 if [[ "$1" == "node" ]]; then
   node
 elif [[ "$1" == "python" ]]; then
-  python
+  python_setup
 else
   echo "Error: Unknown option '$1'"
   exit 2

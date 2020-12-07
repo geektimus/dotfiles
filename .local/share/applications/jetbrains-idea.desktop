@@ -1,10 +1,11 @@
 [Desktop Entry]
-Categories=Development;IDE;
-Comment=Capable and ergonomic Java IDE
-Exec="/home/geektimus/.local/share/JetBrains/Toolbox/apps/IDEA-U/ch-0/202.7660.26/bin/idea.sh" %f
-Icon=idea
 Name=IntelliJ IDEA Ultimate
+Icon=/home/geektimus/.local/share/JetBrains/Toolbox/apps/IDEA-U/ch-0/.icon.svg
 StartupWMClass=jetbrains-idea
-Terminal=false
-Type=Application
+Comment=Capable and ergonomic Java IDE
+Exec="/home/geektimus/.local/share/JetBrains/Toolbox/apps/IDEA-U/ch-0/203.5981.155/bin/idea.sh" %f
 Version=1.0
+Type=Application
+Categories=Development;IDE;
+Terminal=false
+StartupNotify=true

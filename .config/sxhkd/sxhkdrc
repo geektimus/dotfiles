@@ -16,8 +16,8 @@ super + d
     rofi -modi run,drun -show drun -columns 1 -width 24 -lines 8 -padding 45 -hide-scrollbar -show-icons -drun-icon-theme "Papirus"
 
 # make sxhkd reload its configuration files:
-# super + Escape
-#    pkill -USR1 -x sxhkd
+super + Escape
+    pkill -USR1 -x sxhkd; notify-send 'sxhkd' 'Reloaded config'
 
 # Open sxhkdrc config file
 super F1
@@ -27,62 +27,52 @@ super F1
 # === function keys ===
 
 # rotate windows
-F3
+super F3
     bspc node @/ -R 90
 
 # circulate windows
-F4
+super F4
     bspc node @/ -C forward
 
 # flip windows horizontal
-F5
+super F5
     bspc node @/ -F horizontal
 
 # flip windows vertical
-F6
+super F6
     bspc node @/ -F vertical
 
 # balance windows
-F7
+super F7
     bspc node @/ -B
 
 #
 # bspwm hotkeys
 #
 
-# restart bspwm
-super F2
-    bspc wm -r
-
-# quit bspwm
-super + shift + e
-    bspc quit
+# quit/restart bspwm
+super + alt + {q,r}
+	bspc {quit,wm -r}
 
 # close and kill
 super + shift + q
     bspc node -c
 
-#
-# state/flags
-#
+# close and kill
+# super + {_,shift + }w
+# 	bspc node -{c,k}
 
-# set the window state
-super + {t,shift + t,shift + space,f}
-    bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+# alternate between the tiled and monocle layout
+super + m
+	bspc desktop -l next
 
-# set the node flags
-#super + ctrl + {m,x,y,z}
-#    bspc node -g {marked,locked,sticky,private}
+# send the newest marked node to the newest preselected node
+super + y
+	bspc node newest.marked.local -n newest.!automatic.local
 
-#
-# focus/swap
-#
-
-# focus the node in the given direction
-#super + {_,shift + }{h,j,k,l}
-#   bspc node -{f,s} {west,south,north,east}
-super + {_,shift + }{Left,Down,Up,Right}
-    bspc node -{f,s} {west,south,north,east}
+# swap the current node and the biggest node
+super + g
+	bspc node -s biggest
 
 # focus the next/previous node in the current desktop
 super + {_,shift + }Tab
@@ -131,10 +121,54 @@ super + shift + 9
 super + shift + 0
     bspc node -d 10
 
+#
+# state/flags
+#
+
+# set the window state
+super + {t,shift + t,shift + space,f}
+    bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+# set the node flags
+super + ctrl + {m,x,y,z}
+	bspc node -g {marked,locked,sticky,private}
+
+#
+# focus/swap
+#
+
+# focus the node in the given direction
+# super + {_,shift + }{h,j,k,l}
+#	bspc node -{f,s} {west,south,north,east}
+
+super + {_,shift + }{Left,Down,Up,Right}
+    bspc node -{f,s} {west,south,north,east}
+
+# focus the node for the given path jump
+super + {p,b,comma,period}
+	bspc node -f @{parent,brother,first,second}
+
+# focus the next/previous node in the current desktop
+super + {_,shift + }c
+	bspc node -f {next,prev}.local
+
+# focus the next/previous desktop in the current monitor
+super + bracket{left,right}
+	bspc desktop -f {prev,next}.local
+
+# focus the last node/desktop
+super + {grave,Tab}
+	bspc {node,desktop} -f last
+
+# focus the older or newer node in the focus history
+super + {o,i}
+	bspc wm -h off; \
+	bspc node {older,newer} -f; \
+	bspc wm -h on
+
 # focus or send to the given desktop
 super + {_,shift + }{1-9,0}
-    bspc {desktop -f,node -d} '^{1-9,10}'
-
+	bspc {desktop -f,node -d} '^{1-9,10}'
 
 #
 # preselect
@@ -152,6 +186,10 @@ super + ctrl + {1-9}
 super + ctrl + space
     bspc node -p cancel
 
+# cancel the preselection for the focused desktop
+super + ctrl + shift + space
+	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
 #
 # move/resize
 #
@@ -164,38 +202,40 @@ super + alt + {h,j,k,l}
 super + alt + shift + {h,j,k,l}
     bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 
+# move a floating window
+super + {Left,Down,Up,Right}
+	bspc node -v {-20 0,0 20,0 -20,20 0}
+
 # ===================================
 # ========== User-specific ==========
 # ===================================
 
 super + w
-    brave
-    #google-chrome-stable
+    google-chrome-stable
+    #brave
 
 super + shift + f
-    nautilus
+    thunar
 
-super + r
-    urxvt -e ranger
+# super + r
+#    urxvt -e ranger
 
-super + shift + r
-    urxvt -e sudo ranger
+# super + shift + r
+#    urxvt -e sudo ranger
 
 super + x
     betterlockscreen -l
 
 super + s
-    ~/Scripts/scratchy.sh
+   $HOME/.local/bin/scratchy
 
 super + shift + s
     spotify
 
-super + k
-    keeweb
+super + shift + c
+    /usr/bin/code
 
-super + c
-    code
-
+# Wallpaper Changer
 super + shift + d
     variety -t
 
@@ -205,29 +245,25 @@ super + shift + n
 super + shift + p
     variety -p
 
-super + shift + i
-    imgur-screenshot
-
 super + ctrl + i
     maim -s | xclip -selection clipboard -t image/png 
 
-# alternate between the tiled and monocle layout
-super + m
-    bspc desktop -l next
+# screenshot
+Print
+	flameshot full -p $HOME/Pictures/Screenshots/
 
-# send the newest marked node to the newest preselected node
-super + y
-    bspc node newest.marked.local -n newest.!automatic.local
+shift + Print
+	flameshot gui -p $HOME/Pictures/Screenshots/
 
-# swap the current node and the biggest node
-super + g
-    bspc node -s biggest
+control + Print
+	flameshot full -d 3000 -p $HOME/Pictures/Screenshots/
 
 # Screen brightness control
 XF86MonBrightnessDown
     sudo light -U 10
 XF86MonBrightnessUp
     sudo light -A 10
+
 # Volume control
 XF86AudioRaiseVolume
     /usr/bin/pulseaudio-ctl up 10
@@ -235,12 +271,4 @@ XF86AudioLowerVolume
     /usr/bin/pulseaudio-ctl down 10
 XF86AudioMute
     pactl set-sink-mute 0 toggle
-# Play/pause
-XF86AudioPlay
-    dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause 
-# Next/prev
-XF86AudioNext
-    dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
-XF86AudioPrev
-    dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
 

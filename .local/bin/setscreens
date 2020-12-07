@@ -5,14 +5,14 @@ if command -v "xrandr" &> /dev/null; then
   if [[ "$SCREENS" == "2" ]]; then
     for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
       if [[ "$m" == "HDMI-1" ]]; then
-    	  EXTERNAL_MONITOR=$m
+    	  export EXTERNAL_MONITOR=$m
       elif [[ "$m" == "eDP-1" ]]; then
-    	  NORMAL_MONITOR=$m
+    	  export NORMAL_MONITOR=$m
       fi
     done
   else
-    NORMAL_MONITOR="eDP-1"
+    export NORMAL_MONITOR="eDP-1"
   fi
 else
-  NORMAL_MONITOR="eDP-1"
+  export NORMAL_MONITOR="eDP-1"
 fi

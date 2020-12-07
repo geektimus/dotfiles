@@ -1,7 +1,7 @@
 [Desktop Entry]
 Categories=Development;IDE;
 Comment=API Testing Friend
-Exec="/opt/PostmanCanary/PostmanCanary"
+Exec="/opt/postman/canary/PostmanCanary"
 Icon=postman
 Name=Postman Canary
 StartupWMClass=postman

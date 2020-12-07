@@ -7,6 +7,9 @@ code --install-extension dqisme.sync-scroll
 code --install-extension eamodio.gitlens
 code --install-extension EditorConfig.EditorConfig
 code --install-extension emmanuelbeziat.vscode-great-icons
+code --install-extension Equinusocio.vsc-community-material-theme
+code --install-extension Equinusocio.vsc-material-theme
+code --install-extension equinusocio.vsc-material-theme-icons
 code --install-extension esbenp.prettier-vscode
 code --install-extension GitHub.vscode-pull-request-github
 code --install-extension imjacobclark.vscode-lisp-formatter
@@ -16,10 +19,8 @@ code --install-extension janisdd.vscode-edit-csv
 code --install-extension jolaleye.horizon-theme-vscode
 code --install-extension mechatroner.rainbow-csv
 code --install-extension mindaro-dev.file-downloader
-code --install-extension mindaro.mindaro
 code --install-extension mosbasik.sxhkdrc-syntax
 code --install-extension ms-azuretools.vscode-docker
-code --install-extension ms-kubernetes-tools.vscode-aks-tools
 code --install-extension ms-kubernetes-tools.vscode-kubernetes-tools
 code --install-extension ms-vscode.azure-account
 code --install-extension ms-vscode.hexeditor

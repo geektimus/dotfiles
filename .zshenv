@@ -4,6 +4,9 @@ export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
 export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:="$HOME/.config"}
 export XDG_CACHE_HOME=${XDG_CACHE_HOME:="$HOME/.cache"}
 
+# qt themeing
+export QT_QPA_PLATFORMTHEME=qt5ct
+
 if [ -n "$DESKTOP_SESSION" ];then
     eval $(gnome-keyring-daemon --start)
     export SSH_AUTH_SOCK
@@ -54,3 +57,6 @@ export PATH=$PATH:$HOME/.emacs.d/bin
 
 # Weechat override default config location
 export WEECHAT_HOME=$XDG_CONFIG_HOME/weechat
+
+export CQLSH_HOME=/opt/cqlsh
+export PATH=$PATH:$CQLSH_HOME/bin

@@ -1,26 +1,8 @@
 {
-	"color_scheme": "Packages/Horizon Color Scheme/Horizon.sublime-color-scheme",
+	"color_scheme": "Packages/Material Theme/schemes/Material-Theme.tmTheme",
 	"draw_white_space": "all",
-	"font_face": "Iosevka",
-	"font_options":
-	[
-		"bold"
-	],
+	"font_face": "Iosevka Term",
 	"font_size": 11,
-	"gruvbox_accent_red": true,
-	"gruvbox_animate_icons": true,
-	"gruvbox_autocomplete_border": true,
-	"gruvbox_autocomplete_border_thick": true,
-	"gruvbox_highlight_active_buttons": true,
-	"gruvbox_highlight_active_tree_row": true,
-	"gruvbox_iconset_spacegray": true,
-	"gruvbox_panel_xxs": true,
-	"gruvbox_sidebar_compact": true,
-	"gruvbox_sidebar_font_size_12": true,
-	"gruvbox_statusbar_xs": true,
-	"gruvbox_tabs_font_size_12": true,
-	"gruvbox_tabs_xxs": true,
-	"gruvbox_underline_active_tab_thick": true,
 	"ignored_packages":
 	[
 		"ColorSchemeSelector",
@@ -28,6 +10,7 @@
 	],
 	"scroll_past_end": false,
 	"tab_size": 4,
-	"theme": "gruvbox.sublime-theme",
-	"translate_tabs_to_spaces": true
+	"theme": "Material-Theme.sublime-theme",
+	"translate_tabs_to_spaces": true,
+  	"material_theme_accent_pink"              : true, // Set pink accent color
 }

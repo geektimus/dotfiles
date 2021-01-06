@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=UnderMine
-Comment=Play this game on Steam
-Exec=steam steam://rungameid/656350
-Icon=steam_icon_656350
-Terminal=false
-Type=Application
-Categories=Game;

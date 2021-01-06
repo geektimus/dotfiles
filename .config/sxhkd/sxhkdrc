@@ -5,11 +5,10 @@
 # terminal emulator
 super + Return
     terminator
-    #urxvt
 
 # terminal emulator in same window as currently focused
-super + shift + Return
-    urxvt -cd "`xcwd`"
+# super + shift + Return
+#     urxvt -cd "`xcwd`"
 
 # program launcher
 super + d
@@ -22,7 +21,7 @@ super + Escape
 # Open sxhkdrc config file
 super F1
     terminator -be "nvim /home/geektimus/.config/sxhkd/sxhkdrc"
-    #urxvt -e nvim /home/geektimus/.config/sxhkd/sxhkdrc
+    # urxvt -e nvim /home/geektimus/.config/sxhkd/sxhkdrc
 
 # === function keys ===
 
@@ -217,22 +216,22 @@ super + w
 super + shift + f
     thunar
 
-# super + r
-#    urxvt -e ranger
+super + r
+    urxvt -e ranger
 
-# super + shift + r
-#    urxvt -e sudo ranger
+super + shift + r
+   urxvt -e sudo ranger
 
 super + x
     betterlockscreen -l
 
-super + s
-   $HOME/.local/bin/scratchy
+# super + s
+#    $HOME/.local/bin/scratchy
 
 super + shift + s
     spotify
 
-super + shift + c
+super + alt + c
     /usr/bin/code
 
 # Wallpaper Changer

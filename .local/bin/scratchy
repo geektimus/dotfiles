@@ -1,12 +1,12 @@
 #!/bin/sh
 
-id=$(xdo id -n Scratchy);
+id=$(xdo id -n scratchy);
 if [ -z "$id" ]; then
-   alacritty --class Scratchy;
+  urxvt -name scratchy;
 else
   action='hide';
   if [[ $(xprop -id $id | awk '/window state: / {print $3}') == 'Withdrawn' ]]; then
     action='show';
   fi
-  xdo $action -n Scratchy
+  xdo $action -n scratchy
 fi

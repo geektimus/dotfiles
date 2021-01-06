@@ -8,9 +8,9 @@
 		"ColorSchemeSelector",
 		"Vintage"
 	],
+	"material_theme_accent_pink": true,
 	"scroll_past_end": false,
 	"tab_size": 4,
 	"theme": "Material-Theme.sublime-theme",
-	"translate_tabs_to_spaces": true,
-  	"material_theme_accent_pink"              : true, // Set pink accent color
+	"translate_tabs_to_spaces": true
 }

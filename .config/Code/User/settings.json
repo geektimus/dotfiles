@@ -20,7 +20,7 @@
     "editor.minimap.enabled": false,
     "workbench.statusBar.visible": true,
     "editor.suggestSelection": "first",
-    "workbench.iconTheme": "material-icon-theme",
+    "workbench.iconTheme": "vikings-icon-theme",
     "emmet.syntaxProfiles": {
         "javascript": "jsx",
         "xml": {
@@ -35,7 +35,7 @@
     },
     "extensions.autoUpdate": false,
     "editor.acceptSuggestionOnCommitCharacter": false,
-    "workbench.colorTheme": "Material Theme Ocean",
+    "workbench.colorTheme": "GitHub Dark",
     "editor.fontSize": 12,
     "customizeUI.font.regular": "Iosevka Term",
     "customizeUI.font.monospace": "Iosevka Term",

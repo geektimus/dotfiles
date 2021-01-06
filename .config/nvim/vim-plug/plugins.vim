@@ -44,7 +44,7 @@ else
   Plug 'junegunn/fzf.vim'
 
   " --- Theming --- "
-  Plug 'sainnhe/gruvbox-material'
+  " Plug 'sainnhe/gruvbox-material'
   Plug 'vim-airline/vim-airline-themes'
   Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 

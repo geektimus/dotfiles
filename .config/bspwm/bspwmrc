@@ -34,7 +34,7 @@ wmname LG3D
 ## Rules
 
 #bspc rule -a Org.gnome.Nautilus state=floating
-bspc rule -a Scratchy:Alacritty sticky=on state=floating rectangle=widthxheight+Xoffset+Yoffset
+bspc rule -a URxvt:scratchy sticky=on state=floating rectangle=widthxheight+Xoffset+Yoffset
 bspc rule -a Screenkey manage=off
 
 ## Config
@@ -76,7 +76,7 @@ feh --bg-fill ~/.config/desktop/wallpapers/wallhaven-eydedl.jpg
 unclutter -idle 2 &
 
 # start redshift
-redshift -t 6500:5200 -l geoclue2 &
+# redshift -t 6500:5200 -l geoclue2 &
 
 # Reload .Xresources
 xrdb -load ~/.Xresources
@@ -115,6 +115,11 @@ variety &
 
 # ------- Keyboard fixes ------
 # Remap Caps-lock key to Escape, for using VIM
-setxkbmap -option caps:escape
-# Make US and DK keyboard layout togglable with Shift+Alt
-setxkbmap -layout us -variant intl option grp:alt_shift_toggle
+# setxkbmap -option caps:escape
+setxkbmap -option caps:capslock
+
+# Make US and ES keyboard layout togglable with Shift+Alt
+# setxkbmap -layout us -variant intl option grp:alt_shift_toggle
+setxkbmap -model pc105 -layout us,latam -variant intl, option grp:alt_shift_toggle
+
+export _JAVA_AWT_WM_NONREPARENTING=1

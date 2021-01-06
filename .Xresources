@@ -6,11 +6,66 @@ Xft.autohint: false
 Xft.hintstyle: hintfull
 Xft.lcdfilter: lcddefault
 
-!URxvt.perl-ext-common: default,xresources-256
-!URxvt*scrollBar: 	false
-!URxvt*font:		    xft:Iosevka Term:style=regular:size=10
-!URxvt*iso14755:		false
-!URxvt*iso14755_52:	false
+!! URxvt Appearance
+
+! Fonts
+URxvt.font:           xft:Iosevka Term:style=Regular:size=11
+URxvt.boldFont:       xft:Iosevka Term:style=Bold:size=11
+URxvt.italicFont:     xft:Iosevka Term:style=Italic:size=11
+URxvt.boldItalicfont: xft:Iosevka Term:style=Bold Italic:size=11
+
+URxvt.letterSpace: 0
+URxvt.lineSpace: 0
+URxvt.geometry: 92x24
+!URxvt.internalBorder: 24
+URxvt.cursorBlink: true
+URxvt.cursorUnderline: false
+URxvt.saveline: 2048
+URxvt.scrollBar: false
+URxvt.scrollBar_right: false
+URxvt.urgentOnBell: true
+URxvt.depth: 24
+URxvt.iso14755: false
+URxvt*iso14755_52:  false
+
+!! Copy Paste & Other Extensions
+URxvt.perl-ext-common: default,matcher,clipboard,url-select,keyboard-select,tabbed,resize-font,xresources-256
+
+! Clipboard
+!URxvt.clipboard.autocopy: true
+URxvt.copyCommand: xclip -i -selection clipboard
+URxvt.pasteCommand: xclip -o -selection clipboard
+URxvt.keysym.M-c: perl:clipboard:copy
+URxvt.keysym.M-v: perl:clipboard:paste
+URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
+URxvt.keysym.M-s: perl:keyboard-select:search
+URxvt.keysym.M-u: perl:url-select:select_next
+
+! Clickable URLs
+URxvt.url-launcher: /usr/bin/xdg-open
+URxvt.matcher.button: 1
+
+! URxvt Tabbed
+URxvt.tabbed.tabbar-fg: 2
+URxvt.tabbed.tabbar-bg: 0
+URxvt.tabbed.tab-fg: 3
+URxvt.tabbed.tab-bg: 0
+
+! Resize Font
+ URxvt.keysym.C-Down:  resize-font:smaller
+ URxvt.keysym.C-Up:    resize-font:bigger
+
+URxvt.background: [90]#000000
+
+! do not scroll with output
+URxvt*scrollTtyOutput: false
+
+! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+URxvt*scrollWithBuffer: true
+
+! scroll back to the bottom on keypress
+URxvt*scrollTtyKeypress: true
 
 ! !!! Gruvbox theme
 ! ! hard contrast: *background: #1d2021

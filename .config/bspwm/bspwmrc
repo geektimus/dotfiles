@@ -32,10 +32,15 @@ wmname LG3D
 # done
 
 ## Rules
-
-#bspc rule -a Org.gnome.Nautilus state=floating
+bspc rule -a feh state='floating'
+bspc rule -a openssh-askpass state='floating'
 bspc rule -a URxvt:scratchy sticky=on state=floating rectangle=widthxheight+Xoffset+Yoffset
 bspc rule -a Screenkey manage=off
+bspc rule -a Zathura state=tiled
+bspc rule -a Pavucontrol state='floating'
+bspc rule -a flameshot state='floating'
+bspc rule -a *:SPLASH state=floating
+bspc desktop -f 1
 
 ## Config
 bspc config border_width         0
@@ -70,7 +75,7 @@ bspc config presel_feedback_color "#E60053"
 # --------------------------------
 
 # Set wallpaper
-feh --bg-fill ~/.config/desktop/wallpapers/wallhaven-eydedl.jpg
+feh --bg-fill ~/.config/desktop/wallpapers/wallhaven-3zz9xv.png
 
 # unclutter (hides mouse while typing)
 unclutter -idle 2 &
@@ -82,7 +87,7 @@ unclutter -idle 2 &
 xrdb -load ~/.Xresources
 
 # Launch polybar
-~/.config/polybar/launch.sh
+~/.config/polybar/launch.sh > ~/.config/polybar/logs/polybar.log 2>&1 &
 
 # Change from ugly 'X' cursor when hovering over background
 xsetroot -cursor_name left_ptr

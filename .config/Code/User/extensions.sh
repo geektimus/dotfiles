@@ -23,6 +23,7 @@ code --install-extension pnp.polacode
 code --install-extension redhat.vscode-yaml
 code --install-extension scala-lang.scala
 code --install-extension scalameta.metals
+code --install-extension vscodevim.vim
 code --install-extension webrender.synthwave-x-fluoromachine
 code --install-extension willi84.vikings-icon-theme
 code --install-extension XadillaX.viml

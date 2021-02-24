@@ -1,5 +1,5 @@
 {
-	"color_scheme": "Packages/Material Theme/schemes/Material-Theme.tmTheme",
+	"color_scheme": "Packages/Colorsublime - Themes/GitHub_Dark.tmTheme",
 	"draw_white_space": "all",
 	"font_face": "Iosevka Term",
 	"font_size": 11,
@@ -9,6 +9,7 @@
 		"Vintage"
 	],
 	"material_theme_accent_pink": true,
+	"original_color_scheme": "Packages/Material Theme/schemes/Material-Theme.tmTheme",
 	"scroll_past_end": false,
 	"tab_size": 4,
 	"theme": "Material-Theme.sublime-theme",

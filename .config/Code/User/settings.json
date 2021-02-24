@@ -89,5 +89,34 @@
     "editor.tabSize": 4,
     "editor.formatOnPaste": true,
     "editor.multiCursorModifier": "ctrlCmd",
-    "editor.snippetSuggestions": "top", // Controls the style of terminal cursor.
+    "editor.snippetSuggestions": "top",
+    "files.associations": {
+        "*.ini": "ini"
+    }, // Controls the style of terminal cursor
+    "vim.easymotion": true,
+  "vim.incsearch": true,
+  "vim.useSystemClipboard": true,
+  "vim.useCtrlKeys": true,
+  "vim.hlsearch": true,
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["j", "j"],
+      "after": ["<Esc>"]
+    }
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<leader>", "d"],
+      "after": ["d", "d"]
+    },
+    {
+      "before": ["<C-n>"],
+      "commands": [":nohl"]
+    }
+  ],
+  "vim.leader": "<space>",
+  "vim.handleKeys": {
+    "<C-a>": false,
+    "<C-f>": false
+  }
 }

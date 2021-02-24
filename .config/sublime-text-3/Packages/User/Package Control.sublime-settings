@@ -6,8 +6,11 @@
 	"installed_packages":
 	[
 		"AlignTab",
+		"Color Highlighter",
+		"Colorsublime",
 		"FontCycler",
 		"Horizon Color Scheme",
+		"Indent XML",
 		"Markdown Extended",
 		"Material Theme",
 		"Package Control",

@@ -95,3 +95,6 @@ fi
 # Stern (Kubernetes Log Tool)
 source <(stern --completion=zsh)
 
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/geektimus/.sdkman"
+[[ -s "/home/geektimus/.sdkman/bin/sdkman-init.sh" ]] && source "/home/geektimus/.sdkman/bin/sdkman-init.sh"

@@ -47,7 +47,7 @@ bspc config border_width         0
 # bspc config border_radius        12
 bspc config window_gap           5
 
-bspc config top_padding 40
+bspc config top_padding 30
 bspc config right_padding 0
 bspc config bottom_padding 0
 bspc config left_padding 0
@@ -87,7 +87,7 @@ unclutter -idle 2 &
 xrdb -load ~/.Xresources
 
 # Launch polybar
-~/.config/polybar/launch.sh > ~/.config/polybar/logs/polybar.log 2>&1 &
+~/.config/polybar/launch.sh --shapes > ~/.config/polybar/logs/polybar.log 2>&1 &
 
 # Change from ugly 'X' cursor when hovering over background
 xsetroot -cursor_name left_ptr

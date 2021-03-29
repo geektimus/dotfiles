@@ -1,0 +1,47 @@
+#+TITLE: Arch Installation 2.0
+#+DESCRIPTION: This is the basic installation of ArchLinux on my personal box with everything I need to be kind of productive... :)
+#+AUTHOR: Geektimus
+
+* Arch Installation 2.0
+
+* Extra
+** More
+* Markup
+*Bold*, /Italic/, =verbatim=, +strikethrough+
+
+* Links
+[[http://example.com][Examples]]
+
+* Tables
+
+| Username  | Age |
+|-----------+-----|
+| Geektimus |  11 |
+| Manati    |  22 |
+|           |     |
+|           |     |
+|           |     |
+
+* Export
+Ctrl + c / Ctrl+e
+
+* Source Code
+
+#+begin_src ruby
+def fact(n)
+  if n==0
+    1
+  else
+    n * fact(n-1)
+  end
+end
+
+fact(5)
+#+end_src
+
+#+RESULTS:
+: 120
+
+* Todo Stuff
+** TODO Explain todo list
+** TODO cycle through states

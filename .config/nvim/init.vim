@@ -12,9 +12,10 @@ else
 
   " Themes
   source $HOME/.config/nvim/themes/syntax.vim
-  source $HOME/.config/nvim/themes/material.vim
+  " source $HOME/.config/nvim/themes/material.vim
   " source $HOME/.config/nvim/themes/gruvbox.vim
-  source $HOME/.config/nvim/themes/airline.vim
+  source $HOME/.config/nvim/themes/pywal.vim
+  " source $HOME/.config/nvim/themes/airline.vim
 
   " Plugin Configuration
   source $HOME/.config/nvim/keys/which-key.vim
@@ -46,7 +47,7 @@ else
   "source $HOME/.config/nvim/plug-config/markdown-preview.vim
   " source $HOME/.config/nvim/plug-config/vimspector.vim " Uncomment if you want to use Vimspector
   " source $HOME/.config/nvim/plug-config/ale.vim
-  luafile $HOME/.config/nvim/lua/plug-colorizer.lua
+  " luafile $HOME/.config/nvim/lua/plug-colorizer.lua
 endif
 
 " Add paths to node and python here

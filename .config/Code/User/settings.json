@@ -50,9 +50,10 @@
     "customizeUI.listRowHeight": 18,
     "workbench.startupEditor": "newUntitledFile",
     "vs-kubernetes": {
-        "vs-kubernetes.draft-path.linux": "/home/geektimus/.vs-kubernetes/tools/draft/linux-amd64/draft",
-        "vs-kubernetes.helm-path.linux": "/home/geektimus/.vs-kubernetes/tools/helm/linux-amd64/helm",
-        "vs-kubernetes.minikube-path.linux": "/home/geektimus/.vs-kubernetes/tools/minikube/linux-amd64/minikube"
+      "vs-kubernetes.draft-path.linux": "/home/geektimus/.vs-kubernetes/tools/draft/linux-amd64/draft",
+      "vs-kubernetes.helm-path.linux": "/home/geektimus/.vs-kubernetes/tools/helm/linux-amd64/helm",
+      "vs-kubernetes.minikube-path.linux": "/home/geektimus/.vs-kubernetes/tools/minikube/linux-amd64/minikube",
+      "vscode-kubernetes.minikube-path.linux": "/home/geektimus/.vs-kubernetes/tools/minikube/linux-amd64/minikube"
     },
     "customizeUI.titleBar": "inline",
     "[yaml]": {

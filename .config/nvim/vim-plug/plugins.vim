@@ -45,9 +45,9 @@ else
 
   " --- Theming --- "
   " Plug 'sainnhe/gruvbox-material'
-  Plug 'vim-airline/vim-airline-themes'
-  Plug 'kaicataldo/material.vim', { 'branch': 'main' }
-
+  " Plug 'vim-airline/vim-airline-themes'
+  " Plug 'kaicataldo/material.vim', { 'branch': 'main' }
+  Plug 'dylanaraps/wal.vim'
   " --- Completion and syntax --- "
 
   " Editing and usability

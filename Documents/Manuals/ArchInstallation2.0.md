@@ -137,3 +137,9 @@ systemctl list-unit-files -t service | grep ssh
 systemctl start sshd
 ```
 4) Connect to the box with `ssh root@ip`
+
+
+
+
+
+pacman -S grub efibootmgr networkmanager network-manager-applet dialog os-prober mtools dosfstools base-devel linux-headers reflector openssh rsync xdg-user-dirs xdg-utils ntfs-3g nfs-utils avahi gvfs gvfs-smb inetutils dnsutils alsa-utils pulseaudio pipewire pipewire-alsa pipewire-jack pavucontrol openssh bash-completion rsync acpi acpi_call tlp  iptables-nft sof-firmware nss-mdns 

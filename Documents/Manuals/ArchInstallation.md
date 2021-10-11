@@ -18,6 +18,13 @@ ls /sys/firmware/efi/efivars
 timedatectl set-ntp true
 ```
 
+## Update mirrors with Reflector
+
+```bash
+cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
+reflector -c Colombia -a 6 --sort rate --save /etc/pacman.d/mirrorlist
+```
+
 ## Partition Disk
 
 We can use cfdisk to create our layout.
@@ -150,7 +157,7 @@ It's as easy as using the `passwd` command
 ## Install additional (Boot and network)
 
 ```bash
-pacman -S grub efibootmgr networkmanager network-manager-applet wireless_tools wpa_supplicant dialog os-prober mtools dosfstools linux-headers
+pacman -S grub efibootmgr networkmanager network-manager-applet wireless_tools wpa_supplicant dialog os-prober mtools dosfstools linux-headers reflector openssh rsync xdg-user-dirs xdg-utils ntfs-3g nfs-utils
 ```
 
 ## Configure grub to use the encrypted partition
@@ -193,7 +200,7 @@ passwd geektimus
 We need to update the sudoers file to allow this new user to run sudo operations. For that we just need to run:
 
 ```bash
-EDITOR=emacs visudo
+EDITOR=nvim visudo
 ```
 
 And uncomment the line that says `%wheel ALL=(ALL) ALL`

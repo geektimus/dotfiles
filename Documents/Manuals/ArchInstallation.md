@@ -1,41 +1,64 @@
 # Arch Based Linux Distros (Base Installation)
 
+Updated Jan 28th
+
 ## Set keymap to Spanish
 
-``` sh
+```sh
 ls /usr/share/kbd/keymaps/**/**.map.gz
+```
+
+or
+
+```sh
+localectl list-keymaps | egrep -E "^(us|es)$" 
+```
+
+and
+
+```sh
 loadkeys es
 ```
 
 ## Check boot mode
 
 If this folder exist we are in UEFI mode
+
+```sh
 ls /sys/firmware/efi/efivars
+```
 
 ## Update system clock
 
-```bash
+```sh
 timedatectl set-ntp true
-```
-
-## Update mirrors with Reflector
-
-```bash
-cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
-reflector -c Colombia -a 6 --sort rate --save /etc/pacman.d/mirrorlist
 ```
 
 ## Partition Disk
 
-We can use cfdisk to create our layout.
+We can use fdisk to create our layout.
+
+To list the devices installed we can run `lsblk` there we can see the devices and choose one.
+
+For this doc we would assume that the partition is **sda**
 
 ### Preferred Layout
 
-| Mount Point |    Type   | Partition | Suggested Size  |
+| Mount Point | Type      | Partition | Suggested Size  |
 | ----------- | --------- | --------- | --------------- |
-| /efi        | /dev/sda1 |       EFI |         256 MiB |
-| /boot       | /dev/sda2 |      EXT4 |         512 MiB |
-| /home       | /dev/sda3 |      EXT4 | Remaining space |
+| /efi        | /dev/sda1 | EFI       | 256 MiB         |
+| /boot/efi   | /dev/sda2 | FAT       | 512 MiB         |
+| /           | /dev/sda3 | EXT4      | Remaining space |
+
+## Format the partitions
+
+```bash
+mkfs.vfat -n "EFI System" /dev/sda1 # EFI Partition
+mkfs.ext4 -L BOOT /dev/sda2 # BOOT Partition
+mkfs.ext4 -L ROOT /dev/sda3 # Root Partition*
+```
+
+Note: The -L switch assigns labels to the partitions, which helps referring to them later through `/dev/disk/by-label` without having to remember their numbers
 
 ## Load encryption modules
 
@@ -53,31 +76,45 @@ cryptsetup luksFormat -v -s 512 -h sha512 /dev/sda3
 ## Open the encrypted partition
 
 ```bash
-cryptsetup open /dev/sda3 cr_root
+cryptsetup open /dev/sda3 arch_encrypt
 ```
 
-## Format the partitions
+## Format Encrypted Partition as BTRFS
 
-```bash
-mkfs.fat -F32 /dev/sda1 # EFI Partition
-mkfs.ext4 -L BOOT /dev/sda2     # Boot Partition
-mkfs.ext4 -L ROOT /dev/mapper/cr_root # Encrypted Partition*
+```sh
+mkfs.btrfs -L ROOT /dev/mapper/arch_encrypt
 ```
-
-Note: The -L switch assigns labels to the partitions, which helps referring to them later through `/dev/disk/by-label` without having to remember their numbers
 
 ## Mount the partitions
 
 ```bash
-mount /dev/mapper/cr_root /mnt
-mkdir /mnt/boot && mount /dev/sda2 /mnt/boot
-mkdir /mnt/boot/EFI && mount /dev/sda1 /mnt/boot/EFI
+mount -t btrfs /dev/mapper/arch_encrypt /mnt
+```
+
+## Create Btrfs mount points and mount partitions
+
+```sh
+btrfs subvolume create /mnt/@
+btrfs subvolume create /mnt/@home
+btrfs subvolume create /mnt/@snapshots
+umount /mnt
+mount -o noatime,compress=zstd,ssd,discard=async,space_cache=v2,subvol=@ /dev/mapper/arch_encrypt /mnt
+mkdir -p /mnt/{boot/efi,home,snapshots}
+mount -o noatime,compress=zstd,ssd,discard=async,space_cache=v2,subvol=@home /dev/mapper/arch_encrypt /mnt/home
+mount -o noatime,compress=zstd,ssd,discard=async,space_cache=v2,subvol=@snapshots /dev/mapper/arch_encrypt /mnt/snapshots
+```
+
+## Mount Boot and EFI Volume
+
+```sh
+mount /dev/sda2 /mnt/boot
+mount /dev/sda1 /mnt/boot/efi
 ```
 
 ## Base package installation
 
 ```bash
-pacstrap /mnt base base-devel linux linux-firmware emacs-nox neovim terminus-font
+pacstrap /mnt base base-devel efibootmgr grub linux linux-firmware emacs-nox neovim terminus-font
 ```
 
 Note: On Artix the command is `basestrap` and we need to install the `openrc` package as an extra in the previous command.
@@ -88,7 +125,7 @@ Note: On Artix the command is `basestrap` and we need to install the `openrc` pa
 genfstab -U /mnt >> /mnt/etc/fstab
 ```
 
-Note: On Artix the command is `fstabgen` 
+Note: On Artix the command is `fstabgen`
 
 ## Switch to root in the newly installed partition
 
@@ -97,29 +134,6 @@ arch-chroot /mnt
 ```
 
 Note: On Artix the command is `artools-chroot`
-
-## Generate the swap file
-
-```bash
-dd if=/dev/zero of=/swapfile bs=1M count=4096 status=progress
-chmod 600 /swapfile
-mkswap /swapfile
-swapon /swapfile
-```
-
-### Problems generating the swapfile
-
-#### The swap file has holes
-
-Delete the previous swap file and rerun the previous steps
-
-## Add swap file to the fstab
-
-We need to edit the /etc/fstab file and add this line to the end of it
-
-```bash
-echo '/swapfile none swap defaults 0 0' | tee --append /etc/fstab
-```
 
 ## Update our local time with our timezone
 
@@ -157,7 +171,7 @@ It's as easy as using the `passwd` command
 ## Install additional (Boot and network)
 
 ```bash
-pacman -S grub efibootmgr networkmanager network-manager-applet wireless_tools wpa_supplicant dialog os-prober mtools dosfstools linux-headers reflector openssh rsync xdg-user-dirs xdg-utils ntfs-3g nfs-utils
+pacman -S grub efibootmgr networkmanager network-manager-applet wireless_tools wpa_supplicant dialog os-prober mtools dosfstools linux-headers
 ```
 
 ## Configure grub to use the encrypted partition
@@ -165,13 +179,19 @@ pacman -S grub efibootmgr networkmanager network-manager-applet wireless_tools w
 For this we need to edit the file `/etc/default/grub` and add this to the grub options
 
 ```txt
-GRUB_CMDLINE_LINUX="cryptdevice=/dev/sda3:cr_root"
+GRUB_CMDLINE_LINUX="cryptdevice=/dev/sda3:arch_encrypt"
 ```
 
 Edit `/etc/mkinitcpio.conf` and add to the **HOOKS** options so they look like:
 
 ```txt
 HOOKS=(base udev autodetect modconf block encrypt filesystems keyboard fsck)
+```
+
+And add to the **MODULES** option so they look like:
+
+```txt
+MODULES=(btrfs)
 ```
 
 Regenerate the configuration with `mkinitcpio -p linux` command
@@ -181,13 +201,14 @@ Note: On Artix you need to install manually the packages `cryptsetup` and `crypt
 ## Install bootloader
 
 ```bash
-grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=GRUB
+grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=GRUB /dev/sda2
 ```
 
 Create the configuration file for grub
 
 ```bash
 grub-mkconfig -o /boot/grub/grub.cfg
+grub-mkconfig -o /boot/efi/EFI/GRUB/grub.cfg
 ```
 
 ## Create admin user account
@@ -200,7 +221,7 @@ passwd geektimus
 We need to update the sudoers file to allow this new user to run sudo operations. For that we just need to run:
 
 ```bash
-EDITOR=nvim visudo
+EDITOR=emacs visudo
 ```
 
 And uncomment the line that says `%wheel ALL=(ALL) ALL`
@@ -262,7 +283,7 @@ pacman -S dhcpcd
 
 Install the connection manager
 
-```
+```bash
 pacman -S connman-openrc [connman-gtk]
 ```
 
@@ -372,6 +393,7 @@ secret-tool store --label='Spotify Daemon' application rust-keyring service spot
 ```
 
 Configure the service
+
 ```bash
 emacs ~/.config/systemd/user/spotifyd.service
 emacs ~/.config/spotifyd/spotifyd.conf
@@ -392,3 +414,12 @@ Generate the file of the vscode extensions
 ```bash
 code --list-extensions | xargs -I {} echo "code --install-extension {}" > .config/Code/User/extensions.sh
 ```
+
+## Icons
+
+Mkos-Big-Sur
+Vimix-cursors
+
+## Themes
+
+Material-Ocean

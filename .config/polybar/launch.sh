@@ -8,17 +8,17 @@ setup_monitors_and_launch() {
     SCREENS=$(xrandr --query | grep " connected" | wc -l)
     if [[ "$SCREENS" == "2" ]]; then
       for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
-        if [[ "$m" == "HDMI-1" ]]; then
+        if [[ "$m" == "Virtual2" ]]; then
           MONITOR=$m polybar -c "$dir/$style/config.ini" main &
-        elif [[ "$m" == "eDP-1" ]]; then
+        elif [[ "$m" == "Virtual1" ]]; then
           MONITOR=$m polybar -c "$dir/$style/config.ini" secondary &
         fi
       done
     else
-      MONITOR="eDP-1" polybar -c "$dir/$style/config.ini" main &
+      MONITOR="Virtual1" polybar -c "$dir/$style/config.ini" main &
     fi
   else
-    MONITOR="eDP-1" polybar -c "$dir/$style/config.ini" main &
+    MONITOR="Virtual1" polybar -c "$dir/$style/config.ini" main &
   fi
 }
 

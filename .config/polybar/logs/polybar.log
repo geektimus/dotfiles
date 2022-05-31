@@ -1,0 +1,27 @@
+polybar|notice:  Parsing config file: /home/geektimus/.config/polybar/shapes/config.ini
+polybar|notice:  Listening for IPC messages (PID: 1067)
+polybar|warn:  The config parameter 'settings.throttle-output' is deprecated, it will be removed in the future. Please remove it from your config
+polybar|warn:  The config parameter 'settings.throttle-output-for' is deprecated, it will be removed in the future. Please remove it from your config
+polybar|notice:  Loading module 'launcher' of type 'custom/text'
+polybar|notice:  Loading module 'left1' of type 'custom/text'
+polybar|notice:  Loading module 'title' of type 'internal/xwindow'
+polybar|notice:  Loading module 'left2' of type 'custom/text'
+polybar|notice:  Loading module 'bspwm' of type 'internal/bspwm'
+polybar|notice:  Loading module 'right7' of type 'custom/text'
+polybar|notice:  Loading module 'color-switch' of type 'custom/text'
+polybar|notice:  Loading module 'right6' of type 'custom/text'
+polybar|notice:  Loading module 'keyboard' of type 'internal/xkeyboard'
+polybar|notice:  Loading module 'right5' of type 'custom/text'
+polybar|notice:  Loading module 'alsa' of type 'internal/alsa'
+polybar|notice:  Loading module 'right4' of type 'custom/text'
+polybar|notice:  Loading module 'battery' of type 'internal/battery'
+polybar|notice:  Loading module 'right3' of type 'custom/text'
+polybar|notice:  Loading module 'cpu' of type 'internal/cpu'
+polybar|notice:  Loading module 'right2' of type 'custom/text'
+polybar|notice:  Loading module 'date' of type 'internal/date'
+polybar|notice:  Loading module 'right1' of type 'custom/text'
+polybar|notice:  Loading module 'sysmenu' of type 'custom/text'
+polybar|notice:  Loaded 19 modules
+polybar|notice:  Loaded font "Iosevka Nerd Font:pixelsize=10" (name=Iosevka, offset=3, file=/usr/share/fonts/TTF/Iosevka Nerd Font Complete.ttf)
+polybar|notice:  Loaded font "Iosevka Nerd Font:style=Medium:size=22" (name=Iosevka, offset=5, file=/usr/share/fonts/TTF/Iosevka Medium Nerd Font Complete.ttf)
+polybar|error: Failed to reconfigure tray client, removing... (XCB_WINDOW (3))

@@ -15,7 +15,7 @@ antigen bundle git
 antigen bundle fzf
 antigen bundle thefuck
 antigen bundle archlinux
-antigen bundle kubectl
+#antigen bundle kubectl
 antigen bundle pyenv
 antigen bundle systemd
 
@@ -98,7 +98,7 @@ source <(stern --completion=zsh)
 # Import colorscheme from 'wal' asynchronously
 # &   # Run the process in the background.
 # ( ) # Hide shell job control messages.
-(cat ~/.cache/wal/sequences &)
+#(cat ~/.cache/wal/sequences &)
 # wal -R -e --vte -q
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!

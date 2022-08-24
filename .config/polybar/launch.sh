@@ -3,22 +3,25 @@
 dir="$HOME/.config/polybar"
 # themes=(`ls --hide="launch.sh" $dir`)
 
+monitor1="Virtual1"
+monitor2="Virtual2"
+
 setup_monitors_and_launch() {
   if command -v "xrandr" &> /dev/null; then
     SCREENS=$(xrandr --query | grep " connected" | wc -l)
     if [[ "$SCREENS" == "2" ]]; then
       for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
-        if [[ "$m" == "HDMI-1" ]]; then
-          MONITOR=$m polybar -c "$dir/$style/config.ini" main &
-        elif [[ "$m" == "eDP-1" ]]; then
-          MONITOR=$m polybar -c "$dir/$style/config.ini" secondary &
+        if [[ "$m" == "$monitor2" ]]; then
+          MONITOR=$m polybar -r -c "$dir/$style/config.ini" main &
+        elif [[ "$m" == "$monitor1" ]]; then
+          MONITOR=$m polybar -r -c "$dir/$style/config.ini" secondary &
         fi
       done
     else
-      MONITOR="eDP-1" polybar -c "$dir/$style/config.ini" main &
+      MONITOR="$monitor1" polybar -r -c "$dir/$style/config.ini" main &
     fi
   else
-    MONITOR="eDP-1" polybar -c "$dir/$style/config.ini" main &
+    MONITOR="$monitor1" polybar -r -c "$dir/$style/config.ini" main &
   fi
 }
 

@@ -15,7 +15,7 @@ antigen bundle git
 antigen bundle fzf
 antigen bundle thefuck
 antigen bundle archlinux
-antigen bundle kubectl
+# antigen bundle kubectl
 antigen bundle pyenv
 antigen bundle systemd
 
@@ -40,17 +40,6 @@ export GPG_TTY=$(tty)
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
 
-# added by travis gem
-[ -f /home/geektimus/.travis/travis.sh ] && source /home/geektimus/.travis/travis.sh
-
-# Added to kubectl completion
-if [ $commands[kubectl] ]; then source <(kubectl completion zsh); fi
-
-# Added for bloop server
-autoload -U compinit
-fpath=($HOME/.bloop/zsh $fpath)
-compinit
-
 ## Innecesary extended format.
 # setopt EXTENDED_HISTORY
 HISTSIZE=10000000
@@ -73,24 +62,16 @@ setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 bindkey \^U backward-kill-line
 
 if [ -z "$SSH_AUTH_SOCK" ] ; then
-    eval `ssh-agent`
+    eval `ssh-agent` > /dev/null 2>&1
     ssh-add
 fi
 
 source $HOME/.zsh_aliases
-source $HOME/.zsh_functions
 
 source $HOME/.config/broot/launcher/bash/br
 
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-
 # fnm
 eval "`fnm env`"
-
-# PyEnv
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
 
 # Stern (Kubernetes Log Tool)
 source <(stern --completion=zsh)
@@ -98,8 +79,8 @@ source <(stern --completion=zsh)
 # Import colorscheme from 'wal' asynchronously
 # &   # Run the process in the background.
 # ( ) # Hide shell job control messages.
-(cat ~/.cache/wal/sequences &)
-# wal -R -e --vte -q
+# (cat ~/.cache/wal/sequences &)
+wal -R -e --vte -q
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/geektimus/.sdkman"

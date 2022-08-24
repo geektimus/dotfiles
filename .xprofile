@@ -1,0 +1,26 @@
+# Keyboard Layout
+setxkbmap -model pc105 -layout us,latam -variant intl, -option caps:capslock &
+# setxkbmap -model pc105 -layout latam,us -variant ,intl option grp:alt_shift_toggle &
+# setxkbmap -model pc105 -layout es,us -variant ,intl option grp:alt_shift_toggle &
+xmodmap -pke > ~/.Xmodmap
+
+export XDG_CURRENT_DESKTOP=xmonad
+
+if [ -n "$DESKTOP_SESSION" ];then
+    for environment_variable in $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh 2>/dev/null); do
+        # Exports GNOME_KEYRING_CONTROL and SSH_AUTH_SOCK
+	    export $environment_variable
+    done
+fi
+
+# Wallpaper
+nitrogen --restore &
+
+# Compositor
+picom -f &
+
+# Variety
+pgrep variety || variety &
+
+# Network Manager Applet
+nm-applet &

@@ -1,10 +1,14 @@
 #!/bin/env sh
 
-function node() {
+function node_setup() {
   echo "Configuring Node using fnm"
-  fnm install v14.15.1
-  fnm alias v14.15.1 default
-  fnm use default
+  fnm install v18.7.0
+  fnm alias v18.7.0 latest
+  fnm install v16.17.0
+  fnm alias v16.17.0 default
+  fnm alias v16.17.0 lts
+  fnm use latest
+  npm install -g npm
 }
 
 
@@ -12,8 +16,8 @@ function python_setup() {
   echo "Configuring Python using pyenv"
   pyenv install python
   pyenv install --list
-  pyenv install 3.9.0
-  pyenv local 3.9.0
+  pyenv install 3.10.6
+  pyenv local 3.10.6
   pip install --upgrade pip
   pip install --user pynvim
 }
@@ -24,7 +28,7 @@ if [ "$#" -ne 1 ]; then
 fi
 
 if [[ "$1" == "node" ]]; then
-  node
+  node_setup
 elif [[ "$1" == "python" ]]; then
   python_setup
 else

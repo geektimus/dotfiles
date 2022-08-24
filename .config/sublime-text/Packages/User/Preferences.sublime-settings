@@ -1,0 +1,10 @@
+{
+	"font_face": "Iosevka Term",
+	"font_size": 11,
+	"ignored_packages":
+	[
+		"Vintage",
+	],
+	"theme": "Adaptive.sublime-theme",
+	"color_scheme": "Packages/User/PyWal.sublime-color-scheme",
+}

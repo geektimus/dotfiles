@@ -2,7 +2,6 @@
 import json
 import os
 
-
 def make_element(name, scope, **kwargs):
     """Helper function for generating color scheme entries"""
     result = {}

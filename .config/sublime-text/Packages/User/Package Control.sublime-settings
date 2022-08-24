@@ -1,0 +1,15 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"JSON Reindent",
+		"Kotlin",
+		"Package Control",
+		"Theme - Dark Material",
+		"Theme - Monokai Pro",
+		"Theme - Rainbow",
+	],
+}

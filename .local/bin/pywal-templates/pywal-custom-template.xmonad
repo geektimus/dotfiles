@@ -1,0 +1,30 @@
+module Colors.PyWalCustom where
+
+import XMonad
+
+colorScheme = "pywal-custom"
+
+colorBack = "BGCOLOR"
+colorFore = "FGCOLOR"
+
+color10 = "COLOR10"
+color11 = "COLOR11"
+color12 = "COLOR12"
+color13 = "COLOR13"
+color14 = "COLOR14"
+color15 = "COLOR15"
+color16 = "COLOR16"
+
+color01 = "COLOR1"
+color02 = "COLOR2"
+color03 = "COLOR3"
+color04 = "COLOR4"
+color05 = "COLOR5"
+color06 = "COLOR6"
+color07 = "COLOR7"
+color08 = "COLOR8"
+color09 = "COLOR9"
+
+
+colorTrayer :: String
+colorTrayer = "--tint 0xBGCOLOR"

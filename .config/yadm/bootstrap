@@ -1,5 +1,7 @@
 #!/bin/sh
 
+sudo pacman -S lsb-release --noconfirm --needed
+
 release=$(lsb_release -i | awk -F: '{$1=""; print $2}' | tr -d '[:space:]')
 
 # ====================================
@@ -13,10 +15,10 @@ if [ "$choice" = "y" ]; then
 fi
 
 # Fonts
-sudo pacman -S noto-fonts noto-fonts-emoji ttf-font-awesome otf-font-awesome --noconfirm --needed
+sudo pacman -S noto-fonts noto-fonts-emoji ttf-font-awesome ttf-iosevka-nerd otf-font-awesome --noconfirm --needed
 
 # Utils
-sudo pacman -S lsb-release unzip zsh wget curl make ccache libsecret xsel --noconfirm --needed
+sudo pacman -S unzip zsh wget curl make ccache libsecret xsel --noconfirm --needed
 
 # TODO: Check if the gnome-keyring package is necesary on non gnome systems
 
@@ -29,11 +31,15 @@ else
   echo "Warn: Please have in mind that by the time of this update this bootstrap was validated on Arch and Artix"
 fi
 
+# pulseaudio pulseaudio-alsa
+sudo pacman -S redshift xorg xorg-xinit feh dunst pamixer picom gnome-keyring --noconfirm --needed
+
 # Desktop environment bases, bspwm packages and utils
-sudo pacman -S redshift xorg xorg-xinit feh rofi ranger bspwm sxhkd dunst pulseaudio pulseaudio-alsa pamixer picom gnome-keyring --noconfirm --needed
+sudo pacman -S rofi ranger bspwm sxhkd --noconfirm --needed
+sudo pacman -S xmonad xmobar alacritty trayer --noconfirm --needed
 
 # Develop dependecies / packages
-sudo pacman -S hub github-cli httpie python3 --noconfirm --needed
+sudo pacman -S hub github-cli httpie --noconfirm --needed
 
 # Editors and dependencies
 sudo pacman -S neovim emacs-nox ripgrep fd ctags --noconfirm --needed
@@ -52,7 +58,7 @@ fi
 gpg --keyserver pool.sks-keyservers.net --recv-keys 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90
 gpg --keyserver pool.sks-keyservers.net --recv-keys 2EBF997C15BDA244B6EBF5D84773BD5E130D1D45
 
-yay -S stern polybar spicetify-cli nerd-fonts-iosevka python-ueberzug spotify betterlockscreen google-chrome aic94xx-firmware wd719x-firmware --needed --removemake --nocleanmenu --nodiffmenu --noeditmenu --noconfirm
+yay -S stern polybar spicetify-cli python-ueberzug spotify betterlockscreen google-chrome aic94xx-firmware wd719x-firmware --needed --removemake --nocleanmenu --nodiffmenu --noeditmenu --noconfirm
 
 # ====================================
 # Polybar font
@@ -126,19 +132,19 @@ fi
 curl -O https://download.sublimetext.com/sublimehq-pub.gpg && sudo pacman-key --add sublimehq-pub.gpg && sudo pacman-key --lsign-key 8A8F901A && rm sublimehq-pub.gpg
 echo -e "\n[sublime-text]\nServer = https://download.sublimetext.com/arch/stable/x86_64" | sudo tee -a /etc/pacman.conf
 
-sudo pacman -Syu terminator broot exa thefuck fzf lxappearance sublime-text --noconfirm --needed
+sudo pacman -Syu broot exa thefuck fzf lxappearance sublime-text bat --noconfirm --needed
 
 echo "=============="
 echo "==== DONE ===="
 echo "=============="
 
-echo "$ chsh -s /bin/zsh"
+echo "chsh -s /bin/zsh"
 echo "~/.config/Code/User/extensions.sh"
-echo "doom install"
+echo "~/.emacs.d/bin/doom install"
 echo "initialize node"
 echo "initialize python"
-echo "$ startx"
-echo "$ feh --bg-fill ~/.config/desktop/gruvbox.png"
+echo "startx"
+echo "feh --bg-fill ~/.config/desktop/gruvbox.png"
 
 # Change to zsh
 zsh

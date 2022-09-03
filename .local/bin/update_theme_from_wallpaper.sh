@@ -8,15 +8,26 @@ reload_polybar() {
 
 	# Update config colors
 	$HOME/.local/bin/update_polybar_pywal.sh
+	echo "Polybar color updated"
 
 	# Terminate already running bar instances
-	pkill polybar 
+	pkill polybar
+	sleep 5
 
 	# Wait until the processes have been shut down
-	while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
+	echo "Waiting for polybar to shutdown"
+	# while pgrep -u $UID -x polybar >/dev/null; echo "Waiting..."; do sleep 1; done
+
+	STATUS=$(/usr/bin/pgrep -u $UID -x polybar | wc -l)
+	while [ $STATUS -eq 1 ]; do
+		echo "Waiting..."
+		sleep 1
+		STATUS=$(/usr/bin/pgrep -u $UID -x polybar | wc -l)
+	done
 	
 	# Launch new instance
 	$HOME/.config/polybar/launch.sh --shapes > ~/.config/polybar/logs/polybar.log 2>&1 &
+	echo "New instance launched"
 }
 
 reload_bspwm() {

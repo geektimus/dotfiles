@@ -33,6 +33,7 @@ import XMonad.Hooks.ServerMode
 import XMonad.Hooks.SetWMName
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
+import XMonad.Hooks.WindowSwallowing
 import XMonad.Hooks.WorkspaceHistory
 
     -- Layouts
@@ -129,7 +130,7 @@ myStartupHook = do
   spawnOnce "volumeicon"
   spawn "/usr/bin/emacs --daemon" -- emacs daemon for the emacsclient
 
-  --spawn ("sleep 2 && conky -c $HOME/.config/conky/xmonad/" ++ colorScheme ++ "-01.conkyrc")
+  spawn ("sleep 2 && conky -c $HOME/.config/conky/xmonad/" ++ colorScheme ++ "-01.conkyrc")
   spawn ("sleep 2 && trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 " ++ colorTrayer ++ " --height 22")
 
   spawnOnce "xargs xwallpaper --stretch < ~/.cache/wall"
@@ -439,7 +440,7 @@ myLayoutHook = avoidStruts
 
 -- myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
 myWorkspaces = [" dev ", " www ", " sys ", " doc ", " vbox ", " chat ", " mus ", " vid ", " gfx "]
-myWorkspaceIndices = M.fromList $ zip myWorkspaces [1..] -- (,) == \x y -> (x,y)
+myWorkspaceIndices = M.fromList $ zipWith (,) myWorkspaces [1..] -- (,) == \x y -> (x,y)
 
 clickable ws = "<action=xdotool key super+"++show i++">"++ws++"</action>"
     where i = fromJust $ M.lookup ws myWorkspaceIndices
@@ -694,12 +695,7 @@ main = do
   -- the xmonad, ya know...what the WM is named after!
   xmonad $ addDescrKeys' ((mod4Mask, xK_F1), showKeybindings) myKeys $ ewmh $ docks $ def
     { manageHook         = myManageHook <+> manageDocks
-    --, handleEventHook    = docks
-                           -- Uncomment this line to enable fullscreen support on things like YouTube/Netflix.
-                           -- This works perfect on SINGLE monitor systems. On multi-monitor systems,
-                           -- it adds a border around the window if screen does not have focus. So, my solution
-                           -- is to use a keybinding to toggle fullscreen noborders instead.  (M-<Space>)
-                           -- <+> fullscreenEventHook
+    , handleEventHook    = swallowEventHook (className =? "Alacritty"  <||> className =? "st-256color" <||> className =? "XTerm") (return True)
     , modMask            = myModMask
     , terminal           = myTerminal
     , startupHook        = myStartupHook

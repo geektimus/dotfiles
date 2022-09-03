@@ -4,7 +4,7 @@
 
 # terminal emulator
 super + Return
-    terminator
+    alacritty
 
 # terminal emulator in same window as currently focused
 # super + shift + Return
@@ -211,7 +211,6 @@ super + {Left,Down,Up,Right}
 
 super + w
     google-chrome-stable
-    #brave
 
 super + shift + f
     thunar

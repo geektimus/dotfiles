@@ -4,8 +4,7 @@
 include "/home/geektimus/.gtkrc-2.0.mine"
 gtk-theme-name="Graphite-Dark-nord"
 gtk-icon-theme-name="Tela-dark"
-gtk-font-name="Iosevka Light 10"
-gtk-cursor-theme-name="Vimix-cursors"
+gtk-font-name="Iosevka Term Light 10"
 gtk-cursor-theme-size=0
 gtk-toolbar-style=GTK_TOOLBAR_BOTH
 gtk-toolbar-icon-size=GTK_ICON_SIZE_SMALL_TOOLBAR

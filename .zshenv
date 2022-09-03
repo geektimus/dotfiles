@@ -37,3 +37,6 @@ if command -v pyenv 1>/dev/null 2>&1; then
 fi
 
 #eval "$(pyenv virtualenv-init -)"
+
+export DENO_INSTALL="/home/geektimus/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"

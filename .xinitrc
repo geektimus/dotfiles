@@ -2,9 +2,16 @@
 
 # this file is run when calling startx
 
-export XDG_CURRENT_DESKTOP=bspwm
-eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
-export SSH_AUTH_SOCK
+export XDG_CURRENT_DESKTOP=xmonad
+
+if [ -n "$DESKTOP_SESSION"  ];then
+    for env_var in $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh 2>/dev/null); do
+        # Exports GNOME_KEYRING_CONTROL and SSH_AUTH_SOCK
+        export $env_var
+     done
+fi
+
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 > /tmp/polkit.xinitrc 2>&1 &
 
 # default arch init scripts
 if [ -d /etc/X11/xinit/xinitrc.d ]; then
@@ -23,4 +30,4 @@ fi
 betterlockscreen -l blur &
 
 # launch the session, commands below this line will be ignored
-dbus-run-session bspwm
+dbus-run-session xmonad

@@ -1,7 +1,7 @@
 -- Xmobar (http://projects.haskell.org/xmobar/)
 -- This is one of the xmobar configurations for DTOS.
 -- This config is packaged in the DTOS repo as 'dtos-xmobar'
--- Color scheme: Monokai Pro
+-- Color scheme: PyWal Based
 -- Dependencies: 
    -- otf-font-awesome 
    -- ttf-mononoki 
@@ -12,7 +12,7 @@
    -- trayer
    -- 'dtos-local-bin' (from dtos-core-repo)
 
-Config { font            = "xft:Iosevka Term:weight=bold:pixelsize=12:antialias=true:hinting=true"
+Config { font            = "xft:Carlito:weight=regular:pixelsize=14:antialias=true:hinting=true"
        , additionalFonts = [ "xft:Mononoki:pixelsize=11:antialias=true:hinting=true"
                            , "xft:Font Awesome 6 Free Solid:pixelsize=12"
                            , "xft:Font Awesome 6 Brands:pixelsize=12"
@@ -62,5 +62,5 @@ Config { font            = "xft:Iosevka Term:weight=bold:pixelsize=12:antialias=
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = " <action=`dm-run`><icon=haskell_20.xpm/> </action>   <fc=FGCOLOR>|</fc> %UnsafeStdinReader% }{ <box type=Bottom width=2 mb=2 color=COLOR2><fc=COLOR2>%penguin%  %kernel%</fc></box>    <box type=Bottom width=2 mb=2 color=COLOR3><fc=COLOR3><action=`alacritty -e htop`>%cpu%</action></fc></box>    <box type=Bottom width=2 mb=2 color=COLOR4><fc=COLOR4><action=`alacritty -e htop`>%memory%</action></fc></box>    <box type=Bottom width=2 mb=2 color=COLOR5><fc=COLOR5>%disku%</fc></box>    <box type=Bottom width=2 mb=2 color=COLOR6><fc=COLOR6>%uparrow%  %uptime%</fc></box>    <box type=Bottom width=2 mb=2 color=COLOR7><fc=COLOR7>%bell%  <action=`alacritty -e sudo pacman -Syu`>%pacupdate%</action></fc></box>   <box type=Bottom width=2 mb=2 color=COLOR8><fc=COLOR8>%baticon%  %battery%</fc></box>    <box type=Bottom width=2 mb=2 color=COLOR9><fc=COLOR9><action=`emacsclient -c -a 'emacs' --eval '(doom/window-maximize-buffer(dt/year-calendar))'`>%date%</action></fc></box> %trayerpad%"
+       , template = " %UnsafeStdinReader% }{ <box type=Bottom width=2 mb=2 color=COLOR2><fc=COLOR2>%penguin%  %kernel%</fc></box>    <box type=Bottom width=2 mb=2 color=COLOR3><fc=COLOR3><action=`alacritty -e htop`>%cpu%</action></fc></box>    <box type=Bottom width=2 mb=2 color=COLOR4><fc=COLOR4><action=`alacritty -e htop`>%memory%</action></fc></box>    <box type=Bottom width=2 mb=2 color=COLOR5><fc=COLOR5>%disku%</fc></box>    <box type=Bottom width=2 mb=2 color=COLOR6><fc=COLOR6>%uparrow%  %uptime%</fc></box>    <box type=Bottom width=2 mb=2 color=COLOR7><fc=COLOR7>%bell%  <action=`alacritty -e sudo pacman -Syu`>%pacupdate%</action></fc></box>   <box type=Bottom width=2 mb=2 color=COLOR8><fc=COLOR8>%baticon%  %battery%</fc></box>    <box type=Bottom width=2 mb=2 color=COLOR9><fc=COLOR9><action=`emacsclient -c -a 'emacs' --eval '(doom/window-maximize-buffer(dt/year-calendar))'`>%date%</action></fc></box> %trayerpad%"
        }

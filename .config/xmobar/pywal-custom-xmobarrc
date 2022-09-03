@@ -1,7 +1,7 @@
 -- Xmobar (http://projects.haskell.org/xmobar/)
 -- This is one of the xmobar configurations for DTOS.
 -- This config is packaged in the DTOS repo as 'dtos-xmobar'
--- Color scheme: Monokai Pro
+-- Color scheme: PyWal Based
 -- Dependencies: 
    -- otf-font-awesome 
    -- ttf-mononoki 
@@ -12,13 +12,13 @@
    -- trayer
    -- 'dtos-local-bin' (from dtos-core-repo)
 
-Config { font            = "xft:Iosevka Term:weight=bold:pixelsize=12:antialias=true:hinting=true"
+Config { font            = "xft:Carlito:weight=regular:pixelsize=14:antialias=true:hinting=true"
        , additionalFonts = [ "xft:Mononoki:pixelsize=11:antialias=true:hinting=true"
                            , "xft:Font Awesome 6 Free Solid:pixelsize=12"
                            , "xft:Font Awesome 6 Brands:pixelsize=12"
                            ]
-       , bgColor      = "#1b0d0d"
-       , fgColor      = "#e7e4c6"
+       , bgColor      = "#151819"
+       , fgColor      = "#dad0dd"
        -- Position TopSize and BottomSize take 3 arguments:
        --   an alignment parameter (L/R/C) for Left, Right or Center.
        --   an integer for the percentage width, so 100 would be 100%.
@@ -62,5 +62,5 @@ Config { font            = "xft:Iosevka Term:weight=bold:pixelsize=12:antialias=
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = " <action=`dm-run`><icon=haskell_20.xpm/> </action>   <fc=#e7e4c6>|</fc> %UnsafeStdinReader% }{ <box type=Bottom width=2 mb=2 color=#989B6F><fc=#989B6F>%penguin%  %kernel%</fc></box>    <box type=Bottom width=2 mb=2 color=#CDAB6D><fc=#CDAB6D><action=`alacritty -e htop`>%cpu%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#947085><fc=#947085><action=`alacritty -e htop`>%memory%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#A1AF8C><fc=#A1AF8C>%disku%</fc></box>    <box type=Bottom width=2 mb=2 color=#A5C899><fc=#A5C899>%uparrow%  %uptime%</fc></box>    <box type=Bottom width=2 mb=2 color=#e7e4c6><fc=#e7e4c6>%bell%  <action=`alacritty -e sudo pacman -Syu`>%pacupdate%</action></fc></box>   <box type=Bottom width=2 mb=2 color=#a19f8a><fc=#a19f8a>%baticon%  %battery%</fc></box>    <box type=Bottom width=2 mb=2 color=#955F5B><fc=#955F5B><action=`emacsclient -c -a 'emacs' --eval '(doom/window-maximize-buffer(dt/year-calendar))'`>%date%</action></fc></box> %trayerpad%"
+       , template = " %UnsafeStdinReader% }{ <box type=Bottom width=2 mb=2 color=#69895D><fc=#69895D>%penguin%  %kernel%</fc></box>    <box type=Bottom width=2 mb=2 color=#BBA85D><fc=#BBA85D><action=`alacritty -e htop`>%cpu%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#5B708C><fc=#5B708C><action=`alacritty -e htop`>%memory%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#B7709F><fc=#B7709F>%disku%</fc></box>    <box type=Bottom width=2 mb=2 color=#67C1CD><fc=#67C1CD>%uparrow%  %uptime%</fc></box>    <box type=Bottom width=2 mb=2 color=#dad0dd><fc=#dad0dd>%bell%  <action=`alacritty -e sudo pacman -Syu`>%pacupdate%</action></fc></box>   <box type=Bottom width=2 mb=2 color=#98919a><fc=#98919a>%baticon%  %battery%</fc></box>    <box type=Bottom width=2 mb=2 color=#A75A6B><fc=#A75A6B><action=`emacsclient -c -a 'emacs' --eval '(doom/window-maximize-buffer(dt/year-calendar))'`>%date%</action></fc></box> %trayerpad%"
        }

@@ -1,8 +1,28 @@
 {
-    "haskell.manageHLS": "GHCup",
-    "editor.fontFamily": "'Iosevka Term','Droid Sans Mono', 'monospace', monospace",
-    "workbench.colorTheme": "Wal",
-    "workbench.startupEditor": "none",
-    "search.showLineNumbers": true
-                        
+  "haskell.manageHLS": "GHCup",
+  "editor.fontFamily": "'VictorMono Nerd Font', 'Iosevka Term','Droid Sans Mono', 'monospace', monospace",
+  "editor.fontSize": 13,
+  "workbench.colorTheme": "Wal",
+  "workbench.startupEditor": "none",
+  "search.showLineNumbers": true,
+  "workbench.iconTheme": "eq-material-theme-icons",
+  "redhat.telemetry.enabled": false,
+  "[terraform]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "hashicorp.terraform",
+    "editor.tabSize": 2 // optionally
+  },
+  "[terraform-vars]": {
+    "editor.tabSize": 2 // optionally
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "files.watcherExclude": {
+    "**/.bloop": true,
+    "**/.metals": true,
+    "**/.ammonite": true
+  },
+  "terminal.integrated.fontFamily": "VictorMono Nerd Font",
+  "terminal.integrated.fontSize": 13
 }

@@ -3,4 +3,4 @@
 set -euo pipefail
 
 export _JAVA_AWT_WM_NONREPARENTING=1
-exec $(dmenu_path | dmenu -l 20 -fn 'Iosevka Term-10' -p 'Run: ' "$@" -nb '#1b0d0d' -nf '#e7e4c6' -sf '#1b0d0d' -sb '#e7e4c6' )
+exec $(dmenu_path | dmenu -l 20 -fn 'Iosevka Term-10' -p 'Run: ' "$@" -nb '#151819' -nf '#dad0dd' -sf '#151819' -sb '#dad0dd' )

@@ -682,6 +682,11 @@ myKeys c =
   , ("<XF86Eject>", addName "Eject /dev/cdrom"        $ spawn "eject /dev/cdrom")
   , ("<Print>", addName "Take screenshot (dmscripts)" $ spawn "dm-maim")
   ]
+
+  -- KB_GROUP Custom
+  ^++^ subKeys "Custom"
+  [ ("M-C-t",  addName "Reload complete theme" $ spawn "~/.local/bin/update_theme_from_wallpaper.sh") ]
+
   -- The following lines are needed for named scratchpads.
     where nonNSP          = WSIs (return (\ws -> W.tag ws /= "NSP"))
           nonEmptyNonNSP  = WSIs (return (\ws -> isJust (W.stack ws) && W.tag ws /= "NSP"))

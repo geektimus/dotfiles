@@ -6,5 +6,5 @@
 		"Vintage",
 	],
 	"theme": "Adaptive.sublime-theme",
-	"color_scheme": "Packages/User/PyWal.sublime-color-scheme",
+	"color_scheme": "PyWal.sublime-color-scheme",
 }

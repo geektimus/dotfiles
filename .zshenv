@@ -19,7 +19,6 @@ export PATH=$PATH:$USERBIN
 
 export HADOOP_HOME=/tmp/hadoop/
 
-
 export GOPATH=$HOME/Projects/personal/language/go
 export PATH=$PATH:$GOPATH/bin
 

@@ -2,8 +2,8 @@
 
 function node_setup() {
   echo "Configuring Node using fnm"
-  fnm install v18.7.0
-  fnm alias v18.7.0 latest
+  fnm install v18.8.0
+  fnm alias v18.8.0 latest
   fnm install v16.17.0
   fnm alias v16.17.0 default
   fnm alias v16.17.0 lts

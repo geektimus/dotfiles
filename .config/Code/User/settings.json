@@ -5,7 +5,7 @@
   "workbench.colorTheme": "Wal",
   "workbench.startupEditor": "none",
   "search.showLineNumbers": true,
-  "workbench.iconTheme": "eq-material-theme-icons",
+  "workbench.iconTheme": "vscode-icons",
   "redhat.telemetry.enabled": false,
   "[terraform]": {
     "editor.formatOnSave": true,
@@ -24,5 +24,8 @@
     "**/.ammonite": true
   },
   "terminal.integrated.fontFamily": "VictorMono Nerd Font",
-  "terminal.integrated.fontSize": 13
+  "terminal.integrated.fontSize": 13,
+  "editor.formatOnPaste": true,
+  "editor.multiCursorModifier": "ctrlCmd",
+  "editor.snippetSuggestions": "top"
 }

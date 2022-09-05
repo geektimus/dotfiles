@@ -12,13 +12,13 @@
    -- trayer
    -- 'dtos-local-bin' (from dtos-core-repo)
 
-Config { font            = "xft:Carlito:weight=regular:pixelsize=14:antialias=true:hinting=true"
+Config { font            = "xft:Roboto Condensed:weight=bold:pixelsize=12:antialias=true:hinting=true"
        , additionalFonts = [ "xft:Mononoki:pixelsize=11:antialias=true:hinting=true"
                            , "xft:Font Awesome 6 Free Solid:pixelsize=12"
                            , "xft:Font Awesome 6 Brands:pixelsize=12"
                            ]
-       , bgColor      = "#151819"
-       , fgColor      = "#dad0dd"
+       , bgColor      = "#202230"
+       , fgColor      = "#ede6e1"
        -- Position TopSize and BottomSize take 3 arguments:
        --   an alignment parameter (L/R/C) for Left, Right or Center.
        --   an integer for the percentage width, so 100 would be 100%.
@@ -62,5 +62,5 @@ Config { font            = "xft:Carlito:weight=regular:pixelsize=14:antialias=tr
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = " %UnsafeStdinReader% }{ <box type=Bottom width=2 mb=2 color=#69895D><fc=#69895D>%penguin%  %kernel%</fc></box>    <box type=Bottom width=2 mb=2 color=#BBA85D><fc=#BBA85D><action=`alacritty -e htop`>%cpu%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#5B708C><fc=#5B708C><action=`alacritty -e htop`>%memory%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#B7709F><fc=#B7709F>%disku%</fc></box>    <box type=Bottom width=2 mb=2 color=#67C1CD><fc=#67C1CD>%uparrow%  %uptime%</fc></box>    <box type=Bottom width=2 mb=2 color=#dad0dd><fc=#dad0dd>%bell%  <action=`alacritty -e sudo pacman -Syu`>%pacupdate%</action></fc></box>   <box type=Bottom width=2 mb=2 color=#98919a><fc=#98919a>%baticon%  %battery%</fc></box>    <box type=Bottom width=2 mb=2 color=#A75A6B><fc=#A75A6B><action=`emacsclient -c -a 'emacs' --eval '(doom/window-maximize-buffer(dt/year-calendar))'`>%date%</action></fc></box> %trayerpad%"
+       , template = " %UnsafeStdinReader% }{ <box type=Bottom width=2 mb=2 color=#9CA0AC><fc=#9CA0AC>%penguin%  %kernel%</fc></box>    <box type=Bottom width=2 mb=2 color=#D9BCAA><fc=#D9BCAA><action=`alacritty -e htop`>%cpu%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#A2B5C8><fc=#A2B5C8><action=`alacritty -e htop`>%memory%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#B3C7D2><fc=#B3C7D2>%disku%</fc></box>    <box type=Bottom width=2 mb=2 color=#CFCED0><fc=#CFCED0>%uparrow%  %uptime%</fc></box>    <box type=Bottom width=2 mb=2 color=#ede6e1><fc=#ede6e1>%bell%  <action=`alacritty -e sudo pacman -Syu`>%pacupdate%</action></fc></box>   <box type=Bottom width=2 mb=2 color=#a5a19d><fc=#a5a19d>%baticon%  %battery%</fc></box>    <box type=Bottom width=2 mb=2 color=#61ACCD><fc=#61ACCD><action=`emacsclient -c -a 'emacs' --eval '(doom/window-maximize-buffer(dt/year-calendar))'`>%date%</action></fc></box> %trayerpad%"
        }

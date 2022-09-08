@@ -38,23 +38,11 @@ sudo pacman -S redshift xorg xorg-xinit feh dunst pamixer picom gnome-keyring va
 sudo pacman -S rofi ranger bspwm sxhkd --noconfirm --needed
 sudo pacman -S xmonad xmobar xmonad-extras xmonad-contrib xmonad-utils alacritty trayer dmenu --noconfirm --needed
 
-# Lightdm 
-yay -S lightdm lightdm-settings lightdm-gtk-greeter lightdm-gtk-greeter-settings --needed --noconfirm
-
-# Desktop (File Manager)
-yay -S thunar thunar-archive-plugin thunar-volman tumbler tumbler-extra-thumbnailers gvfs vlc ffmpegthumbnailer --needed --noconfirm
-
 # Develop dependecies / packages
 sudo pacman -S hub github-cli httpie jq --noconfirm --needed
 
 # Editors and dependencies
 sudo pacman -S neovim emacs-nox ripgrep fd ctags --noconfirm --needed
-
-# PDF Viewer
-yay -S zathura zathura-cb zathura-djvu zathura-pdf-mupdf zathura-ps texlive-core --needed --noconfirm
-
-# Development
-yay -S terraform aws-cli --needed --noconfirm
 
 # AUR Helper
 if pacman -Qs yay > /dev/null ; then
@@ -65,6 +53,18 @@ else
     cd yay
     makepkg -si --noconfirm
 fi
+
+# Lightdm 
+yay -S lightdm lightdm-settings lightdm-gtk-greeter lightdm-gtk-greeter-settings --needed --noconfirm
+
+# Desktop (File Manager)
+yay -S thunar thunar-archive-plugin thunar-volman tumbler tumbler-extra-thumbnailers gvfs vlc ffmpegthumbnailer --needed --noconfirm
+
+# PDF Viewer
+yay -S zathura zathura-cb zathura-djvu zathura-pdf-mupdf zathura-ps texlive-core --needed --noconfirm
+
+# Development
+yay -S terraform aws-cli --needed --noconfirm
 
 # Import Keys to Install Spotify
 # gpg --keyserver pool.sks-keyservers.net --recv-keys 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90
@@ -169,6 +169,7 @@ echo "~/.config/Code/User/extensions.sh"
 echo "~/.emacs.d/bin/doom install"
 echo "initialize node"
 echo "initialize python"
+echo "initialize jvm"
 echo "startx"
 echo "feh --bg-fill ~/.config/desktop/gruvbox.png"
 

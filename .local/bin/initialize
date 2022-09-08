@@ -22,6 +22,14 @@ function python_setup() {
   pip install --user pynvim
 }
 
+function jvm_setup() {
+  sdk install gradle 7.5.1
+  sdk install java 18.0.2-zulu
+  sdk install kotlin 1.7.10
+  sdk install sbt 1.7.1
+  sdk install scala 3.2.0
+}
+
 if [ "$#" -ne 1 ]; then
     echo "Illegal number of parameters"
     exit 1
@@ -31,6 +39,8 @@ if [[ "$1" == "node" ]]; then
   node_setup
 elif [[ "$1" == "python" ]]; then
   python_setup
+elif [[ "$1" == "jvm" ]]; then
+  jvm_setup
 else
   echo "Error: Unknown option '$1'"
   exit 2

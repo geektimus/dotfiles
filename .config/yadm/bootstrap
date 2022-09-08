@@ -15,10 +15,10 @@ if [ "$choice" = "y" ]; then
 fi
 
 # Fonts
-sudo pacman -S noto-fonts noto-fonts-emoji ttf-font-awesome ttf-iosevka-nerd otf-font-awesome --noconfirm --needed
+sudo pacman -S gnome-font-viewer ttf-roboto nerd-fonts-victor-mono noto-fonts noto-fonts-emoji ttf-font-awesome ttf-iosevka-nerd otf-font-awesome --noconfirm --needed
 
 # Utils
-sudo pacman -S unzip zsh wget curl make ccache libsecret xsel --noconfirm --needed
+sudo pacman -S zip unzip zsh wget curl make ccache libsecret xclip xsel --noconfirm --needed
 
 # TODO: Check if the gnome-keyring package is necesary on non gnome systems
 
@@ -32,17 +32,29 @@ else
 fi
 
 # pulseaudio pulseaudio-alsa
-sudo pacman -S redshift xorg xorg-xinit feh dunst pamixer picom gnome-keyring --noconfirm --needed
+sudo pacman -S redshift xorg xorg-xinit feh dunst pamixer picom gnome-keyring variety sxiv python-pywal polkit-gnome ntfs-3g network-manager-applet --noconfirm --needed
 
 # Desktop environment bases, bspwm packages and utils
 sudo pacman -S rofi ranger bspwm sxhkd --noconfirm --needed
-sudo pacman -S xmonad xmobar alacritty trayer --noconfirm --needed
+sudo pacman -S xmonad xmobar xmonad-extras xmonad-contrib xmonad-utils alacritty trayer dmenu --noconfirm --needed
+
+# Lightdm 
+yay -S lightdm lightdm-settings lightdm-gtk-greeter lightdm-gtk-greeter-settings --needed --noconfirm
+
+# Desktop (File Manager)
+yay -S thunar thunar-archive-plugin thunar-volman tumbler tumbler-extra-thumbnailers gvfs vlc ffmpegthumbnailer --needed --noconfirm
 
 # Develop dependecies / packages
-sudo pacman -S hub github-cli httpie --noconfirm --needed
+sudo pacman -S hub github-cli httpie jq --noconfirm --needed
 
 # Editors and dependencies
 sudo pacman -S neovim emacs-nox ripgrep fd ctags --noconfirm --needed
+
+# PDF Viewer
+yay -S zathura zathura-cb zathura-djvu zathura-pdf-mupdf zathura-ps texlive-core --needed --noconfirm
+
+# Development
+yay -S terraform aws-cli --needed --noconfirm
 
 # AUR Helper
 if pacman -Qs yay > /dev/null ; then
@@ -128,12 +140,22 @@ else
    git clone --depth 1 https://github.com/hlissner/doom-emacs $HOME/.emacs.d
 fi
 
+if [ -d "$HOME/.sdkman" ]; then
+    echo "SDKMan is already installed, moving on..."
+else
+    curl -s "https://get.sdkman.io" | bash
+fi
+
 # Sublime 
 # TODO: Check if subl command is installed
 curl -O https://download.sublimetext.com/sublimehq-pub.gpg && sudo pacman-key --add sublimehq-pub.gpg && sudo pacman-key --lsign-key 8A8F901A && rm sublimehq-pub.gpg
 echo -e "\n[sublime-text]\nServer = https://download.sublimetext.com/arch/stable/x86_64" | sudo tee -a /etc/pacman.conf
 
 sudo pacman -Syu broot exa thefuck fzf lxappearance sublime-text bat --noconfirm --needed
+
+# Enable services
+sudo systemctl enable lightdm
+sudo systemctl enable vboxservice
 
 echo "=============="
 echo "==== DONE ===="

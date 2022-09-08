@@ -15,7 +15,7 @@ if [ "$choice" = "y" ]; then
 fi
 
 # Fonts
-sudo pacman -S gnome-font-viewer ttf-roboto nerd-fonts-victor-mono noto-fonts noto-fonts-emoji ttf-font-awesome ttf-iosevka-nerd otf-font-awesome --noconfirm --needed
+sudo pacman -S gnome-font-viewer ttf-roboto noto-fonts noto-fonts-emoji ttf-font-awesome ttf-iosevka-nerd otf-font-awesome --noconfirm --needed
 
 # Utils
 sudo pacman -S zip unzip zsh wget curl make ccache libsecret xclip xsel --noconfirm --needed
@@ -72,6 +72,9 @@ fi
 # yay -S spicetify-cli spotify --needed --removemake --nocleanmenu --nodiffmenu --noeditmenu --noconfirm
 
 yay -S stern polybar python-ueberzug betterlockscreen google-chrome aic94xx-firmware wd719x-firmware --needed --removemake --nocleanmenu --nodiffmenu --noeditmenu --noconfirm
+
+## AUR fonts
+yay -S nerd-fonts-victor-mono --needed --noconfirm
 
 # ====================================
 # Polybar font

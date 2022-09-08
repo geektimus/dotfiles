@@ -32,14 +32,23 @@ else
 fi
 
 # pulseaudio pulseaudio-alsa
-sudo pacman -S redshift xorg xorg-xinit feh dunst pamixer picom gnome-keyring variety sxiv python-pywal polkit-gnome ntfs-3g network-manager-applet --noconfirm --needed
+sudo pacman -S redshift xorg xorg-xinit feh dunst pamixer picom gnome-keyring variety sxiv python-pywal python-ueberzug polkit-gnome ntfs-3g network-manager-applet --noconfirm --needed
 
 # Desktop environment bases, bspwm packages and utils
-sudo pacman -S rofi ranger bspwm sxhkd --noconfirm --needed
+sudo pacman -S rofi ranger bspwm sxhkd polybar --noconfirm --needed
 sudo pacman -S xmonad xmobar xmonad-extras xmonad-contrib xmonad-utils alacritty trayer dmenu --noconfirm --needed
 
+# Lightdm 
+sudo pacman -S lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings --needed --noconfirm
+
+# Desktop (File Manager)
+sudo pacman -S thunar thunar-archive-plugin thunar-volman tumbler gvfs vlc ffmpegthumbnailer --needed --noconfirm
+
+# PDF Viewer
+sudo pacman -S zathura zathura-cb zathura-djvu zathura-pdf-mupdf zathura-ps texlive-core --needed --noconfirm
+
 # Develop dependecies / packages
-sudo pacman -S hub github-cli httpie jq --noconfirm --needed
+sudo pacman -S hub github-cli httpie jq terraform aws-cli --noconfirm --needed
 
 # Editors and dependencies
 sudo pacman -S neovim emacs-nox ripgrep fd ctags --noconfirm --needed
@@ -54,24 +63,12 @@ else
     makepkg -si --noconfirm
 fi
 
-# Lightdm 
-yay -S lightdm lightdm-settings lightdm-gtk-greeter lightdm-gtk-greeter-settings --needed --noconfirm
-
-# Desktop (File Manager)
-yay -S thunar thunar-archive-plugin thunar-volman tumbler tumbler-extra-thumbnailers gvfs vlc ffmpegthumbnailer --needed --noconfirm
-
-# PDF Viewer
-yay -S zathura zathura-cb zathura-djvu zathura-pdf-mupdf zathura-ps texlive-core --needed --noconfirm
-
-# Development
-yay -S terraform aws-cli --needed --noconfirm
-
 # Import Keys to Install Spotify
 # gpg --keyserver pool.sks-keyservers.net --recv-keys 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90
 # gpg --keyserver pool.sks-keyservers.net --recv-keys 2EBF997C15BDA244B6EBF5D84773BD5E130D1D45
 # yay -S spicetify-cli spotify --needed --removemake --nocleanmenu --nodiffmenu --noeditmenu --noconfirm
 
-yay -S stern polybar python-ueberzug betterlockscreen google-chrome aic94xx-firmware wd719x-firmware --needed --removemake --nocleanmenu --nodiffmenu --noeditmenu --noconfirm
+yay -S betterlockscreen google-chrome aic94xx-firmware wd719x-firmware --needed --removemake --nocleanmenu --nodiffmenu --noeditmenu --noconfirm
 
 ## AUR fonts
 yay -S nerd-fonts-victor-mono --needed --noconfirm

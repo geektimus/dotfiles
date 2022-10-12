@@ -2,11 +2,11 @@
 
 function node_setup() {
   echo "Configuring Node using fnm"
-  fnm install v18.8.0
-  fnm alias v18.8.0 latest
-  fnm install v16.17.0
-  fnm alias v16.17.0 default
-  fnm alias v16.17.0 lts
+  fnm install v18.9.1
+  fnm alias v18.9.1 latest
+  fnm install v16.17.1
+  fnm alias v16.17.1 default
+  fnm alias v16.17.1 lts
   fnm use latest
   npm install -g npm
 }
@@ -16,8 +16,8 @@ function python_setup() {
   echo "Configuring Python using pyenv"
   pyenv install python
   pyenv install --list
-  pyenv install 3.10.6
-  pyenv local 3.10.6
+  pyenv install 3.10.7
+  pyenv local 3.10.7
   pip install --upgrade pip
   pip install --user pynvim
 }

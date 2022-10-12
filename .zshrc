@@ -18,6 +18,7 @@ antigen bundle archlinux
 # antigen bundle kubectl
 antigen bundle pyenv
 antigen bundle systemd
+antigen bundle terraform
 
 # antigen bundle lein
 antigen bundle command-not-found
@@ -31,6 +32,7 @@ antigen bundle zsh-users/zsh-completions
 # Load the theme.
 # antigen theme robbyrussell
 antigen theme romkatv/powerlevel10k
+# antigen theme archcraft
 
 # Tell Antigen that you're done.
 antigen apply
@@ -74,7 +76,7 @@ source $HOME/.config/broot/launcher/bash/br
 eval "`fnm env`"
 
 # Stern (Kubernetes Log Tool)
-source <(stern --completion=zsh)
+# source <(stern --completion=zsh)
 
 # Import colorscheme from 'wal' asynchronously
 # &   # Run the process in the background.
@@ -82,6 +84,9 @@ source <(stern --completion=zsh)
 # (cat ~/.cache/wal/sequences &)
 wal -R -e --vte -q
 
+[ -f "/home/geektimus/.ghcup/env" ] && source "/home/geektimus/.ghcup/env" # ghcup-env
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/geektimus/.sdkman"
 [[ -s "/home/geektimus/.sdkman/bin/sdkman-init.sh" ]] && source "/home/geektimus/.sdkman/bin/sdkman-init.sh"
+

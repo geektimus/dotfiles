@@ -30,6 +30,12 @@ reload_polybar() {
 	echo "New instance launched"
 }
 
+reload_dunst() {
+	$HOME/.local/bin/update_dunst_pywal.sh
+	pidof dunst && killall dunst
+	/usr/bin/dunst > /dev/null 2>&1 &
+}
+
 reload_bspwm() {
 	bspc wm -r
 }
@@ -54,6 +60,8 @@ reload_window_manager() {
 	else
 		echo "Warning: No window manager detected"
 	fi
+
+	reload_dunst
 }
 
 wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)

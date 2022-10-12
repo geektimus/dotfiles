@@ -1,7 +1,7 @@
 {
   "haskell.manageHLS": "GHCup",
-  "editor.fontFamily": "'VictorMono Nerd Font', 'Iosevka Term','Droid Sans Mono', 'monospace', monospace",
-  "editor.fontSize": 13,
+  "editor.fontFamily": "'Iosevka Custom', 'Iosevka Term','Droid Sans Mono', 'monospace', monospace",
+  "editor.fontSize": 12,
   "workbench.colorTheme": "Wal",
   "workbench.startupEditor": "none",
   "search.showLineNumbers": true,
@@ -23,9 +23,18 @@
     "**/.metals": true,
     "**/.ammonite": true
   },
-  "terminal.integrated.fontFamily": "VictorMono Nerd Font",
+  "terminal.integrated.fontFamily": "Iosevka Custom",
   "terminal.integrated.fontSize": 13,
   "editor.formatOnPaste": true,
   "editor.multiCursorModifier": "ctrlCmd",
-  "editor.snippetSuggestions": "top"
+  "editor.snippetSuggestions": "top",
+  "vs-kubernetes": {
+    "vscode-kubernetes.helm-path.linux": "/home/geektimus/.local/state/vs-kubernetes/tools/helm/linux-amd64/helm",
+    "vscode-kubernetes.kubectl-path.linux": "/home/geektimus/.local/state/vs-kubernetes/tools/kubectl/kubectl",
+    "vscode-kubernetes.minikube-path.linux": "/home/geektimus/.local/state/vs-kubernetes/tools/minikube/linux-amd64/minikube"
+  },
+  "editor.renderWhitespace": "all",
+  "editor.cursorStyle": "block-outline",
+  "haskell.ghcupExecutablePath": "/home/geektimus/.ghcup/bin/ghcup",
+  "vsicons.dontShowNewVersionMessage": true
 }

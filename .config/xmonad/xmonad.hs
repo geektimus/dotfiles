@@ -85,7 +85,7 @@ import XMonad.Util.SpawnOnce
 import Colors.PyWalCustom
 
 myFont :: String
-myFont = "xft:SauceCodePro Nerd Font Mono:regular:size=9:antialias=true:hinting=true"
+myFont = "xft:Iosevka Custom:regular:size=9:antialias=true:hinting=true"
 
 myModMask :: KeyMask
 myModMask = mod4Mask        -- Sets modkey to super/windows key
@@ -138,7 +138,7 @@ myStartupHook = do
   -- spawnOnce "feh --randomize --bg-fill /usr/share/backgrounds/dtos-backgrounds/*"  -- feh set random wallpaper
   spawnOnce "nitrogen --restore &"   -- if you prefer nitrogen to feh
   spawnOnce "setxkbmap -model pc105 -layout us,latam -variant intl, -option caps:capslock" -- set keyboard layout
-  spawnOnce "xmodmap -pke > ~/.Xmodmap" 
+  spawnOnce "xmodmap -pke > ~/.Xmodmap"
   setWMName "LG3D"
 
 myNavigation :: TwoD a (Maybe a)
@@ -414,10 +414,10 @@ myTabTheme = def { fontName            = myFont
 -- Theme for showWName which prints current workspace when you change workspaces.
 myShowWNameTheme :: SWNConfig
 myShowWNameTheme = def
-  { swn_font              = "xft:Ubuntu:bold:size=60"
+  { swn_font              = "xft:Iosevka Term:bold:size=60"
   , swn_fade              = 1.0
-  , swn_bgcolor           = "#1c1f24"
-  , swn_color             = "#ffffff"
+  , swn_bgcolor           = colorBack
+  , swn_color             = colorFore
   }
 
 -- The layout hook
@@ -440,7 +440,7 @@ myLayoutHook = avoidStruts
 
 -- myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
 myWorkspaces = [" dev ", " www ", " sys ", " doc ", " vbox ", " chat ", " mus ", " vid ", " gfx "]
-myWorkspaceIndices = M.fromList $ zipWith (,) myWorkspaces [1..] -- (,) == \x y -> (x,y)
+myWorkspaceIndices = M.fromList $ zip myWorkspaces [1..] -- (,) == \x y -> (x,y)
 
 clickable ws = "<action=xdotool key super+"++show i++">"++ws++"</action>"
     where i = fromJust $ M.lookup ws myWorkspaceIndices
@@ -704,7 +704,7 @@ main = do
     , modMask            = myModMask
     , terminal           = myTerminal
     , startupHook        = myStartupHook
-    , layoutHook         = showWName' myShowWNameTheme $ myLayoutHook
+    , layoutHook         = showWName' myShowWNameTheme myLayoutHook
     , workspaces         = myWorkspaces
     , borderWidth        = myBorderWidth
     , normalBorderColor  = myNormColor

@@ -1,38 +1,38 @@
 {
     "name": "Pywal",
     "globals": {
-        "background": "#151819",
-        "foreground": "#dad0dd",
-        "caret": "#dad0dd",
-        "invisibles": "#A75A6B",
-        "lineHighlight": "#69895D",
-        "selection": "#67C1CD"
+        "background": "#06050B",
+        "foreground": "#f2ced8",
+        "caret": "#f2ced8",
+        "invisibles": "#E75DA8",
+        "lineHighlight": "#F671B3",
+        "selection": "#F8A6B9"
     },
     "rules": [
         {
             "name": "Comment",
             "scope": "comment",
-            "foreground": "#69895D"
+            "foreground": "#F671B3"
         },
         {
             "name": "String",
             "scope": "string",
-            "foreground": "#5B708C"
+            "foreground": "#AA95AE"
         },
         {
             "name": "Number",
             "scope": "constant.numeric",
-            "foreground": "#B7709F"
+            "foreground": "#FA8FB8"
         },
         {
             "name": "Built-in constant",
             "scope": "constant.language",
-            "foreground": "#B7709F"
+            "foreground": "#FA8FB8"
         },
         {
             "name": "User-defined constant",
             "scope": "constant.character, constant.other",
-            "foreground": "#B7709F"
+            "foreground": "#FA8FB8"
         },
         {
             "name": "Variable",
@@ -42,67 +42,67 @@
         {
             "name": "Storage",
             "scope": "storage",
-            "foreground": "#BBA85D",
+            "foreground": "#6D8BB5",
             "fontStyle": ""
         },
         {
             "name": "Storage type",
             "scope": "storage.type",
-            "foreground": "#67C1CD",
+            "foreground": "#F8A6B9",
             "fontStyle": "italic"
         },
         {
             "name": "Class name",
             "scope": "entity.name.class",
-            "foreground": "#A75A6B",
+            "foreground": "#E75DA8",
             "fontStyle": "italic"
         },
         {
             "name": "Inherited class",
             "scope": "entity.other.inherited-class",
-            "foreground": "#A75A6B",
+            "foreground": "#E75DA8",
             "fontStyle": "italic"
         },
         {
             "name": "Function name",
             "scope": "entity.name.function",
-            "foreground": "#A75A6B",
+            "foreground": "#E75DA8",
             "fontStyle": "italic"
         },
         {
             "name": "Function argument",
             "scope": "variable.parameter",
-            "foreground": "#67C1CD",
+            "foreground": "#F8A6B9",
             "fontStyle": ""
         },
         {
             "name": "Tag name",
             "scope": "entity.name.tag",
-            "foreground": "#BBA85D",
+            "foreground": "#6D8BB5",
             "fontStyle": ""
         },
         {
             "name": "Tag attribute",
             "scope": "entity.other.attribute-name",
-            "foreground": "#A75A6B",
+            "foreground": "#E75DA8",
             "fontStyle": ""
         },
         {
             "name": "Library function",
             "scope": "support.function",
-            "foreground": "#67C1CD",
+            "foreground": "#F8A6B9",
             "fontStyle": ""
         },
         {
             "name": "Library constant",
             "scope": "support.constant",
-            "foreground": "#67C1CD",
+            "foreground": "#F8A6B9",
             "fontStyle": ""
         },
         {
             "name": "Library class/type",
             "scope": "support.class, support.type",
-            "foreground": "#67C1CD",
+            "foreground": "#F8A6B9",
             "fontStyle": "italic"
         },
         {
@@ -114,15 +114,15 @@
             "name": "Invalid",
             "scope": "invalid",
             "fontStyle": "",
-            "foreground": "#dad0dd",
-            "background": "#B7709F"
+            "foreground": "#f2ced8",
+            "background": "#FA8FB8"
         },
         {
             "name": "Invalid deprecaded",
             "scope": "invalid.deprecated",
             "fontStyle": "",
-            "foreground": "#dad0dd",
-            "background": "#5B708C"
+            "foreground": "#f2ced8",
+            "background": "#AA95AE"
         }
     ],
     "semanticClass": "theme.dark.pywal"

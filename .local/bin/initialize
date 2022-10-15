@@ -24,9 +24,9 @@ function python_setup() {
 
 function jvm_setup() {
   sdk install gradle 7.5.1
-  sdk install java 18.0.2-zulu
-  sdk install kotlin 1.7.10
-  sdk install sbt 1.7.1
+  sdk install java 19-zulu
+  sdk install kotlin 1.7.20
+  sdk install sbt 1.7.2
   sdk install scala 3.2.0
 }
 

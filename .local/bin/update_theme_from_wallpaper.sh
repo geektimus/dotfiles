@@ -2,8 +2,6 @@
 
 current_window_manager="$DESKTOP_SESSION"
 
-echo $DESKTOP_SESSION
-
 reload_polybar() {
 
 	# Update config colors
@@ -32,7 +30,7 @@ reload_polybar() {
 
 reload_dunst() {
 	$HOME/.local/bin/update_dunst_pywal.sh
-	pidof dunst && killall dunst
+	pidof dunst > /dev/null && killall dunst
 	/usr/bin/dunst > /dev/null 2>&1 &
 }
 

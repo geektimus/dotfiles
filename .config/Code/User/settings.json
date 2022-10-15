@@ -5,7 +5,7 @@
   "workbench.colorTheme": "Wal",
   "workbench.startupEditor": "none",
   "search.showLineNumbers": true,
-  "workbench.iconTheme": "vikings-icon-theme",
+  "workbench.iconTheme": "vscode-icons",
   "redhat.telemetry.enabled": false,
   "[terraform]": {
     "editor.formatOnSave": true,

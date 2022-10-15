@@ -1,12 +1,32 @@
+!  ██╗░░██╗██████╗░███████╗███████╗░██████╗░██╗░░░██╗██████╗░░██████╗███████╗███████╗
+!  ╚██╗██╔╝██╔══██╗██╔════╝██╔════╝██╔═══██╗██║░░░██║██╔══██╗██╔════╝██╔════╝██╔════╝
+!  ░╚███╔╝░██████╔╝█████╗░░███████╗██║░░░██║██║░░░██║██████╔╝██║░░░░░█████╗░░███████╗
+!  ░██╔██╗░██╔══██╗██╔══╝░░╚════██║██║░░░██║██║░░░██║██╔══██╗██║░░░░░██╔══╝░░╚════██║
+!  ██╔╝░██╗██║░░██║███████╗███████║╚██████╔╝╚██████╔╝██║░░██║╚██████╗███████╗███████║
+!  ╚═╝░░╚═╝╚═╝░░╚═╝╚══════╝╚══════╝░╚═════╝░░╚═════╝░╚═╝░░╚═╝░╚═════╝╚══════╝╚══════╝
+
+!  ░█▀▀░█▀█░█░░░█▀█░█▀▄░█▀▀
+!  ░█░░░█░█░█░░░█░█░█▀▄░▀▀█
+!  ░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀░▀░▀▀▀
+
+#include "/home/uriel/.cache/wal/colors.Xresources"
+
+!  ░█▀▀░█▀█░█▀█░▀█▀░█▀▀
+!  ░█▀▀░█░█░█░█░░█░░▀▀█
+!  ░▀░░░▀▀▀░▀░▀░░▀░░▀▀▀
+
 Xft.dpi: 96
+Xft.rgba: rgb
 Xft.antialias: true
 Xft.hinting: true
-Xft.rgba: rgb
-Xft.autohint: false
+Xft.rightScrollBar: rgb
+Xft.autohint: true
 Xft.hintstyle: hintfull
 Xft.lcdfilter: lcddefault
 
-!! URxvt Appearance
+!  ░█░█░█▀▄░█░█░█░█░▀█▀
+!  ░█░█░█▀▄░▄▀▄░▀▄▀░░█░
+!  ░▀▀▀░▀░▀░▀░▀░░▀░░░▀░
 
 ! Fonts
 URxvt.font:           xft:Iosevka Term:style=Regular:size=11
@@ -67,60 +87,29 @@ URxvt*scrollWithBuffer: true
 ! scroll back to the bottom on keypress
 URxvt*scrollTtyKeypress: true
 
-!!! Material Oceanic
-*background:  #0f111a
-*foreground:  #e5e9f0
-*color0:  #3B4252
-*color1:  #BF616A
-*color2:  #A3BE8C
-*color3:  #EBCB8B
-*color4:  #81A1C1
-*color5:  #B48EAD
-*color6:  #88C0D0
-*color7:  #E5E9F0
-*color8:  #4C566A
-*color9:  #BF616A
-*color10:  #A3BE8C
-*color11:  #EBCB8B
-*color12:  #81A1C1
-*color13:  #B48EAD
-*color14:  #88C0D0
-*color15:  #B48EAD
-
-! Extended 256 color palette: requires 'rxvt-unicode-256xresources' package
-URxvt.color24:  #076678
-URxvt.color66:  #427b58
-URxvt.color88:  #9d0006
-URxvt.color96:  #8f3f71
-URxvt.color100: #79740e
-URxvt.color108: #8ec07c
-URxvt.color109: #83a598
-URxvt.color130: #af3a03
-URxvt.color136: #b57614
-URxvt.color142: #b8bb26
-URxvt.color167: #fb4934
-URxvt.color175: #d3869b
-URxvt.color208: #fe8019
-URxvt.color214: #fabd2f
-URxvt.color223: #ebdbb2
-URxvt.color228: #f2e5bc
-URxvt.color229: #fbf1c7
-URxvt.color230: #f9f5d7
-URxvt.color234: #1d2021
-URxvt.color235: #282828
-URxvt.color236: #32302f
-URxvt.color237: #3c3836
-URxvt.color239: #504945
-URxvt.color241: #665c54
-URxvt.color243: #7c6f64
-URxvt.color244: #928374
-URxvt.color245: #928374
-URxvt.color246: #a89984
-URxvt.color248: #bdae93
-URxvt.color250: #d5c4a1
-
 ! Xft.dpi:100
 
 Sxiv.background: #131310
 Sxiv.foreground: #c8e0ed
 Sxiv.font: Roboto Condensed-10
+
+!  ░█░█░▀█▀░█▀▀░█▀▄░█▄█
+!  ░▄▀▄░░█░░█▀▀░█▀▄░█░█
+!  ░▀░▀░░▀░░▀▀▀░▀░▀░▀░▀
+
+XTerm.termName: xterm-256color
+XTerm.vt100.locale: true
+XTerm.vt100.metaSendsEscape: true
+XTerm.vt100.backarrowKey: false
+XTerm.ttyModes: erase ^?
+XTerm.vt100.saveLines: 16384
+XTerm.vt100.faceName: xft:MesloLGS NF:size=10.5:antialias=true
+XTerm.vt100.bellIsUrgent: true
+XTerm.letterSpace: 0
+XTerm.scaleHeight: 1.01
+XTerm.faceSize: 10
+XTerm.internalBorder: 32
+XTerm.vt100*geometry: 70x13
+XTerm.loginShell: true
+XTerm.charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
+XTerm.eightBitInput: false

@@ -137,7 +137,7 @@ myStartupHook = do
   -- spawnOnce "~/.fehbg &"  -- set last saved feh wallpaper
   -- spawnOnce "feh --randomize --bg-fill /usr/share/backgrounds/dtos-backgrounds/*"  -- feh set random wallpaper
   spawnOnce "nitrogen --restore &"   -- if you prefer nitrogen to feh
-  spawnOnce "setxkbmap -model pc105 -layout us,latam -variant intl, -option caps:capslock" -- set keyboard layout
+  spawnOnce "setxkbmap -model pc105 -layout es,us -variant ,intl -option caps:capslock" -- set keyboard layout
   spawnOnce "xmodmap -pke > ~/.Xmodmap"
   setWMName "LG3D"
 

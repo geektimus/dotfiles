@@ -13,4 +13,6 @@ gpg --import geektimus-private-key.asc
 
 ## Mount Host folders into the VM
 
+```bash
 sudo mkdir /run/media/<folder-name/> && sudo mount -t vboxsf -o gid=vboxsf <folder-name/> /run/media/<folder-name/>
+```

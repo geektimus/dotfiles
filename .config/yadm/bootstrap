@@ -15,7 +15,7 @@ if [ "$choice" = "y" ]; then
 fi
 
 # Fonts
-sudo pacman -S gnome-font-viewer ttf-roboto noto-fonts noto-fonts-emoji ttf-font-awesome ttf-iosevka-nerd otf-font-awesome --noconfirm --needed
+sudo pacman -S gnome-font-viewer ttf-roboto ttf-dejavu ttf-liberation noto-fonts noto-fonts-emoji ttf-font-awesome ttf-iosevka-nerd otf-font-awesome --noconfirm --needed
 
 # Utils
 sudo pacman -S zip unzip zsh wget curl make ccache libsecret xclip xsel --noconfirm --needed
@@ -32,11 +32,12 @@ else
 fi
 
 # pulseaudio pulseaudio-alsa
-sudo pacman -S redshift xorg xorg-xinit feh dunst pamixer picom gnome-keyring variety sxiv python-pywal python-ueberzug polkit-gnome ntfs-3g network-manager-applet --noconfirm --needed
+sudo pacman -S redshift xorg xorg-xinit volumeicon cbatticon feh dunst pavucontrol pamixer picom gnome-keyring variety sxiv python-pywal python-ueberzug polkit-gnome ntfs-3g narandr udiskie network-manager-applet --noconfirm --needed
 
 # Desktop environment bases, bspwm packages and utils
 sudo pacman -S rofi ranger bspwm sxhkd polybar --noconfirm --needed
 sudo pacman -S xmonad xmobar xmonad-extras xmonad-contrib xmonad-utils alacritty trayer dmenu --noconfirm --needed
+sudo pacman -S qtile --noconfirm --needed
 
 # Lightdm 
 sudo pacman -S lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings --needed --noconfirm
@@ -48,7 +49,7 @@ sudo pacman -S thunar thunar-archive-plugin thunar-volman tumbler gvfs vlc ffmpe
 sudo pacman -S zathura zathura-cb zathura-djvu zathura-pdf-mupdf zathura-ps texlive-core --needed --noconfirm
 
 # Develop dependecies / packages
-sudo pacman -S hub github-cli httpie jq terraform aws-cli --noconfirm --needed
+sudo pacman -S git glib2 hub github-cli httpie jq terraform aws-cli stern --noconfirm --needed
 
 # Editors and dependencies
 sudo pacman -S neovim emacs-nox ripgrep fd ctags --noconfirm --needed
@@ -69,9 +70,6 @@ fi
 # yay -S spicetify-cli spotify --needed --removemake --nocleanmenu --nodiffmenu --noeditmenu --noconfirm
 
 yay -S betterlockscreen google-chrome aic94xx-firmware wd719x-firmware --needed --removemake --nocleanmenu --nodiffmenu --noeditmenu --noconfirm
-
-## AUR fonts
-yay -S nerd-fonts-victor-mono --needed --noconfirm
 
 # ====================================
 # Polybar font
@@ -131,7 +129,7 @@ else
     wget -t0 https://go.microsoft.com/fwlink/\?LinkID\=620884 -O code-stable.tar.gz 
     tar -xvf code-stable.tar.gz && mv VSCode-linux-x64 vscode && sudo rm -rf /opt/vscode && sudo mv vscode /opt && rm code-stable.tar.gz
     sudo ln -sf /opt/vscode/bin/code /usr/bin/code
-    sh ~/.config/Code/User/extensions.sh
+    #sh ~/.config/Code/User/extensions.sh
 fi
 
 if [ -d "$HOME/.emacs.d/bin" ]; then

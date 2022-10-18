@@ -3,9 +3,9 @@
 
 include "/home/geektimus/.gtkrc-2.0.mine"
 gtk-theme-name="Mojave-Light"
-gtk-icon-theme-name="Reversal-purple-dark"
+gtk-icon-theme-name="Reversal-black"
 gtk-font-name="Roboto Condensed, 10"
-gtk-cursor-theme-name="Sweet-cursors"
+gtk-cursor-theme-name="Bibata-Modern-Amber"
 gtk-cursor-theme-size=0
 gtk-toolbar-style=GTK_TOOLBAR_ICONS
 gtk-toolbar-icon-size=GTK_ICON_SIZE_SMALL_TOOLBAR

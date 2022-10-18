@@ -37,7 +37,7 @@ sudo pacman -S redshift xorg xorg-xinit volumeicon cbatticon feh dunst pavucontr
 # Desktop environment bases, bspwm packages and utils
 sudo pacman -S rofi ranger bspwm sxhkd polybar --noconfirm --needed
 sudo pacman -S xmonad xmobar xmonad-extras xmonad-contrib xmonad-utils alacritty trayer dmenu --noconfirm --needed
-sudo pacman -S qtile --noconfirm --needed
+sudo pacman -Syu qtile tk tcl python-dbus-next python-iwlib python-keyring python-xdg python-keyrings-alt libgnome-keyring xfce4-settings --noconfirm --needed
 
 # Lightdm 
 sudo pacman -S lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings --needed --noconfirm

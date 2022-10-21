@@ -32,7 +32,7 @@ else
 fi
 
 # pulseaudio pulseaudio-alsa
-sudo pacman -S redshift xorg xorg-xinit volumeicon cbatticon feh dunst pavucontrol pamixer picom gnome-keyring variety sxiv python-pywal python-ueberzug polkit-gnome ntfs-3g narandr udiskie network-manager-applet --noconfirm --needed
+sudo pacman -S redshift xorg xorg-xinit volumeicon cbatticon feh dunst pavucontrol pamixer picom gnome-keyring variety sxiv python-pywal python-ueberzug polkit-gnome ntfs-3g arandr udiskie network-manager-applet --noconfirm --needed
 
 # Desktop environment bases, bspwm packages and utils
 sudo pacman -S rofi ranger bspwm sxhkd polybar --noconfirm --needed

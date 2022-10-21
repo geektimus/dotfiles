@@ -1,7 +1,7 @@
 {
   "haskell.manageHLS": "GHCup",
-  "editor.fontFamily": "'Iosevka Custom', 'Iosevka Term','Droid Sans Mono', 'monospace', monospace",
-  "editor.fontSize": 12,
+  "editor.fontFamily": "'Iosevka Term','Droid Sans Mono', 'monospace', monospace",
+  "editor.fontSize": 14,
   "workbench.colorTheme": "Wal",
   "workbench.startupEditor": "none",
   "search.showLineNumbers": true,
@@ -23,8 +23,8 @@
     "**/.metals": true,
     "**/.ammonite": true
   },
-  "terminal.integrated.fontFamily": "Iosevka Custom",
-  "terminal.integrated.fontSize": 13,
+  "terminal.integrated.fontFamily": "Iosevka Term",
+  "terminal.integrated.fontSize": 14,
   "editor.formatOnPaste": true,
   "editor.multiCursorModifier": "ctrlCmd",
   "editor.snippetSuggestions": "top",

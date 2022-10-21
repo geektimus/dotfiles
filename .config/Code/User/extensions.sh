@@ -4,7 +4,9 @@ code --install-extension christian-kohler.npm-intellisense
 code --install-extension DavidAnson.vscode-markdownlint
 code --install-extension dbaeumer.vscode-eslint
 code --install-extension dlasagno.wal-theme
+code --install-extension donjayamanne.python-environment-manager
 code --install-extension eamodio.gitlens
+code --install-extension EditorConfig.EditorConfig
 code --install-extension equinusocio.vsc-material-theme-icons
 code --install-extension esbenp.prettier-vscode
 code --install-extension GitHub.github-vscode-theme

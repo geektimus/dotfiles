@@ -76,7 +76,7 @@ source $HOME/.config/broot/launcher/bash/br
 eval "`fnm env`"
 
 # Stern (Kubernetes Log Tool)
-# source <(stern --completion=zsh)
+source <(stern --completion=zsh)
 
 # Import colorscheme from 'wal' asynchronously
 # &   # Run the process in the background.

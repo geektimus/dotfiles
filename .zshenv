@@ -28,14 +28,14 @@ export PATH=$CONSCRIPT_HOME/bin:$PATH
 
 export PATH=$HOME/.fnm:$PATH
 
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-# PyEnv
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
-
-#eval "$(pyenv virtualenv-init -)"
-
 export DENO_INSTALL="/home/geektimus/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
+
+# PyEnv
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"
+fi
+

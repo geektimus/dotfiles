@@ -15,10 +15,10 @@ if [ "$choice" = "y" ]; then
 fi
 
 # Fonts
-sudo pacman -S gnome-font-viewer ttf-roboto ttf-dejavu ttf-liberation noto-fonts noto-fonts-emoji ttf-font-awesome ttf-iosevka-nerd otf-font-awesome --noconfirm --needed
+sudo pacman -S gnome-font-viewer ttf-roboto ttf-dejavu ttf-liberation noto-fonts noto-fonts-emoji ttf-font-awesome ttf-iosevka-nerd otf-font-awesome terminus-font nerd-fonts-ubuntu --noconfirm --needed
 
 # Utils
-sudo pacman -S zip unzip zsh wget curl make ccache libsecret xclip xsel --noconfirm --needed
+sudo pacman -S zip unzip zsh wget curl make ccache libsecret xclip xsel at reflector rsync scrot cmake --noconfirm --needed
 
 # TODO: Check if the gnome-keyring package is necesary on non gnome systems
 
@@ -32,24 +32,30 @@ else
 fi
 
 # pulseaudio pulseaudio-alsa
-sudo pacman -S redshift xorg xorg-xinit volumeicon cbatticon feh dunst pavucontrol pamixer picom gnome-keyring variety sxiv python-pywal python-ueberzug polkit-gnome ntfs-3g arandr udiskie network-manager-applet --noconfirm --needed
+sudo pacman -S redshift xorg xorg-xinit volumeicon cbatticon feh dunst pavucontrol pamixer picom gnome-keyring variety sxiv python-pywal python-ueberzug polkit-gnome ntfs-3g arandr udiskie network-manager-applet tldr transmission-gtk unclutter --noconfirm --needed
 
 # Desktop environment bases, bspwm packages and utils
 sudo pacman -S rofi ranger bspwm sxhkd polybar --noconfirm --needed
 sudo pacman -S xmonad xmobar xmonad-extras xmonad-contrib xmonad-utils alacritty trayer dmenu --noconfirm --needed
-sudo pacman -Syu qtile tk tcl python-dbus-next python-iwlib python-keyring python-xdg python-keyrings-alt libgnome-keyring xfce4-settings --noconfirm --needed
+sudo pacman -S qtile tk tcl libqtile python-dbus-next python-iwlib python-keyring python-xdg python-keyrings-alt libgnome-keyring xfce4-settings --noconfirm --needed
+
+sudo pacman -S gnome-themes-extra gtk-engines xorg-xfontsel gnome-icon-theme-extras xorg-server-xephyr --needed --noconfirm
 
 # Lightdm 
 sudo pacman -S lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings --needed --noconfirm
 
 # Desktop (File Manager)
-sudo pacman -S thunar thunar-archive-plugin thunar-volman tumbler gvfs vlc ffmpegthumbnailer --needed --noconfirm
+sudo pacman -S thunar thunar-archive-plugin thunar-volman tumbler gvfs vlc ffmpegthumbnailer trash-cli --needed --noconfirm
+sudo pacman -S xarchiver unzip unrar arj lha p7zip --needed --noconfirm
+
+sudo pacman -S syncthing --needed --noconfirm
 
 # PDF Viewer
 sudo pacman -S zathura zathura-cb zathura-djvu zathura-pdf-mupdf zathura-ps texlive-core --needed --noconfirm
 
 # Develop dependecies / packages
 sudo pacman -S git glib2 hub github-cli httpie jq terraform aws-cli stern --noconfirm --needed
+sudo pacman -S docker docker-compose docker-machine stack arrow --noconfirm --needed
 
 # Editors and dependencies
 sudo pacman -S neovim emacs-nox ripgrep fd ctags --noconfirm --needed

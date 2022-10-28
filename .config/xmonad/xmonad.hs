@@ -18,9 +18,8 @@ import qualified XMonad.Actions.Search as S
 
     -- Data
 import Data.Char (isSpace, toUpper)
-import Data.Maybe (fromJust)
+import Data.Maybe ( fromJust, isJust )
 import Data.Monoid
-import Data.Maybe (isJust)
 import Data.Tree
 import qualified Data.Map as M
 
@@ -353,11 +352,9 @@ monocle  = renamed [Replace "monocle"]
            $ smartBorders
            $ windowNavigation
            $ addTabs shrinkText myTabTheme
-           $ subLayout [] (smartBorders Simplest)
-           $ Full
+           $ subLayout [] (smartBorders Simplest) Full
 floats   = renamed [Replace "floats"]
-           $ smartBorders
-           $ simplestFloat
+           $ smartBorders simplestFloat
 grid     = renamed [Replace "grid"]
            $ limitWindows 9
            $ smartBorders
@@ -396,8 +393,7 @@ tabs     = renamed [Replace "tabs"]
            -- I cannot add spacing to this layout because it will
            -- add spacing between window and tabs which looks bad.
            $ tabbed shrinkText myTabTheme
-tallAccordion  = renamed [Replace "tallAccordion"]
-           $ Accordion
+tallAccordion  = renamed [Replace "tallAccordion"] Accordion 
 wideAccordion  = renamed [Replace "wideAccordion"]
            $ Mirror Accordion
 
@@ -451,16 +447,16 @@ myManageHook = composeAll
   -- using 'doShift ( myWorkspaces !! 7)' sends program to workspace 8!
   -- I'm doing it this way because otherwise I would have to write out the full
   -- name of my workspaces and the names would be very long if using clickable workspaces.
-  [ className =? "confirm"         --> doFloat
-  , className =? "file_progress"   --> doFloat
-  , className =? "dialog"          --> doFloat
-  , className =? "download"        --> doFloat
-  , className =? "error"           --> doFloat
-  , className =? "Gimp"            --> doFloat
-  , className =? "notification"    --> doFloat
-  , className =? "pinentry-gtk-2"  --> doFloat
-  , className =? "splash"          --> doFloat
-  , className =? "toolbar"         --> doFloat
+  [ className =? "confirm"         --> doCenterFloat
+  , className =? "file_progress"   --> doCenterFloat
+  , className =? "dialog"          --> doCenterFloat
+  , className =? "download"        --> doCenterFloat
+  , className =? "error"           --> doCenterFloat
+  , className =? "Gimp"            --> doCenterFloat
+  , className =? "notification"    --> doCenterFloat
+  , className =? "pinentry-gtk-2"  --> doCenterFloat
+  , className =? "splash"          --> doCenterFloat
+  , className =? "toolbar"         --> doCenterFloat
   , className =? "Yad"             --> doCenterFloat
   , title =? "Oracle VM VirtualBox Manager"  --> doFloat
   , title =? "Mozilla Firefox"     --> doShift ( myWorkspaces !! 1 )
@@ -469,6 +465,8 @@ myManageHook = composeAll
   , className =? "Gimp"            --> doShift ( myWorkspaces !! 8 )
   , className =? "VirtualBox Manager" --> doShift  ( myWorkspaces !! 4 )
   , (className =? "firefox" <&&> resource =? "Dialog") --> doFloat  -- Float Firefox Dialog
+  , className =? "Xephyr"  --> doCenterFloat
+  , resource  =? "Dialog"          --> doCenterFloat
   , isFullscreen -->  doFullFloat
   ] <+> namedScratchpadManageHook myScratchPads
 
@@ -486,7 +484,7 @@ subtitle' x = ((0,0), NamedAction $ map toUpper
 
 showKeybindings :: [((KeyMask, KeySym), NamedAction)] -> NamedAction
 showKeybindings x = addName "Show Keybindings" $ io $ do
-  h <- spawnPipe $ "yad --text-info --fontname=\"SauceCodePro Nerd Font Mono 12\" --fore=#46d9ff back=#282c36 --center --geometry=1200x800 --title \"XMonad keybindings\""
+  h <- spawnPipe "yad --text-info --fontname=\"SauceCodePro Nerd Font Mono 12\" --fore=#46d9ff back=#282c36 --center --geometry=1200x800 --title \"XMonad keybindings\""
   --hPutStr h (unlines $ showKm x) -- showKM adds ">>" before subtitles
   hPutStr h (unlines $ showKmSimple x) -- showKmSimple doesn't add ">>" to subtitles
   hClose h
@@ -500,8 +498,8 @@ myKeys c =
   [ ("M-C-r", addName "Recompile XMonad"       $ spawn "xmonad --recompile")
   , ("M-S-r", addName "Restart XMonad"         $ spawn "xmonad --restart")
   , ("M-S-q", addName "Quit XMonad"            $ sequence_ [spawn (mySoundPlayer ++ shutdownSound), io exitSuccess])
-  , ("M-S-c", addName "Kill focused window"    $ kill1)
-  , ("M-S-a", addName "Kill all windows on WS" $ killAll)
+  , ("M-S-c", addName "Kill focused window"    kill1)
+  , ("M-S-a", addName "Kill all windows on WS" killAll)
   , ("M-S-<Return>", addName "Run prompt"      $ sequence_ [spawn (mySoundPlayer ++ dmenuSound), spawn "~/.local/bin/dm-run"])
   , ("M-/", addName "DTOS Help"                $ spawn "~/.local/bin/dtos-help")]
 
@@ -538,9 +536,9 @@ myKeys c =
   , ("M-S-j", addName "Swap focused window with next window"   $ windows W.swapDown)
   , ("M-S-k", addName "Swap focused window with prev window"   $ windows W.swapUp)
   , ("M-S-m", addName "Swap focused window with master window" $ windows W.swapMaster)
-  , ("M-<Backspace>", addName "Move focused window to master"  $ promote)
-  , ("M-S-,", addName "Rotate all windows except master"       $ rotSlavesDown)
-  , ("M-S-.", addName "Rotate all windows current stack"       $ rotAllDown)]
+  , ("M-<Backspace>", addName "Move focused window to master"  promote)
+  , ("M-S-,", addName "Rotate all windows except master"       rotSlavesDown)
+  , ("M-S-.", addName "Rotate all windows current stack"       rotAllDown)]
 
   -- Dmenu scripts (dmscripts)
   -- In Xmonad and many tiling window managers, M-p is the default keybinding to
@@ -564,13 +562,13 @@ myKeys c =
   , ("M-p t", addName "Translate text"         $ spawn "dm-translate")]
 
   ^++^ subKeys "Favorite programs"
-  [ ("M-<Return>", addName "Launch terminal"   $ spawn (myTerminal))
-  , ("M-b", addName "Launch web browser"       $ spawn (myBrowser))
+  [ ("M-<Return>", addName "Launch terminal"   $ spawn myTerminal)
+  , ("M-b", addName "Launch web browser"       $ spawn myBrowser)
   , ("M-M1-h", addName "Launch htop"           $ spawn (myTerminal ++ " -e htop"))]
 
   ^++^ subKeys "Monitors"
-  [ ("M-.", addName "Switch focus to next monitor" $ nextScreen)
-  , ("M-,", addName "Switch focus to prev monitor" $ prevScreen)]
+  [ ("M-.", addName "Switch focus to next monitor" nextScreen)
+  , ("M-,", addName "Switch focus to prev monitor" prevScreen)]
 
   -- Switch layouts
   ^++^ subKeys "Switch layouts"
@@ -588,7 +586,7 @@ myKeys c =
   ^++^ subKeys "Floating windows"
   [ ("M-f", addName "Toggle float layout"        $ sendMessage (T.Toggle "floats"))
   , ("M-t", addName "Sink a floating window"     $ withFocused $ windows . W.sink)
-  , ("M-S-t", addName "Sink all floated windows" $ sinkAll)]
+  , ("M-S-t", addName "Sink all floated windows" sinkAll)]
 
   -- Increase/decrease spacing (gaps)
   ^++^ subKeys "Window spacing (gaps)"
@@ -601,8 +599,8 @@ myKeys c =
   ^++^ subKeys "Increase/decrease windows in master pane or the stack"
   [ ("M-S-<Up>", addName "Increase clients in master pane"   $ sendMessage (IncMasterN 1))
   , ("M-S-<Down>", addName "Decrease clients in master pane" $ sendMessage (IncMasterN (-1)))
-  , ("M-=", addName "Increase max # of windows for layout"   $ increaseLimit)
-  , ("M--", addName "Decrease max # of windows for layout"   $ decreaseLimit)]
+  , ("M-=", addName "Increase max # of windows for layout"   increaseLimit)
+  , ("M--", addName "Decrease max # of windows for layout"   decreaseLimit)]
 
   -- Sublayouts
   -- This is used to push windows to tabbed sublayouts, or pull them out of it.
@@ -651,15 +649,15 @@ myKeys c =
 
   -- Emacs (SUPER-e followed by a key)
   ^++^ subKeys "Emacs"
-  [ ("M-e e", addName "Emacsclient Dashboard"    $ spawn (myEmacs ++ ("--eval '(dashboard-refresh-buffer)'")))
-  , ("M-e a", addName "Emacsclient EMMS (music)" $ spawn (myEmacs ++ ("--eval '(emms)' --eval '(emms-play-directory-tree \"~/Music/\")'")))
-  , ("M-e b", addName "Emacsclient Ibuffer"      $ spawn (myEmacs ++ ("--eval '(ibuffer)'")))
-  , ("M-e d", addName "Emacsclient Dired"        $ spawn (myEmacs ++ ("--eval '(dired nil)'")))
-  , ("M-e i", addName "Emacsclient ERC (IRC)"    $ spawn (myEmacs ++ ("--eval '(erc)'")))
-  , ("M-e n", addName "Emacsclient Elfeed (RSS)" $ spawn (myEmacs ++ ("--eval '(elfeed)'")))
-  , ("M-e s", addName "Emacsclient Eshell"       $ spawn (myEmacs ++ ("--eval '(eshell)'")))
-  , ("M-e v", addName "Emacsclient Vterm"        $ spawn (myEmacs ++ ("--eval '(+vterm/here nil)'")))
-  , ("M-e w", addName "Emacsclient EWW Browser"  $ spawn (myEmacs ++ ("--eval '(doom/window-maximize-buffer(eww \"distro.tube\"))'")))]
+  [ ("M-e e", addName "Emacsclient Dashboard"    $ spawn (myEmacs ++ "--eval '(dashboard-refresh-buffer)'"))
+  , ("M-e a", addName "Emacsclient EMMS (music)" $ spawn (myEmacs ++ "--eval '(emms)' --eval '(emms-play-directory-tree \"~/Music/\")'"))
+  , ("M-e b", addName "Emacsclient Ibuffer"      $ spawn (myEmacs ++ "--eval '(ibuffer)'"))
+  , ("M-e d", addName "Emacsclient Dired"        $ spawn (myEmacs ++ "--eval '(dired nil)'"))
+  , ("M-e i", addName "Emacsclient ERC (IRC)"    $ spawn (myEmacs ++ "--eval '(erc)'"))
+  , ("M-e n", addName "Emacsclient Elfeed (RSS)" $ spawn (myEmacs ++ "--eval '(elfeed)'"))
+  , ("M-e s", addName "Emacsclient Eshell"       $ spawn (myEmacs ++ "--eval '(eshell)'"))
+  , ("M-e v", addName "Emacsclient Vterm"        $ spawn (myEmacs ++ "--eval '(+vterm/here nil)'"))
+  , ("M-e w", addName "Emacsclient EWW Browser"  $ spawn (myEmacs ++ "--eval '(doom/window-maximize-buffer(eww \"distro.tube\"))'"))]
 
   -- KB_GROUP Variety
   ^++^ subKeys "Variety"
@@ -695,8 +693,8 @@ main :: IO ()
 main = do
   -- Launching three instances of xmobar on their monitors.
   xmproc0 <- spawnPipe ("xmobar -x 0 $HOME/.config/xmobar/" ++ colorScheme ++ "-xmobarrc")
-  xmproc1 <- spawnPipe ("xmobar -x 1 $HOME/.config/xmobar/" ++ colorScheme ++ "-xmobarrc")
-  xmproc2 <- spawnPipe ("xmobar -x 2 $HOME/.config/xmobar/" ++ colorScheme ++ "-xmobarrc")
+  -- xmproc1 <- spawnPipe ("xmobar -x 1 $HOME/.config/xmobar/" ++ colorScheme ++ "-xmobarrc")
+  -- xmproc2 <- spawnPipe ("xmobar -x 2 $HOME/.config/xmobar/" ++ colorScheme ++ "-xmobarrc")
   -- the xmonad, ya know...what the WM is named after!
   xmonad $ addDescrKeys' ((mod4Mask, xK_F1), showKeybindings) myKeys $ ewmh $ docks $ def
     { manageHook         = myManageHook <+> manageDocks
@@ -710,9 +708,9 @@ main = do
     , normalBorderColor  = myNormColor
     , focusedBorderColor = myFocusColor
     , logHook = dynamicLogWithPP $  filterOutWsPP [scratchpadWorkspaceTag] $ xmobarPP
-        { ppOutput = \x -> hPutStrLn xmproc0 x   -- xmobar on monitor 1
-                        >> hPutStrLn xmproc1 x   -- xmobar on monitor 2
-                        >> hPutStrLn xmproc2 x   -- xmobar on monitor 3
+        { ppOutput = hPutStrLn xmproc0   -- xmobar on monitor 1
+        --                >> hPutStrLn xmproc1 x   -- xmobar on monitor 2
+        --                >> hPutStrLn xmproc2 x   -- xmobar on monitor 3
         , ppCurrent = xmobarColor color06 "" . wrap
                       ("<box type=Bottom width=2 mb=2 color=" ++ color06 ++ ">") "</box>"
           -- Visible but not current workspace

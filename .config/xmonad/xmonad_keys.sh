@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-
 sed -n '/START_KEYS/,/END_KEYS/p' ~/.xmonad/xmonad.hs | \
     grep -e ', ("' \
     -e '\[ (' \

@@ -2,6 +2,8 @@
 
 current_window_manager="$DESKTOP_SESSION"
 
+ICON="dialog-information"
+
 reload_polybar() {
 
 	# Update config colors
@@ -47,6 +49,11 @@ reload_xmonad() {
 	xmonad --recompile && xmonad --restart
 }
 
+reload_qtile() {
+	qtile cmd-obj -o cmd -f reload_config
+	# qtile cmd-obj -o cmd -f restart
+}
+
 reload_window_manager() {
 
 	if [[ "$current_window_manager" = "bspwm" ]]; then
@@ -55,11 +62,18 @@ reload_window_manager() {
 	elif [[ "$current_window_manager" = "xmonad" ]]; then
 		reload_xmobar
 		reload_xmonad
+	elif [[ "$current_window_manager" = "qtile" ]]; then
+        reload_qtile
 	else
 		echo "Warning: No window manager detected"
 	fi
 
 	reload_dunst
+	show_notification $current_window_manager
+}
+
+show_notification() {
+	notify-send -t 4000 -i "$ICON" "Status" "Update finished for $1"
 }
 
 wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)

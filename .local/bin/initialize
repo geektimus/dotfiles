@@ -16,8 +16,8 @@ function python_setup() {
   echo "Configuring Python using pyenv"
   # pyenv install python
   # pyenv install --list
-  pyenv install 3.10.8
-  pyenv local 3.10.8
+  pyenv install 3.11.0
+  pyenv local 3.11.0
   pip install --upgrade pip
   pip install --user pynvim
 }

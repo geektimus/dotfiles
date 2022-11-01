@@ -1,5 +1,9 @@
 #!/bin/sh
 
+# Make pacman display colored output
+sudo sed -i 's/#Color/Color/g' /etc/pacman.conf
+sudo sed -i 's/#ParallelDownloads = 5/ParallelDownloads = 8/g' /etc/pacman.conf
+
 sudo pacman -S lsb-release --noconfirm --needed
 
 release=$(lsb_release -i | awk -F: '{$1=""; print $2}' | tr -d '[:space:]')
@@ -36,7 +40,7 @@ sudo pacman -S redshift xorg xorg-xinit volumeicon cbatticon feh dunst pavucontr
 sudo pacman -S lxappearance --noconfirm --needed
 sudo pacman -S rofi ranger bspwm sxhkd polybar --noconfirm --needed
 sudo pacman -S xmonad xmobar xmonad-extras xmonad-contrib xmonad-utils alacritty trayer dmenu --noconfirm --needed
-sudo pacman -S qtile tk tcl libqtile python-dbus-next python-iwlib python-keyring python-xdg python-keyrings-alt libgnome-keyring xfce4-settings --noconfirm --needed
+sudo pacman -S qtile tk tcl python-dbus-next python-iwlib python-keyring python-xdg python-keyrings-alt libgnome-keyring xfce4-settings --noconfirm --needed
 
 sudo pacman -S gnome-themes-extra gtk-engines xorg-xfontsel gnome-icon-theme-extras xorg-server-xephyr --needed --noconfirm
 
@@ -93,10 +97,7 @@ fc-cache -vf ~/.local/share/fonts/
 
 wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf
 mv PowerlineSymbols.otf ~/.local/share/fonts/
-fc-cache -vf ~/.local/share/fonts/
-
-# Make pacman display colored output
-sudo sed -i 's/#Color/Color/g' /etc/pacman.conf
+fc-cache -f ~/.local/share/fonts/
 
 # =========================================
 # Install antigen and zsh-autosuggestions
@@ -118,13 +119,7 @@ if [ -d "$HOME/.pyenv" ]; then
     echo "PyEnv is already installed, moving on"
 else
     git clone https://github.com/pyenv/pyenv.git ~/.pyenv
-fi
-
-if [ -d "$HOME/.pyenv" ]; then
-    echo "PyEnv is already installed, installing virtualenv"
-    git clone https://github.com/pyenv/pyenv-virtualenv.git $HOME/.pyenv/plugins/pyenv-virtualenv
-else
-    echo "Moving on"
+    git clone https://github.com/pyenv/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
 fi
 
 if [ -f "$HOME/.local/bin/kubectl" ]; then
@@ -139,7 +134,7 @@ if [ -d "/opt/vscode" ]; then
     echo "VSCode is already installed, moving on..."
 else
     wget -t0 https://go.microsoft.com/fwlink/\?LinkID\=620884 -O code-stable.tar.gz 
-    tar -xvf code-stable.tar.gz && mv VSCode-linux-x64 vscode && sudo rm -rf /opt/vscode && sudo mv vscode /opt && rm code-stable.tar.gz
+    tar -xf code-stable.tar.gz && mv VSCode-linux-x64 vscode && sudo rm -rf /opt/vscode && sudo mv vscode /opt && rm code-stable.tar.gz
     sudo ln -sf /opt/vscode/bin/code /usr/bin/code
     #sh ~/.config/Code/User/extensions.sh
 fi
@@ -159,7 +154,7 @@ fi
 if ! command -v subl &> /dev/null
 then
     curl -O https://download.sublimetext.com/sublimehq-pub.gpg && sudo pacman-key --add sublimehq-pub.gpg && sudo pacman-key --lsign-key 8A8F901A && rm sublimehq-pub.gpg
-    cho -e "\n[sublime-text]\nServer = https://download.sublimetext.com/arch/stable/x86_64" | sudo tee -a /etc/pacman.conf
+    echo -e "\n[sublime-text]\nServer = https://download.sublimetext.com/arch/stable/x86_64" | sudo tee -a /etc/pacman.conf
     sudo pacman -Syu sublime-text --noconfirm --needed
 else
     echo "Sublime already installed, moving on"

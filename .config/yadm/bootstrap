@@ -15,12 +15,10 @@ if [ "$choice" = "y" ]; then
 fi
 
 # Fonts
-sudo pacman -S gnome-font-viewer ttf-roboto ttf-dejavu ttf-liberation noto-fonts noto-fonts-emoji ttf-font-awesome ttf-iosevka-nerd otf-font-awesome terminus-font nerd-fonts-ubuntu --noconfirm --needed
+sudo pacman -S gnome-font-viewer ttf-roboto ttf-dejavu ttf-liberation noto-fonts noto-fonts-emoji ttf-font-awesome ttf-iosevka-nerd otf-font-awesome terminus-font --noconfirm --needed
 
 # Utils
-sudo pacman -S zip unzip zsh wget curl make ccache libsecret xclip xsel at reflector rsync scrot cmake --noconfirm --needed
-
-# TODO: Check if the gnome-keyring package is necesary on non gnome systems
+sudo pacman -S zip unzip zsh wget curl make ccache libsecret xclip xsel at reflector rsync scrot cmake broot exa thefuck fzf bat --noconfirm --needed
 
 if [ "$release" == "Artix" ]; then
   # In artix before the yadm bootstrap process starts we need to remove xorg-mkfontscale
@@ -35,6 +33,7 @@ fi
 sudo pacman -S redshift xorg xorg-xinit volumeicon cbatticon feh dunst pavucontrol pamixer picom gnome-keyring variety sxiv python-pywal python-ueberzug polkit-gnome ntfs-3g arandr udiskie network-manager-applet tldr transmission-gtk unclutter --noconfirm --needed
 
 # Desktop environment bases, bspwm packages and utils
+sudo pacman -S lxappearance --noconfirm --needed
 sudo pacman -S rofi ranger bspwm sxhkd polybar --noconfirm --needed
 sudo pacman -S xmonad xmobar xmonad-extras xmonad-contrib xmonad-utils alacritty trayer dmenu --noconfirm --needed
 sudo pacman -S qtile tk tcl libqtile python-dbus-next python-iwlib python-keyring python-xdg python-keyrings-alt libgnome-keyring xfce4-settings --noconfirm --needed
@@ -121,6 +120,13 @@ else
     git clone https://github.com/pyenv/pyenv.git ~/.pyenv
 fi
 
+if [ -d "$HOME/.pyenv" ]; then
+    echo "PyEnv is already installed, installing virtualenv"
+    git clone https://github.com/pyenv/pyenv-virtualenv.git $HOME/.pyenv/plugins/pyenv-virtualenv
+else
+    echo "Moving on"
+fi
+
 if [ -f "$HOME/.local/bin/kubectl" ]; then
     echo "Kubectl is already installed, moving on"
 else
@@ -150,12 +156,17 @@ else
     curl -s "https://get.sdkman.io" | bash
 fi
 
-# Sublime 
-# TODO: Check if subl command is installed
-curl -O https://download.sublimetext.com/sublimehq-pub.gpg && sudo pacman-key --add sublimehq-pub.gpg && sudo pacman-key --lsign-key 8A8F901A && rm sublimehq-pub.gpg
-echo -e "\n[sublime-text]\nServer = https://download.sublimetext.com/arch/stable/x86_64" | sudo tee -a /etc/pacman.conf
+if ! command -v subl &> /dev/null
+then
+    curl -O https://download.sublimetext.com/sublimehq-pub.gpg && sudo pacman-key --add sublimehq-pub.gpg && sudo pacman-key --lsign-key 8A8F901A && rm sublimehq-pub.gpg
+    cho -e "\n[sublime-text]\nServer = https://download.sublimetext.com/arch/stable/x86_64" | sudo tee -a /etc/pacman.conf
+    sudo pacman -Syu sublime-text --noconfirm --needed
+else
+    echo "Sublime already installed, moving on"
+fi
 
-sudo pacman -Syu broot exa thefuck fzf lxappearance sublime-text bat --noconfirm --needed
+#Fonts
+yay -S nerd-fonts-ubuntu --needed --noconfirm
 
 # Enable services
 sudo systemctl enable lightdm

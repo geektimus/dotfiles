@@ -89,8 +89,8 @@ URxvt*scrollTtyKeypress: true
 
 ! Xft.dpi:100
 
-Sxiv.background: #131310
-Sxiv.foreground: #c8e0ed
+Sxiv.background: #131217
+Sxiv.foreground: #e8e4e3
 Sxiv.font: Roboto Condensed-10
 
 !  ░█░█░▀█▀░█▀▀░█▀▄░█▄█

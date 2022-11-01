@@ -1,6 +1,4 @@
 [global_config]
-  title_hide_sizetext = True
-  title_transmit_bg_color = "#241f31"
   enabled_plugins = TerminatorThemes, LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
   always_split_with_profile = True
 [keybindings]
@@ -11,8 +9,7 @@
     background_color = "#16141e"
     background_darkness = 0.9
     background_type = transparent
-    cursor_color = "#00ecc8"
-    font = Sarasa Mono SC Nerd Light 10
+    font = Iosevka Custom 9
     foreground_color = "#00ecc8"
     show_titlebar = False
     scrollback_infinite = True

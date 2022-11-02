@@ -31,7 +31,7 @@ font:
     # Font family
     #
     # If the bold family is not specified, it will fall back to the
-    # value specified for the normal font.
+    # vaue specified for the normal font.
     # family: Iosevka Nerd Font
     # family: VictorMono Nerd Font
     # family: CodeNewRoman Nerd Font
@@ -42,7 +42,7 @@ font:
     # family: Monofur Nerd Font
     # family: TerminessTTF Nerd Font
     # family: Mononoki Nerd Font
-    family: "Iosevka Custom"
+    # family: "Iosevka Custom"
 
     # The `style` can be specified to pick a specific face.
     style: Bold
@@ -63,7 +63,7 @@ font:
     # family: Monofuritalic Nerd Font Mono
     # family: TerminessTTF Nerd Font
     # family: Mononoki Nerd Font
-    family: "Iosevka Custom"
+    # family: "Iosevka Custom"
 
     # The `style` can be specified to pick a specific face.
     style: Italic
@@ -84,7 +84,7 @@ font:
     # family: Monofuritalic Nerd Font Mono
     # family: TerminessTTF Nerd Font
     # family: Mononoki Nerd Font
-    family: "Iosevka Custom"
+    # family: "Iosevka Custom"
     
     # The `style` can be specified to pick a specific face.
     style: Bold Italic

@@ -93,14 +93,10 @@ myTerminal :: String
 myTerminal = "alacritty"    -- Sets default terminal
 
 myBrowser :: String
-myBrowser = "google-chrome-stable "  -- Sets qutebrowser as browser
+myBrowser = "google-chrome-stable"  -- Sets chrome as browser
 
-myEmacs :: String
-myEmacs = "emacsclient -c -a 'emacs' "  -- Makes emacs keybindings easier to type
-
-myEditor :: String
---myEditor = "emacsclient -c -a 'emacs' "  -- Sets emacs as editor
-myEditor = myTerminal ++ " -e vim "    -- Sets vim as editor
+myFileManager :: String
+myFileManager = "thunar"
 
 myBorderWidth :: Dimension
 myBorderWidth = 2           -- Sets border width for windows
@@ -200,76 +196,26 @@ runSelectedAction' conf actions = do
         Just selectedAction -> selectedAction
         Nothing -> return ()
 
--- gsCategories =
---   [ ("Games",      spawnSelected' gsGames)
---   --, ("Education",   spawnSelected' gsEducation)
---   , ("Internet",   spawnSelected' gsInternet)
---   , ("Multimedia", spawnSelected' gsMultimedia)
---   , ("Office",     spawnSelected' gsOffice)
---   , ("Settings",   spawnSelected' gsSettings)
---   , ("System",     spawnSelected' gsSystem)
---   , ("Utilities",  spawnSelected' gsUtilities)
---   ]
-
 gsCategories =
-  [ ("Games",      "xdotool key super+alt+1")
-  , ("Education",  "xdotool key super+alt+2")
-  , ("Internet",   "xdotool key super+alt+3")
-  , ("Multimedia", "xdotool key super+alt+4")
-  , ("Office",     "xdotool key super+alt+5")
-  , ("Settings",   "xdotool key super+alt+6")
-  , ("System",     "xdotool key super+alt+7")
-  , ("Utilities",  "xdotool key super+alt+8")
-  ]
-
-gsGames =
-  [ ("0 A.D.", "0ad")
-  , ("Battle For Wesnoth", "wesnoth")
-  , ("OpenArena", "openarena")
-  , ("Sauerbraten", "sauerbraten")
-  , ("Steam", "steam")
-  , ("Unvanquished", "unvanquished")
-  , ("Xonotic", "xonotic-glx")
+  [ ("Education",  "xdotool key super+alt+1")
+  , ("Internet",   "xdotool key super+alt+2")
+  , ("Multimedia", "xdotool key super+alt+3")
+  , ("Settings",   "xdotool key super+alt+4")
+  , ("System",     "xdotool key super+alt+5")
+  , ("Utilities",  "xdotool key super+alt+6")
   ]
 
 gsEducation =
-  [ ("GCompris", "gcompris-qt")
-  , ("Kstars", "kstars")
-  , ("Minuet", "minuet")
-  , ("Scratch", "scratch")
-  ]
+  [ ("Scratch", "scratch") ]
 
 gsInternet =
-  [ ("Brave", "brave")
-  , ("Discord", "discord")
-  , ("Element", "element-desktop")
-  , ("Firefox", "firefox")
-  , ("LBRY App", "lbry")
-  , ("Mailspring", "mailspring")
-  , ("Nextcloud", "nextcloud")
-  , ("Qutebrowser", "qutebrowser")
+  [ ("Chrome", myBrowser)
   , ("Transmission", "transmission-gtk")
-  , ("Zoom", "zoom")
   ]
 
 gsMultimedia =
-  [ ("Audacity", "audacity")
-  , ("Blender", "blender")
-  , ("Deadbeef", "deadbeef")
-  , ("Kdenlive", "kdenlive")
-  , ("OBS Studio", "obs")
+  [ ("OBS Studio", "obs")
   , ("VLC", "vlc")
-  ]
-
-gsOffice =
-  [ ("Document Viewer", "evince")
-  , ("LibreOffice", "libreoffice")
-  , ("LO Base", "lobase")
-  , ("LO Calc", "localc")
-  , ("LO Draw", "lodraw")
-  , ("LO Impress", "loimpress")
-  , ("LO Math", "lomath")
-  , ("LO Writer", "lowriter")
   ]
 
 gsSettings =
@@ -283,11 +229,11 @@ gsSystem =
   [ ("Alacritty", "alacritty")
   , ("Bash", myTerminal ++ " -e bash")
   , ("Htop", myTerminal ++ " -e htop")
-  , ("Fish", myTerminal ++ " -e fish")
+  , ("Zsh", myTerminal ++ " -e zsh")
   , ("PCManFM", "pcmanfm")
+  , ("Thunar", "thunar")
   , ("VirtualBox", "virtualbox")
   , ("Virt-Manager", "virt-manager")
-  , ("Zsh", myTerminal ++ " -e zsh")
   ]
 
 gsUtilities =
@@ -634,36 +580,28 @@ myKeys c =
   ^++^ subKeys "GridSelect"
   -- , ("C-g g", addName "Select favorite apps"     $ runSelectedAction' defaultGSConfig gsCategories)
   [ ("M-M1-<Return>", addName "Select favorite apps" $ spawnSelected'
-       $ gsGames ++ gsEducation ++ gsInternet ++ gsMultimedia ++ gsOffice ++ gsSettings ++ gsSystem ++ gsUtilities)
+       $ gsEducation ++ gsInternet ++ gsMultimedia ++ gsSettings ++ gsSystem ++ gsUtilities)
   , ("M-M1-c", addName "Select favorite apps"    $ spawnSelected' gsCategories)
   , ("M-M1-t", addName "Goto selected window"    $ goToSelected $ mygridConfig myColorizer)
   , ("M-M1-b", addName "Bring selected window"   $ bringSelected $ mygridConfig myColorizer)
-  , ("M-M1-1", addName "Menu of games"           $ spawnSelected' gsGames)
-  , ("M-M1-2", addName "Menu of education apps"  $ spawnSelected' gsEducation)
-  , ("M-M1-3", addName "Menu of Internet apps"   $ spawnSelected' gsInternet)
-  , ("M-M1-4", addName "Menu of multimedia apps" $ spawnSelected' gsMultimedia)
-  , ("M-M1-5", addName "Menu of office apps"     $ spawnSelected' gsOffice)
-  , ("M-M1-6", addName "Menu of settings apps"   $ spawnSelected' gsSettings)
-  , ("M-M1-7", addName "Menu of system apps"     $ spawnSelected' gsSystem)
-  , ("M-M1-8", addName "Menu of utilities apps"  $ spawnSelected' gsUtilities)]
-
-  -- Emacs (SUPER-e followed by a key)
-  ^++^ subKeys "Emacs"
-  [ ("M-e e", addName "Emacsclient Dashboard"    $ spawn (myEmacs ++ "--eval '(dashboard-refresh-buffer)'"))
-  , ("M-e a", addName "Emacsclient EMMS (music)" $ spawn (myEmacs ++ "--eval '(emms)' --eval '(emms-play-directory-tree \"~/Music/\")'"))
-  , ("M-e b", addName "Emacsclient Ibuffer"      $ spawn (myEmacs ++ "--eval '(ibuffer)'"))
-  , ("M-e d", addName "Emacsclient Dired"        $ spawn (myEmacs ++ "--eval '(dired nil)'"))
-  , ("M-e i", addName "Emacsclient ERC (IRC)"    $ spawn (myEmacs ++ "--eval '(erc)'"))
-  , ("M-e n", addName "Emacsclient Elfeed (RSS)" $ spawn (myEmacs ++ "--eval '(elfeed)'"))
-  , ("M-e s", addName "Emacsclient Eshell"       $ spawn (myEmacs ++ "--eval '(eshell)'"))
-  , ("M-e v", addName "Emacsclient Vterm"        $ spawn (myEmacs ++ "--eval '(+vterm/here nil)'"))
-  , ("M-e w", addName "Emacsclient EWW Browser"  $ spawn (myEmacs ++ "--eval '(doom/window-maximize-buffer(eww \"distro.tube\"))'"))]
+  , ("M-M1-1", addName "Menu of education apps"  $ spawnSelected' gsEducation)
+  , ("M-M1-2", addName "Menu of Internet apps"   $ spawnSelected' gsInternet)
+  , ("M-M1-3", addName "Menu of multimedia apps" $ spawnSelected' gsMultimedia)
+  , ("M-M1-4", addName "Menu of settings apps"   $ spawnSelected' gsSettings)
+  , ("M-M1-5", addName "Menu of system apps"     $ spawnSelected' gsSystem)
+  , ("M-M1-6", addName "Menu of utilities apps"  $ spawnSelected' gsUtilities)]
 
   -- KB_GROUP Variety
   ^++^ subKeys "Variety"
   [ ("M-S-d",  addName "Variety Delete Wallpaper" $ spawn "variety --trash")
   , ("M-S-n",  addName "Variety Next Wallpaper" $ spawn "variety --next")
   , ("M-S-p",  addName "Variety Previous Wallpaper" $ spawn "variety --previous")]
+
+  -- KB_GROUP Utils
+  ^++^ subKeys "Utils"
+  [ ("M-e",  addName "Open File Manager" $ spawn myFileManager)
+  , ("M-z",  addName "Open Xephyr Window on display :1" $ spawn "Xephyr -br -ac -noreset -screen 1280x720 :1 &")
+  , ("M-S-z",  addName "Close Xephyr Window" $ spawn "killall -KILL Xephyr")]
 
   -- Multimedia Keys
   ^++^ subKeys "Multimedia keys"
@@ -673,7 +611,7 @@ myKeys c =
   , ("<XF86AudioMute>", addName "Toggle audio mute"   $ spawn "amixer set Master toggle")
   , ("<XF86AudioLowerVolume>", addName "Lower vol"    $ spawn "amixer set Master 5%- unmute")
   , ("<XF86AudioRaiseVolume>", addName "Raise vol"    $ spawn "amixer set Master 5%+ unmute")
-  , ("<XF86HomePage>", addName "Open home page"       $ spawn (myBrowser ++ " https://www.youtube.com/c/DistroTube"))
+  , ("<XF86HomePage>", addName "Open home page"       $ spawn (myBrowser ++ " https://github.com/geektimus"))
   , ("<XF86Search>", addName "Web search (dmscripts)" $ spawn "dm-websearch")
   , ("<XF86Mail>", addName "Email client"             $ runOrRaise "thunderbird" (resource =? "thunderbird"))
   , ("<XF86Calculator>", addName "Calculator"         $ runOrRaise "qalculate-gtk" (resource =? "qalculate-gtk"))

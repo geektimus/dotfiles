@@ -1,93 +1,96 @@
 # Qtile keybindings
 
-from libqtile.config import Key
+from libqtile.config import EzKey as Key
 from libqtile.command import lazy
-
 
 mod = "mod4"
 
-keys = [Key(key[0], key[1], *key[2:]) for key in [
+keys = [Key(key[0], *key[1:]) for key in [
     # ------------ Window Configs ------------
 
     # Switch between windows in current stack pane
-    ([mod], "j", lazy.layout.down()),
-    ([mod], "k", lazy.layout.up()),
-    ([mod], "h", lazy.layout.left()),
-    ([mod], "l", lazy.layout.right()),
+    ("M-j", lazy.layout.down()),
+    ("M-k", lazy.layout.up()),
+    ("M-h", lazy.layout.left()),
+    ("M-l", lazy.layout.right()),
 
     # Change window sizes (MonadTall)
-    ([mod, "shift"], "l", lazy.layout.grow()),
-    ([mod, "shift"], "h", lazy.layout.shrink()),
+    ("M-S-l", lazy.layout.grow()),
+    ("M-S-h", lazy.layout.shrink()),
 
     # Toggle floating
-    ([mod, "shift"], "f", lazy.window.toggle_floating()),
+    ("M-S-f", lazy.window.toggle_floating()),
 
     # Move windows up or down in current stack
-    ([mod, "shift"], "j", lazy.layout.shuffle_down()),
-    ([mod, "shift"], "k", lazy.layout.shuffle_up()),
+    ("M-S-j", lazy.layout.shuffle_down()),
+    ("M-S-k", lazy.layout.shuffle_up()),
 
     # Toggle between different layouts as defined below
-    ([mod], "Tab", lazy.next_layout()),
-    ([mod, "shift"], "Tab", lazy.prev_layout()),
+    ("M-<Tab>", lazy.next_layout()),
+    ("M-S-<Tab>", lazy.prev_layout()),
 
     # Kill window
-    ([mod, "shift"], "c", lazy.window.kill()),
+    ("M-S-c", lazy.window.kill()),
 
     # Switch focus of monitors
-    ([mod], "period", lazy.next_screen()),
-    ([mod], "comma", lazy.prev_screen()),
+    ("M-<period>", lazy.next_screen()),
+    ("M-<comma>", lazy.prev_screen()),
 
     # Restart Qtile
-    ([mod, "shift"], "r", lazy.restart()),
+    ("M-S-r", lazy.restart()),
 
-    ([mod, "shift"], "q", lazy.shutdown()),
-    ([mod], "r", lazy.spawncmd()),
+    ("M-S-q", lazy.shutdown()),
+    ("M-r", lazy.spawncmd()),
 
     # ------------ App Configs ------------
 
     # Menu
-    ([mod], "m", lazy.spawn("rofi -show drun")),
+    ("M-m", lazy.spawn("rofi -show drun")),
 
     # Window Nav
-    ([mod, "shift"], "m", lazy.spawn("rofi -show")),
+    ("M-S-m", lazy.spawn("rofi -show")),
 
     # Browser
-    ([mod], "b", lazy.spawn("google-chrome-stable")),
+    ("M-b", lazy.spawn("google-chrome-stable")),
 
     # File Explorer
-    ([mod], "e", lazy.spawn("thunar")),
+    ("M-e", lazy.spawn("thunar")),
 
     # Terminal
-    ([mod], "Return", lazy.spawn("alacritty")),
+    ("M-<Return>", lazy.spawn("alacritty")),
 
     # Redshift
-    ([mod], "r", lazy.spawn("redshift -O 2400")),
-    ([mod, "shift"], "r", lazy.spawn("redshift -x")),
+    ("M-r", lazy.spawn("redshift -O 2400")),
+    ("M-S-r", lazy.spawn("redshift -x")),
 
     # Screenshot
-    ([mod], "s", lazy.spawn("scrot")),
-    ([mod, "shift"], "s", lazy.spawn("scrot -s")),
+    ("M-s", lazy.spawn("scrot")),
+    ("M-S-s", lazy.spawn("scrot -s")),
 
     # Variety
-    ([mod, "shift"], "d", lazy.spawn("variety -t")),
-    ([mod, "shift"], "n", lazy.spawn("variety -n")),
-    ([mod, "shift"], "p", lazy.spawn("variety -p")),
-    ([mod, "control"], "t", lazy.spawn("/home/geektimus/.local/bin/update_theme_from_wallpaper.sh")),
+    ("M-S-d", lazy.spawn("variety -t")),
+    ("M-S-n", lazy.spawn("variety -n")),
+    ("M-S-p", lazy.spawn("variety -p")),
+    ("M-C-t", lazy.spawn("/home/geektimus/.local/bin/update_theme_from_wallpaper.sh")),
+
+    # Utils
+    ("M-z", lazy.spawn("Xephyr -br -ac -noreset -screen 1280x720 :1 &")),
+    ("M-S-z", lazy.spawn("killall -KILL Xephyr")),
 
     # ------------ Hardware Configs ------------
 
     # Volume
-    ([], "XF86AudioLowerVolume", lazy.spawn(
+    ("<XF86AudioLowerVolume>", lazy.spawn(
         "pactl set-sink-volume @DEFAULT_SINK@ -5%"
     )),
-    ([], "XF86AudioRaiseVolume", lazy.spawn(
+    ("<XF86AudioRaiseVolume>", lazy.spawn(
         "pactl set-sink-volume @DEFAULT_SINK@ +5%"
     )),
-    ([], "XF86AudioMute", lazy.spawn(
+    ("<XF86AudioMute>", lazy.spawn(
         "pactl set-sink-mute @DEFAULT_SINK@ toggle"
     )),
 
     # Brightness
-    ([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set +10%")),
-    ([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 10%-")),
+    ("<XF86MonBrightnessUp>", lazy.spawn("brightnessctl set +10%")),
+    ("<XF86MonBrightnessDown>", lazy.spawn("brightnessctl set 10%-")),
 ]]

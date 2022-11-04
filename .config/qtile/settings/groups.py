@@ -1,9 +1,8 @@
 # Qtile workspaces
 
-from libqtile.config import Key, Group
+from libqtile.config import EzKey as Key, Group
 from libqtile.command import lazy
 from .keys import mod, keys
-
 
 # Get the icons at https://www.nerdfonts.com/cheat-sheet (you need a Nerd Font)
 # Icons:
@@ -20,14 +19,6 @@ from .keys import mod, keys
 #     "   ", "   ", "   ", "   ", "  ", "   ", "   ", "   ", "   ",
 # ]]
 #
-# for i, group in enumerate(groups):
-#     actual_key = str(i + 1)
-#     keys.extend([
-#         # Switch to workspace N
-#         Key([mod], actual_key, lazy.group[group.name].toscreen()),
-#         # Send window to workspace N
-#         Key([mod, "shift"], actual_key, lazy.window.togroup(group.name))
-#     ])
 
 groups = [Group(i) for i in [
   "dev", "www", "sys", "doc", "vbox", "chat", "mus", "vid", "gfx"
@@ -39,8 +30,7 @@ for idx, group in enumerate(groups):
         [
             # mod1 + letter of group = switch to group
             Key(
-                [mod],
-                actual_key,
+                "M-{}".format(actual_key),
                 lazy.group[group.name].toscreen(),
                 desc="Switch to group {}".format(group.name),
             ),
@@ -54,8 +44,7 @@ for idx, group in enumerate(groups):
             # Or, use below if you prefer not to switch to that group.
             # # mod1 + shift + letter of group = move focused window to group
             Key(
-                [mod, "shift"],
-                actual_key,
+                "M-S-{}".format(actual_key),
                 lazy.window.togroup(group.name),
                 desc="move focused window to group {}".format(group.name)
             ),

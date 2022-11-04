@@ -10,12 +10,11 @@ from settings.mouse import mouse
 from os import path
 import subprocess
 
-qtile_path = path.join(path.expanduser('~'), '.config', 'qtile', 'autostart.sh')
+qtile_path = path.join(path.expanduser('~'), '.config', 'qtile')
 
 @hook.subscribe.startup_once
 def autostart():
     subprocess.call([path.join(qtile_path, 'autostart.sh')])
-
 
 main = None
 dgroups_key_binder = None

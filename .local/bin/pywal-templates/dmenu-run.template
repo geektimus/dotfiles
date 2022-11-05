@@ -2,5 +2,12 @@
 
 set -euo pipefail
 
+lines="-l 15"
+font="-fn 'Iosevka Term-10'" 
+colors="-nb 'BGCOLOR' -nf 'FGCOLOR' -sf 'BGCOLOR' -sb 'FGCOLOR'"
+prompt="-p 'Run: '"
+
+dmenu_command="dmenu $lines $font $prompt "$@" $colors"
+
 export _JAVA_AWT_WM_NONREPARENTING=1
-exec $(dmenu_path | dmenu -l 20 -fn 'Iosevka Term-10' -p 'Run: ' "$@" -nb 'BGCOLOR' -nf 'FGCOLOR' -sf 'BGCOLOR' -sb 'FGCOLOR' )
+exec $(dmenu_path | eval $dmenu_command )

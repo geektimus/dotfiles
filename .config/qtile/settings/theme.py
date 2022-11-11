@@ -3,7 +3,7 @@ from dataclasses import dataclass
 from os import path
 import json
 
-from .path import pywal_path
+from .path import pywal_path, qtile_path
 
 @dataclass
 class ThemeColors:
@@ -31,10 +31,10 @@ class ThemeColors:
       return ThemeColors('#FFF', '#000', '#FFF', '#FFF', '#FFF', '#FFF', '#FFF', '#FFF', '#FFF', '#FFF', '#FFF', '#FFF', '#FFF', '#FFF', '#FFF', '#FFF', '#FFF', '#FFF')
 
 
-def load_pywal():
+def load_pywal(theme_file):
 
-    if path.isfile(pywal_path):
-      with open(pywal_path,encoding='UTF-8') as f:
+    if path.isfile(theme_file):
+      with open(theme_file, encoding='UTF-8') as f:
         data = json.load(f)
         background = data['special']['background']
         foreground = data['special']['foreground']
@@ -58,10 +58,10 @@ def load_pywal():
                     color6, color7, color8, color9, color10, color11, color12, color13, color14, color15)
     else:
       logger.warn(f'Warning: The theme file "{pywal_path}" does not exist. Using Defaults')
-      return ThemeColors.emtpy()
+      return load_pywal(path.join(qtile_path, 'default_theme.json'))
 
 
 if __name__ == "settings.theme":
     logger.info(f'Loading colors from {pywal_path}')
-    colors = load_pywal()
+    colors = load_pywal(pywal_path)
 

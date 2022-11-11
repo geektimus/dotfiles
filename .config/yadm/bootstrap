@@ -160,6 +160,9 @@ else
     echo "Sublime already installed, moving on"
 fi
 
+# Install Rust
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
 #Fonts
 yay -S nerd-fonts-ubuntu --needed --noconfirm
 

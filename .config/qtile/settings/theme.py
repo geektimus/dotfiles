@@ -26,11 +26,6 @@ class ThemeColors:
     color14: str
     color15: str
 
-    @classmethod
-    def emtpy(cls):
-      return ThemeColors('#FFF', '#000', '#FFF', '#FFF', '#FFF', '#FFF', '#FFF', '#FFF', '#FFF', '#FFF', '#FFF', '#FFF', '#FFF', '#FFF', '#FFF', '#FFF', '#FFF', '#FFF')
-
-
 def load_pywal(theme_file):
 
     if path.isfile(theme_file):

@@ -33,9 +33,6 @@ class ThemeColors:
 
 def load_pywal():
 
-    if not path.isfile(pywal_path):
-      raise Exception(f'"{pywal_path}" does not exist')
-
     if path.isfile(pywal_path):
       with open(pywal_path,encoding='UTF-8') as f:
         data = json.load(f)

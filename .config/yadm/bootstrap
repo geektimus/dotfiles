@@ -163,6 +163,15 @@ fi
 #Fonts
 yay -S nerd-fonts-ubuntu --needed --noconfirm
 
+# Configure custom font
+sudo cp -R ~/.config/general/fonts/iosevka-custom /usr/share/fonts/
+fc-cache -f
+
+# Configure Lightdm
+sudo cp ~/.config/general/lightdm/lightdm-gtk-greeter.conf /etc/lightdm/
+sudo mkdir /usr/share/backgrounds
+sudo cp ~/.config/general/lightdm/backgrounds/wallhaven-gpzwrl.png /usr/share/backgrounds/
+
 # Enable services
 sudo systemctl enable lightdm
 sudo systemctl enable vboxservice

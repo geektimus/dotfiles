@@ -3,8 +3,9 @@
 
 include "/home/geektimus/.gtkrc-2.0.mine"
 gtk-theme-name="WhiteSur-Light"
-gtk-icon-theme-name="Tela-nord"
+gtk-icon-theme-name="Obsidian"
 gtk-font-name="Roboto Condensed, 10"
+gtk-cursor-theme-name="Adwaita"
 gtk-cursor-theme-size=0
 gtk-toolbar-style=GTK_TOOLBAR_ICONS
 gtk-toolbar-icon-size=GTK_ICON_SIZE_SMALL_TOOLBAR

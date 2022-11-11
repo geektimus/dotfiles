@@ -19,8 +19,8 @@ export PATH=$PATH:$USERBIN
 
 export HADOOP_HOME=/tmp/hadoop/
 
-export GOPATH=$HOME/Projects/personal/language/go
-export PATH=$PATH:$GOPATH/bin
+export GOPATH=$HOME/.go
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 export CONSCRIPT_HOME="$HOME/.config/conscript"
 export CONSCRIPT_OPTS="-XX:MaxPermSize=512M -Dfile.encoding=UTF-8"

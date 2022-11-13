@@ -174,10 +174,12 @@ fc-cache -f
 sudo cp ~/.config/general/lightdm/lightdm-gtk-greeter.conf /etc/lightdm/
 sudo mkdir /usr/share/backgrounds
 sudo cp ~/.config/general/lightdm/backgrounds/wallhaven-gpzwrl.png /usr/share/backgrounds/
+sudo cp ~/.config/general/reflector/reflector.conf /etc/xdg/reflector/
 
 # Enable services
 sudo systemctl enable lightdm
 sudo systemctl enable vboxservice
+sudo systemctl enable reflector.service
 
 echo "=============="
 echo "==== DONE ===="

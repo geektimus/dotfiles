@@ -1,6 +1,6 @@
 # Keyboard Layout
-setxkbmap -model pc105 -layout es,us -variant ,intl -option caps:capslock &
-# setxkbmap -model pc105 -layout latam,us -variant ,intl option grp:alt_shift_toggle &
+# setxkbmap -model pc105 -layout es,us -variant ,intl -option caps:capslock &
+setxkbmap -model pc105 -layout latam,us -variant ,intl option grp:alt_shift_toggle &
 # setxkbmap -model pc105 -layout es,us -variant ,intl option grp:alt_shift_toggle &
 xmodmap -pke > ~/.Xmodmap
 

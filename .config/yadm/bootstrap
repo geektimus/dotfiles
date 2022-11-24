@@ -112,7 +112,7 @@ fi
 if [ -d "$HOME/.fnm" ]; then
     echo "Fast Node Manager is already installed, moving on..."
 else
-    curl -fsSL https://github.com/Schniz/fnm/raw/master/.ci/install.sh | bash -s -- --skip-shell
+    curl -fsSL https://fnm.vercel.app/install | bash -s -- --skip-shell
 fi
 
 if [ -d "$HOME/.pyenv" ]; then

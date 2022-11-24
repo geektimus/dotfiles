@@ -10,6 +10,7 @@ code --install-extension EditorConfig.EditorConfig
 code --install-extension equinusocio.vsc-material-theme-icons
 code --install-extension esbenp.prettier-vscode
 code --install-extension GitHub.github-vscode-theme
+code --install-extension golang.go
 code --install-extension hashicorp.terraform
 code --install-extension haskell.haskell
 code --install-extension hoovercj.haskell-linter
@@ -18,6 +19,7 @@ code --install-extension mathiasfrohlich.Kotlin
 code --install-extension mosbasik.sxhkdrc-syntax
 code --install-extension ms-azuretools.vscode-docker
 code --install-extension ms-kubernetes-tools.vscode-kubernetes-tools
+code --install-extension ms-python.isort
 code --install-extension ms-python.python
 code --install-extension ms-python.vscode-pylance
 code --install-extension ms-toolsai.jupyter

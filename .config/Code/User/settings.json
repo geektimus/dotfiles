@@ -36,5 +36,9 @@
   "editor.renderWhitespace": "all",
   "editor.cursorStyle": "block-outline",
   "haskell.ghcupExecutablePath": "/home/geektimus/.ghcup/bin/ghcup",
-  "vsicons.dontShowNewVersionMessage": true
+  "vsicons.dontShowNewVersionMessage": true,
+  "notebook.cellToolbarLocation": {
+    "default": "right",
+    "jupyter-notebook": "left"
+  }
 }

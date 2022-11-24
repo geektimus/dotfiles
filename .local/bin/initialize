@@ -2,8 +2,8 @@
 
 function node_setup() {
   echo "Configuring Node using fnm"
-  fnm install v19.0.1
-  fnm alias v19.0.1 latest
+  fnm install v19.1.0
+  fnm alias v19.1.0 latest
   fnm install v18.12.1
   fnm alias v18.12.1 default
   fnm alias v18.12.1 lts
@@ -26,9 +26,9 @@ function jvm_setup() {
   source "/home/geektimus/.sdkman/bin/sdkman-init.sh"
   sdk install gradle 7.5.1
   sdk install java 19-zulu
-  sdk install kotlin 1.7.20
-  sdk install sbt 1.7.2
-  sdk install scala 3.2.0
+  sdk install kotlin 1.7.21
+  sdk install sbt 1.8.0
+  sdk install scala 3.2.1
 }
 
 if [ "$#" -ne 1 ]; then

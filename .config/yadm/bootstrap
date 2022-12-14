@@ -112,7 +112,7 @@ fi
 if [ -d "$HOME/.fnm" ]; then
     echo "Fast Node Manager is already installed, moving on..."
 else
-    curl -fsSL https://fnm.vercel.app/install | bash -s -- --skip-shell
+    curl -fsSL https://fnm.vercel.app/install | bash -s -- --install-dir "./.fnm" --skip-shell
 fi
 
 if [ -d "$HOME/.pyenv" ]; then
@@ -173,7 +173,7 @@ fc-cache -f
 # Configure Lightdm
 sudo cp ~/.config/general/lightdm/lightdm-gtk-greeter.conf /etc/lightdm/
 sudo mkdir /usr/share/backgrounds
-sudo cp ~/.config/general/lightdm/backgrounds/wallhaven-gpzwrl.png /usr/share/backgrounds/
+sudo cp ~/.config/general/lightdm/backgrounds/wallhaven-7p3ode.png /usr/share/backgrounds/
 sudo cp ~/.config/general/reflector/reflector.conf /etc/xdg/reflector/
 
 # Enable services

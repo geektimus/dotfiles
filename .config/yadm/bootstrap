@@ -173,7 +173,7 @@ fc-cache -f
 # Configure Lightdm
 sudo cp ~/.config/general/lightdm/lightdm-gtk-greeter.conf /etc/lightdm/
 sudo mkdir /usr/share/backgrounds
-sudo cp ~/.config/general/lightdm/backgrounds/wallhaven-7p3ode.png /usr/share/backgrounds/
+sudo cp ~/.config/general/lightdm/backgrounds/wallhaven-7p2363.png /usr/share/backgrounds/
 sudo cp ~/.config/general/reflector/reflector.conf /etc/xdg/reflector/
 
 # Enable services

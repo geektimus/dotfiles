@@ -3,7 +3,7 @@
 set -euo pipefail
 
 lines="-l 15"
-font="-fn 'Iosevka Term-10'" 
+font="-fn 'Iosevka Custom-10'" 
 colors="-nb 'BGCOLOR' -nf 'FGCOLOR' -sf 'BGCOLOR' -sb 'FGCOLOR'"
 prompt="-p 'Run: '"
 

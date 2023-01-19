@@ -19,7 +19,7 @@ if [ "$choice" = "y" ]; then
 fi
 
 # Fonts
-sudo pacman -S gnome-font-viewer ttf-roboto ttf-dejavu ttf-liberation noto-fonts noto-fonts-emoji ttf-font-awesome ttf-iosevka-nerd otf-font-awesome terminus-font --noconfirm --needed
+sudo pacman -S gnome-font-viewer ttf-roboto ttf-dejavu ttf-liberation noto-fonts noto-fonts-emoji ttf-font-awesome otf-font-awesome terminus-font ttf-ubuntu-nerd --noconfirm --needed
 
 # Utils
 sudo pacman -S zip unzip zsh wget curl make ccache libsecret xclip xsel at reflector rsync scrot cmake broot exa thefuck fzf bat --noconfirm --needed
@@ -162,9 +162,6 @@ fi
 
 # Install Rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-
-#Fonts
-yay -S nerd-fonts-ubuntu --needed --noconfirm
 
 # Configure custom font
 sudo cp -R ~/.config/general/fonts/iosevka-custom /usr/share/fonts/

@@ -1,7 +1,7 @@
 {
   "haskell.manageHLS": "GHCup",
-  "editor.fontFamily": "'Iosevka Term','Droid Sans Mono', 'monospace', monospace",
-  "editor.fontSize": 14,
+  "editor.fontFamily": "'Iosevka Custom','Droid Sans Mono', 'monospace', monospace",
+  "editor.fontSize": 13,
   "workbench.colorTheme": "Wal",
   "workbench.startupEditor": "none",
   "search.showLineNumbers": true,

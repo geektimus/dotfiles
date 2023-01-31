@@ -184,7 +184,7 @@ fi
 
 # Configure custom font
 
-if [ -d "/usr/share/fonts/" ]; then
+if [ -d "/usr/share/fonts/iosevka-custom" ]; then
     echo "Custom font already installed and configured"
 else
     sudo cp -R ~/.config/general/fonts/iosevka-custom /usr/share/fonts/

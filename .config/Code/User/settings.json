@@ -23,8 +23,8 @@
     "**/.metals": true,
     "**/.ammonite": true
   },
-  "terminal.integrated.fontFamily": "Iosevka Term",
-  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.fontFamily": "Iosevka Custom",
+  "terminal.integrated.fontSize": 13,
   "editor.formatOnPaste": true,
   "editor.multiCursorModifier": "ctrlCmd",
   "editor.snippetSuggestions": "top",
@@ -40,5 +40,8 @@
   "notebook.cellToolbarLocation": {
     "default": "right",
     "jupyter-notebook": "left"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }

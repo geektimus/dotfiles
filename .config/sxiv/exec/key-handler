@@ -26,26 +26,9 @@ rotate() {
     done
 }
 
-tag_add() {
-    >>"$TAGFILE"
-    tags=$(dmenu <"$TAGFILE" | tr '\n' ',')
-    [ -z "$tags" ] && return
-    iptckwed -i -a "$tags"
-    echo -n "$tags" | tr ',' '\n' | sort - "$TAGFILE" | uniq >"$TAGFILE.new"
-    mv -f "$TAGFILE"{.new,}
-}
-
-tag_del() {
-    cat >"$TMPFILE"
-    tags=$(iptckwed -iql <"$TMPFILE" | cut -f 2 | tr ',' '\n' | sort | uniq | dmenu | tr '\n' ',')
-    [ -z "$tags" ] && return
-    iptckwed -i -r "$tags" <"$TMPFILE"
-    rm -f "$TMPFILE"
-}
-
 case "$KEY" in
     "y")        tr '\n' ' ' | xclip -i ;;
-    "d")        while read file; do trash-put "$file"; done ;;
+    "d")        while read file; do trash-put "$file"; echo "Deleted $file"; done ;;
     "C-c")      while read file; do xclip -selection clipboard -target image/png "$file"; done ;;
     "C-e")      while read file; do urxvt -bg "#444" -fg "#eee" -sl 0 -title "$file" -e sh -c "exiv2 pr -q -pa '$file' | less" & done ;;
     "C-g")      tr '\n' '\0' | xargs -0 gimp & ;;

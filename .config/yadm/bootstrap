@@ -22,7 +22,7 @@ fi
 sudo pacman -S gnome-font-viewer ttf-roboto ttf-dejavu ttf-liberation noto-fonts noto-fonts-emoji ttf-font-awesome otf-font-awesome terminus-font ttf-ubuntu-nerd --noconfirm --needed
 
 # Utils
-sudo pacman -S zip unzip zsh wget curl make ccache libsecret xclip xsel at reflector rsync scrot cmake broot exa thefuck fzf bat --noconfirm --needed
+sudo pacman -S zip unzip zsh wget curl make ccache libsecret xclip xsel at rsync scrot cmake broot exa thefuck fzf bat --noconfirm --needed
 
 if [ "$release" == "Artix" ]; then
   # In artix before the yadm bootstrap process starts we need to remove xorg-mkfontscale
@@ -197,11 +197,11 @@ if [ ! -d "/usr/share/backgrounds" ]; then
     sudo mkdir /usr/share/backgrounds
 fi
 sudo cp ~/.config/general/lightdm/backgrounds/wallhaven-7p2363.png /usr/share/backgrounds/
-sudo cp ~/.config/general/reflector/reflector.conf /etc/xdg/reflector/
+# sudo cp ~/.config/general/reflector/reflector.conf /etc/xdg/reflector/
 
 # Enable services
 sudo systemctl enable lightdm
-sudo systemctl enable reflector.service
+# sudo systemctl enable reflector.service
 
 if [[ "$choice" = "y" ]]; then
     sudo systemctl enable vboxservice

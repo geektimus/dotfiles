@@ -12,10 +12,10 @@
    -- trayer
    -- 'dtos-local-bin' (from dtos-core-repo)
 
-Config { font            = "xft:Roboto Condensed:weight=bold:pixelsize=12:antialias=true:hinting=true"
-       , additionalFonts = [ "xft:Mononoki:pixelsize=11:antialias=true:hinting=true"
-                           , "xft:Font Awesome 6 Free Solid:pixelsize=12"
-                           , "xft:Font Awesome 6 Brands:pixelsize=12"
+Config { font            = "Roboto Condensed Bold 9"
+       , additionalFonts = [ "Mononoki 10"
+                           , "Font Awesome 6 Free Solid 12"
+                           , "Font Awesome 6 Brands 12"
                            ]
        , bgColor      = "BGCOLOR"
        , fgColor      = "FGCOLOR"

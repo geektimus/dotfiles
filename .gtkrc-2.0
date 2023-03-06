@@ -2,8 +2,8 @@
 # Any customization should be done in ~/.gtkrc-2.0.mine instead.
 
 include "/home/geektimus/.gtkrc-2.0.mine"
-gtk-theme-name="Mojave-Dark"
-gtk-icon-theme-name="Obsidian-Amber-SemiLight"
+gtk-theme-name="Mojave-Light"
+gtk-icon-theme-name="Obsidian-Aqua-SemiLight"
 gtk-font-name="Roboto Condensed, 10"
 gtk-cursor-theme-name="Yaru-Aqua"
 gtk-cursor-theme-size=0

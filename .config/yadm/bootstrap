@@ -16,6 +16,15 @@ read -p 'Install virtualbox additions? (y/N): ' choice
 
 if [[ "$choice" = "y" ]]; then
     sudo pacman -S xf86-video-vmware virtualbox-guest-utils --noconfirm --needed
+    sudo systemctl enable vboxservice
+fi
+
+read -p 'Install VMware tools? (y/N): ' choice
+
+if [[ "$choice" = "y" ]]; then
+    sudo pacman -S xf86-video-vmware open-vm-tools --noconfirm --needed
+    sudo systemctl enable vmtoolsd.service
+    sudo systemctl enable vmware-vmblock-fuse.service
 fi
 
 # Fonts
@@ -202,10 +211,6 @@ sudo cp ~/.config/general/lightdm/backgrounds/wallhaven-7p2363.png /usr/share/ba
 # Enable services
 sudo systemctl enable lightdm
 # sudo systemctl enable reflector.service
-
-if [[ "$choice" = "y" ]]; then
-    sudo systemctl enable vboxservice
-fi
 
 echo "=============="
 echo "==== DONE ===="

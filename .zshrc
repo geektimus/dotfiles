@@ -73,7 +73,11 @@ source $HOME/.zsh_aliases
 source $HOME/.config/broot/launcher/bash/br
 
 # fnm
-eval "`fnm env`"
+if command -v fnm &> /dev/null
+then
+    eval "`fnm env`"
+fi
+
 
 # Stern (Kubernetes Log Tool)
 source <(stern --completion=zsh)
@@ -82,7 +86,12 @@ source <(stern --completion=zsh)
 # &   # Run the process in the background.
 # ( ) # Hide shell job control messages.
 # (cat ~/.cache/wal/sequences &)
-wal -R -e --vte -q
+
+if command -v wal &> /dev/null
+then
+    wal -R -e --vte -q
+fi
+
 
 [ -f "/home/geektimus/.ghcup/env" ] && source "/home/geektimus/.ghcup/env" # ghcup-env
 

@@ -85,12 +85,12 @@ fi
 # Import Keys to Install Spotify
 # gpg --keyserver pool.sks-keyservers.net --recv-keys 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90
 # gpg --keyserver pool.sks-keyservers.net --recv-keys 2EBF997C15BDA244B6EBF5D84773BD5E130D1D45
-# yay -S spicetify-cli spotify --needed --removemake --nocleanmenu --nodiffmenu --noeditmenu --noconfirm
+# yay -S spicetify-cli spotify --needed --removemake --noconfirm
 
 if pacman -Qs google-chrome > /dev/null ; then
     echo "Yay packages already installed, moving on..."
 else
-    yay -S betterlockscreen google-chrome aic94xx-firmware wd719x-firmware --needed --removemake --nocleanmenu --nodiffmenu --noeditmenu --noconfirm
+    yay -S betterlockscreen google-chrome aic94xx-firmware wd719x-firmware --needed --removemake --noconfirm
 fi
 
 # ====================================
@@ -142,14 +142,6 @@ if [ -d "$HOME/.pyenv" ]; then
 else
     git clone https://github.com/pyenv/pyenv.git ~/.pyenv
     git clone https://github.com/pyenv/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
-fi
-
-if [ -f "$HOME/.local/bin/kubectl" ]; then
-    echo "Kubectl is already installed, moving on"
-else
-    mkdir -p $HOME/.local/bin
-    curl --output $HOME/.local/bin/kubectl -L "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"
-    chmod +x $HOME/.local/bin/kubectl
 fi
 
 if [ -d "/opt/vscode" ]; then

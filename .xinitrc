@@ -2,8 +2,6 @@
 
 # this file is run when calling startx
 
-export XDG_CURRENT_DESKTOP=xmonad
-
 if [ -n "$DESKTOP_SESSION"  ];then
     for env_var in $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh 2>/dev/null); do
         # Exports GNOME_KEYRING_CONTROL and SSH_AUTH_SOCK

@@ -15,10 +15,11 @@ antigen bundle git
 antigen bundle fzf
 antigen bundle thefuck
 antigen bundle archlinux
-# antigen bundle kubectl
-antigen bundle pyenv
 antigen bundle systemd
 antigen bundle terraform
+
+# Python bundles
+antigen bundle pip
 
 # antigen bundle lein
 antigen bundle command-not-found
@@ -77,10 +78,6 @@ if command -v fnm &> /dev/null
 then
     eval "`fnm env`"
 fi
-
-
-# Stern (Kubernetes Log Tool)
-source <(stern --completion=zsh)
 
 # Import colorscheme from 'wal' asynchronously
 # &   # Run the process in the background.

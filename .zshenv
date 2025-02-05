@@ -1,5 +1,5 @@
 # General config location
-export XDG_CURRENT_DESKTOP=bspwm
+# export XDG_CURRENT_DESKTOP=bspwm
 export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
 export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:="$HOME/.config"}
 export XDG_CACHE_HOME=${XDG_CACHE_HOME:="$HOME/.cache"}
@@ -22,14 +22,8 @@ export HADOOP_HOME=/tmp/hadoop/
 export GOPATH=$HOME/.go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
-export CONSCRIPT_HOME="$HOME/.config/conscript"
-export CONSCRIPT_OPTS="-XX:MaxPermSize=512M -Dfile.encoding=UTF-8"
-export PATH=$CONSCRIPT_HOME/bin:$PATH
-
+# Javascript
 export PATH=$HOME/.fnm:$PATH
-
-export DENO_INSTALL="/home/geektimus/.deno"
-export PATH="$DENO_INSTALL/bin:$PATH"
 
 # PyEnv
 export PYENV_ROOT="$HOME/.pyenv"

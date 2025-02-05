@@ -7,8 +7,6 @@ setxkbmap -model pc105 -layout us,es -variant intl, option grp:alt_shift_toggle 
 
 xmodmap -pke > ~/.Xmodmap
 
-export XDG_CURRENT_DESKTOP=xmonad
-
 if [ -n "$DESKTOP_SESSION" ];then
     for environment_variable in $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh 2>/dev/null); do
         # Exports GNOME_KEYRING_CONTROL and SSH_AUTH_SOCK

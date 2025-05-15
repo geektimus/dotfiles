@@ -20,3 +20,5 @@ if [ -d "$FNM_PATH" ]; then
 fi
 
 . "$HOME/.cargo/env"
+
+. "$HOME/.local/bin/env"

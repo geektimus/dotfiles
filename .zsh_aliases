@@ -15,7 +15,7 @@ alias llt='exa -T'
 alias llfu='exa -bghHliS --git'
 
 ## For the lols
-alias cat='bat'
+alias cat='batcat'
 
 alias vim=nvim
 alias v=nvim

@@ -13,6 +13,10 @@ fi
 export USERBIN=$HOME/.local/bin
 export PATH=$PATH:$USERBIN
 
-export PATH=$HOME/.fnm:$PATH
+FNM_PATH="/home/geektimus/.fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  eval "`fnm env`"
+fi
 
 . "$HOME/.cargo/env"

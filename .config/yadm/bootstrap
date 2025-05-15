@@ -1,6 +1,15 @@
 #!/bin/sh
 
 # ====================================
+# Prerequisites
+# ====================================
+
+echo "postfix postfix/mailname string $(hostname)" | sudo debconf-set-selections
+echo "postfix postfix/main_mailer_type string 'Internet Site'" | sudo debconf-set-selections
+
+export DEBIAN_FRONTEND=noninteractive
+
+# ====================================
 # Install packages
 # ====================================
 
@@ -8,7 +17,7 @@
 sudo apt install build-essential libxcb1-dev libxcb-render0-dev libxcb-shape0-dev libxcb-xfixes0-dev ca-certificates curl -y
 
 # Utils
-sudo apt install zip unzip zsh wget curl make ccache xclip xsel at rsync scrot cmake eza thefuck fzf bat -y
+sudo apt install zip unzip zsh wget curl make ccache xclip xsel rsync scrot cmake eza thefuck fzf bat -y
 
 sudo apt install gnome-keyring tldr -y
 
@@ -88,7 +97,7 @@ then
     $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | \
     sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
     sudo apt-get update
-    sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+    sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
 else
     echo "Docker already installed, moving on"
 fi
@@ -103,7 +112,6 @@ echo "=============="
 echo "chsh -s /bin/zsh"
 echo "~/.emacs.d/bin/doom install"
 echo "initialize node"
-echo "initialize python"
 echo "initialize jvm"
 
 # Change to zsh

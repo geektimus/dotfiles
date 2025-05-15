@@ -1,6 +1,6 @@
-#!/bin/env sh
+#!/bin/zsh
 
-function node_setup() {
+node_setup() {
   echo "Configuring Node using fnm"
   fnm install v24.0.2
   fnm alias v24.0.2 latest
@@ -11,7 +11,7 @@ function node_setup() {
   npm install -g npm
 }
 
-function jvm_setup() {
+jvm_setup() {
   source "/home/geektimus/.sdkman/bin/sdkman-init.sh"
   sdk install gradle 7.6
   sdk install java 19.0.2-zulu

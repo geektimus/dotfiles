@@ -16,7 +16,7 @@ antigen bundle fzf
 antigen bundle thefuck
 antigen bundle archlinux
 # antigen bundle kubectl
-antigen bundle pyenv
+# antigen bundle pyenv
 antigen bundle systemd
 antigen bundle terraform
 
@@ -77,23 +77,6 @@ if command -v fnm &> /dev/null
 then
     eval "`fnm env`"
 fi
-
-
-# Stern (Kubernetes Log Tool)
-source <(stern --completion=zsh)
-
-# Import colorscheme from 'wal' asynchronously
-# &   # Run the process in the background.
-# ( ) # Hide shell job control messages.
-# (cat ~/.cache/wal/sequences &)
-
-if command -v wal &> /dev/null
-then
-    wal -R -e --vte -q
-fi
-
-
-[ -f "/home/geektimus/.ghcup/env" ] && source "/home/geektimus/.ghcup/env" # ghcup-env
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/geektimus/.sdkman"

@@ -42,6 +42,8 @@ export GPG_TTY=$(tty)
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
 
+[[ -f ~/.cargo/env ]] && source ~/.cargo/env
+
 ## Innecesary extended format.
 # setopt EXTENDED_HISTORY
 HISTSIZE=10000000

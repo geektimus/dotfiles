@@ -2,24 +2,13 @@
 
 function node_setup() {
   echo "Configuring Node using fnm"
-  fnm install v19.1.0
-  fnm alias v19.1.0 latest
-  fnm install v18.12.1
-  fnm alias v18.12.1 default
-  fnm alias v18.12.1 lts
+  fnm install v24.0.2
+  fnm alias v24.0.2 latest
+  fnm install v22.15.1
+  fnm alias v22.15.1 default
+  fnm alias v22.15.1 lts
   fnm use latest
   npm install -g npm
-}
-
-
-function python_setup() {
-  echo "Configuring Python using pyenv"
-  # pyenv install python
-  # pyenv install --list
-  pyenv install 3.11.1
-  pyenv local 3.11.1
-  pip install --upgrade pip
-  pip install --user pynvim
 }
 
 function jvm_setup() {
@@ -38,8 +27,6 @@ fi
 
 if [[ "$1" == "node" ]]; then
   node_setup
-elif [[ "$1" == "python" ]]; then
-  python_setup
 elif [[ "$1" == "jvm" ]]; then
   jvm_setup
 else

@@ -1,125 +1,22 @@
 #!/bin/sh
 
-# Make pacman display colored output
-sudo sed -i 's/#Color/Color/g' /etc/pacman.conf
-sudo sed -i 's/#ParallelDownloads = 5/ParallelDownloads = 8/g' /etc/pacman.conf
-
-sudo pacman -S lsb-release --noconfirm --needed
-
-release=$(lsb_release -i | awk -F: '{$1=""; print $2}' | tr -d '[:space:]')
-
 # ====================================
 # Install packages
 # ====================================
 
-read -p 'Install virtualbox additions? (y/N): ' choice
-
-if [[ "$choice" = "y" ]]; then
-    sudo pacman -S xf86-video-vmware virtualbox-guest-utils --noconfirm --needed
-    sudo systemctl enable vboxservice
-fi
-
-read -p 'Install VMware tools? (y/N): ' choice
-
-if [[ "$choice" = "y" ]]; then
-    sudo pacman -S xf86-video-vmware open-vm-tools --noconfirm --needed
-    sudo systemctl enable vmtoolsd.service
-    sudo systemctl enable vmware-vmblock-fuse.service
-fi
-
-# Fonts
-sudo pacman -S gnome-font-viewer ttf-roboto ttf-dejavu ttf-liberation noto-fonts noto-fonts-emoji ttf-font-awesome otf-font-awesome terminus-font ttf-ubuntu-nerd --noconfirm --needed
+# Build tools
+sudo apt install build-essential libxcb1-dev libxcb-render0-dev libxcb-shape0-dev libxcb-xfixes0-dev ca-certificates curl -y
 
 # Utils
-sudo pacman -S zip unzip zsh wget curl make ccache libsecret xclip xsel at rsync scrot cmake broot exa thefuck fzf bat --noconfirm --needed
+sudo apt install zip unzip zsh wget curl make ccache xclip xsel at rsync scrot cmake eza thefuck fzf bat -y
 
-if [ "$release" == "Artix" ]; then
-  # In artix before the yadm bootstrap process starts we need to remove xorg-mkfontscale
-  sudo pacman -Rcsu xorg-mkfontscale --noconfirm
-elif [ "$release" == "Arch" ]; then
-  echo "No changes required, continue"
-else 
-  echo "Warn: Please have in mind that by the time of this update this bootstrap was validated on Arch and Artix"
-fi
+sudo apt install gnome-keyring tldr -y
 
-# pulseaudio pulseaudio-alsa
-sudo pacman -S redshift xorg xorg-xinit volumeicon cbatticon feh dunst pavucontrol pamixer picom gnome-keyring variety sxiv python-pywal python-ueberzug polkit-gnome ntfs-3g arandr udiskie network-manager-applet tldr transmission-gtk unclutter --noconfirm --needed
-
-# Desktop environment bases, bspwm packages and utils
-sudo pacman -S lxappearance --noconfirm --needed
-sudo pacman -S rofi ranger bspwm sxhkd polybar --noconfirm --needed
-sudo pacman -S xmonad xmobar xmonad-extras xmonad-contrib xmonad-utils alacritty trayer dmenu --noconfirm --needed
-sudo pacman -S qtile tk tcl python-dbus-next python-iwlib python-keyring python-xdg python-keyrings-alt libgnome-keyring xfce4-settings --noconfirm --needed
-
-sudo pacman -S gnome-themes-extra gtk-engines xorg-xfontsel gnome-icon-theme-extras xorg-server-xephyr --needed --noconfirm
-
-# Lightdm 
-sudo pacman -S lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings --needed --noconfirm
-
-# Desktop (File Manager)
-sudo pacman -S thunar thunar-archive-plugin thunar-volman tumbler gvfs vlc ffmpegthumbnailer trash-cli --needed --noconfirm
-sudo pacman -S xarchiver unzip unrar arj lha p7zip --needed --noconfirm
-
-sudo pacman -S syncthing --needed --noconfirm
-
-# PDF Viewer
-sudo pacman -S zathura zathura-cb zathura-djvu zathura-pdf-mupdf zathura-ps texlive-core --needed --noconfirm
+sudo apt install ranger -y
 
 # Develop dependecies / packages
-sudo pacman -S git glib2 hub github-cli httpie jq terraform aws-cli stern --noconfirm --needed
-sudo pacman -S docker docker-compose docker-machine stack arrow --noconfirm --needed
-
-# Editors and dependencies
-sudo pacman -S neovim emacs-nox ripgrep fd ctags --noconfirm --needed
-
-# AUR Helper
-if pacman -Qs yay > /dev/null ; then
-    echo "Yay is already installed, moving on..."
-else
-    rm -rf yay
-    git clone https://aur.archlinux.org/yay.git
-    cd yay
-    makepkg -si --noconfirm
-fi
-
-# Import Keys to Install Spotify
-# gpg --keyserver pool.sks-keyservers.net --recv-keys 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90
-# gpg --keyserver pool.sks-keyservers.net --recv-keys 2EBF997C15BDA244B6EBF5D84773BD5E130D1D45
-# yay -S spicetify-cli spotify --needed --removemake --nocleanmenu --nodiffmenu --noeditmenu --noconfirm
-
-if pacman -Qs google-chrome > /dev/null ; then
-    echo "Yay packages already installed, moving on..."
-else
-    yay -S betterlockscreen google-chrome aic94xx-firmware wd719x-firmware --needed --removemake --nocleanmenu --nodiffmenu --noeditmenu --noconfirm
-fi
-
-# ====================================
-# Polybar font
-# ====================================
-
-mkdir ~/.local &> /dev/null
-mkdir ~/.local/share &> /dev/null
-mkdir ~/.local/share/fonts &> /dev/null
-
-if [ -f "$HOME/.local/share/fonts/icomoon-feather.ttf" ]; then
-    echo "Feather Font Already Installed."
-else 
-    curl https://raw.githubusercontent.com/adi1090x/polybar-themes/master/polybar-8/fonts/icomoon-feather.ttf > icomoon-feather.ttf
-    mv icomoon-feather.ttf $HOME/.local/share/fonts/
-    fc-cache -f $HOME/.local/share/fonts/
-fi
-
-# ====================================
-# Powerline arrow fix
-# ====================================
-
-if [ -f "$HOME/.local/share/fonts/PowerlineSymbols.otf" ]; then
-    echo "Powerline Fixed Font Already Installed."
-else 
-    wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf
-    mv PowerlineSymbols.otf ~/.local/share/fonts/
-    fc-cache -f ~/.local/share/fonts/
-fi
+sudo apt install git hub httpie jq -y
+sudo apt install neovim emacs-nox ripgrep fd-find -y
 
 # =========================================
 # Install antigen and zsh-autosuggestions
@@ -137,30 +34,6 @@ else
     curl -fsSL https://fnm.vercel.app/install | bash -s -- --install-dir "./.fnm" --skip-shell
 fi
 
-if [ -d "$HOME/.pyenv" ]; then
-    echo "PyEnv is already installed, moving on"
-else
-    git clone https://github.com/pyenv/pyenv.git ~/.pyenv
-    git clone https://github.com/pyenv/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
-fi
-
-if [ -f "$HOME/.local/bin/kubectl" ]; then
-    echo "Kubectl is already installed, moving on"
-else
-    mkdir -p $HOME/.local/bin
-    curl --output $HOME/.local/bin/kubectl -L "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"
-    chmod +x $HOME/.local/bin/kubectl
-fi
-
-if [ -d "/opt/vscode" ]; then
-    echo "VSCode is already installed, moving on..."
-else
-    wget -t0 https://go.microsoft.com/fwlink/\?LinkID\=620884 -O code-stable.tar.gz 
-    tar -xf code-stable.tar.gz && mv VSCode-linux-x64 vscode && sudo rm -rf /opt/vscode && sudo mv vscode /opt && rm code-stable.tar.gz
-    sudo ln -sf /opt/vscode/bin/code /usr/bin/code
-    #sh ~/.config/Code/User/extensions.sh
-fi
-
 if [ -d "$HOME/.emacs.d/bin" ]; then
     echo "Doom emacs is already installed, moving on..."
 else
@@ -173,13 +46,21 @@ else
     curl -s "https://get.sdkman.io" | bash
 fi
 
-if ! command -v subl &> /dev/null
+if ! command -v aws &> /dev/null
 then
-    curl -O https://download.sublimetext.com/sublimehq-pub.gpg && sudo pacman-key --add sublimehq-pub.gpg && sudo pacman-key --lsign-key 8A8F901A && rm sublimehq-pub.gpg
-    echo -e "\n[sublime-text]\nServer = https://download.sublimetext.com/arch/stable/x86_64" | sudo tee -a /etc/pacman.conf
-    sudo pacman -Syu sublime-text --noconfirm --needed
+    curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+    unzip awscliv2.zip
+    sudo ./aws/install --bin-dir /usr/local/bin --install-dir /usr/local/aws-cli --update
+    rm awscliv2.zip
 else
-    echo "Sublime already installed, moving on"
+    echo "AWS CLI already installed, moving on"
+fi
+
+if ! command -v uv &> /dev/null
+then
+    curl -LsSf https://astral.sh/uv/install.sh | sh
+else
+    echo "Uv already installed, moving on"
 fi
 
 # Install Rust
@@ -191,39 +72,39 @@ else
     echo "Rust already installed, moving on"
 fi
 
-# Configure custom font
+cargo install --locked --features clipboard broot
 
-if [ -d "/usr/share/fonts/iosevka-custom" ]; then
-    echo "Custom font already installed and configured"
+# Install docker
+
+if ! command -v docker &> /dev/null
+then
+    sudo install -m 0755 -d /etc/apt/keyrings
+    sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+    sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+    # Add the repository to Apt sources:
+    echo \
+    "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+    $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | \
+    sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    sudo apt-get update
+    sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 else
-    sudo cp -R ~/.config/general/fonts/iosevka-custom /usr/share/fonts/
-    fc-cache -f
+    echo "Docker already installed, moving on"
 fi
-
-# Configure Lightdm
-sudo cp ~/.config/general/lightdm/lightdm-gtk-greeter.conf /etc/lightdm/
-if [ ! -d "/usr/share/backgrounds" ]; then
-    sudo mkdir /usr/share/backgrounds
-fi
-sudo cp ~/.config/general/lightdm/backgrounds/wallhaven-7p2363.png /usr/share/backgrounds/
 # sudo cp ~/.config/general/reflector/reflector.conf /etc/xdg/reflector/
 
 # Enable services
-sudo systemctl enable lightdm
-# sudo systemctl enable reflector.service
 
 echo "=============="
 echo "==== DONE ===="
 echo "=============="
 
 echo "chsh -s /bin/zsh"
-echo "~/.config/Code/User/extensions.sh"
 echo "~/.emacs.d/bin/doom install"
 echo "initialize node"
 echo "initialize python"
 echo "initialize jvm"
-echo "startx"
-echo "feh --bg-fill ~/.config/desktop/gruvbox.png"
 
 # Change to zsh
 zsh
